@@ -1,0 +1,10 @@
+{
+  "**/*.{tsx,jsx,js}": ["prettier --write", "eslint --fix", "git add"],
+  "**/*.{html,css}": [
+    "prettier --write",
+
+    "stylelint --allow-empty-input --fix",
+    "git add"
+  ],
+  "**/*.{md,json}": ["prettier --write", "git add"]
+}
