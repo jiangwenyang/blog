@@ -1,13 +1,7 @@
 ---
-layout: blog-post
-
-title: mongoose官方API一览
+title: Mongoose官方API一览
 date: 2017-04-16 11:30:16
 tags:
-  - Node.js
-  - MongoDB
-  - Mongoose
-categories:
   - Node.js
   - MongoDB
   - Mongoose
@@ -39,7 +33,7 @@ mongoose.connect("mongodb://localhost/test"); //mongoDB的数据库连接都是�
 ```javascript
 var db = mongoose.connection;
 db.on(error, console.error.bind(console, "connection error:"));
-db.once("open", function(callback) {
+db.once("open", function (callback) {
   // 连接成功，后续数据库操作都在回调中进行
 });
 ```
@@ -52,7 +46,7 @@ db.once("open", function(callback) {
 var Schema = mongoose.Schema;
 var UserSchema = new Schema({
   name: String,
-  age: Number
+  age: Number,
 });
 ```
 
@@ -83,7 +77,7 @@ var user = new Model("user", UserSchema);
 ```javascript
 var tom = new user({
   name: "tom",
-  age: 20
+  age: 20,
 });
 ```
 
@@ -92,7 +86,7 @@ var tom = new user({
 在上一步我们仍然没有在数据库中保存任何数据，只是生成了文档，但是并没有存入数据库，我们可以使用在文档上*save（）*方法将生成的文档存入数据库。
 
 ```javascript
-tom.save(function(err, tom) {
+tom.save(function (err, tom) {
   if (err) return console.error(err);
   //进行其他操作
 });
@@ -103,7 +97,7 @@ tom.save(function(err, tom) {
 查询数据库文档，通过在*model*上使用*find*方法。
 
 ```javascript
-user.find({ name: "tom" }, function(err, doc) {
+user.find({ name: "tom" }, function (err, doc) {
   console.log(doc);
 });
 ```
@@ -130,8 +124,8 @@ var blogSchema = new Schema({
   hidden: Boolean,
   meta: {
     votes: Number,
-    favs: Number
-  }
+    favs: Number,
+  },
 });
 ```
 
@@ -149,7 +143,7 @@ var Blog = mongoose.model("Blog", blogSchema);
 // define a schema
 var animalSchema = new Schema({ name: String, type: String });
 // assign a function to the "methods" object of our animalSchema
-animalSchema.methods.findSimilarTypes = function(cb) {
+animalSchema.methods.findSimilarTypes = function (cb) {
   return this.model("Animal").find({ type: this.type }, cb);
 };
 ```
@@ -159,7 +153,7 @@ animalSchema.methods.findSimilarTypes = function(cb) {
 ```javascript
 var Animal = mongoose.model("Animal", animalSchema);
 var dog = new Animal({ type: "dog" });
-dog.findSimilarTypes(function(err, dogs) {
+dog.findSimilarTypes(function (err, dogs) {
   console.log(dogs); // woof
 });
 ```
@@ -172,11 +166,11 @@ _避免重新内置的实例方法，可能会导致不可预料的问题_
 
 ```javascript
 // assign a function to the "statics" object of our animalSchema
-animalSchema.statics.findByName = function(name, cb) {
+animalSchema.statics.findByName = function (name, cb) {
   this.find({ name: new RegExp(name, "i") }, cb);
 };
 var Animal = mongoose.model("Animal", animalSchema);
-Animal.findByName("fido", function(err, animals) {
+Animal.findByName("fido", function (err, animals) {
   console.log(animals);
 });
 ```
@@ -189,7 +183,7 @@ Animal.findByName("fido", function(err, animals) {
 var animalSchema = new Schema({
   name: String,
   type: String,
-  tags: { type: [String], index: true } // field level
+  tags: { type: [String], index: true }, // field level
 });
 animalSchema.index({ name: 1, type: -1 }); // schema level
 ```
@@ -205,17 +199,17 @@ Getter
 var personSchema = new Schema({
   name: {
     first: String,
-    last: String
-  }
+    last: String,
+  },
 });
 // compile our model
 var Person = mongoose.model("Person", personSchema);
 // create a document
 var bad = new Person({
-  name: { first: "Walter", last: "White" }
+  name: { first: "Walter", last: "White" },
 });
 //define virtual property
-personSchema.virtual("name.full").get(function() {
+personSchema.virtual("name.full").get(function () {
   return this.name.first + " " + this.name.last;
 });
 console.log("%s is insane", bad.name.full); // Walter White is insane
@@ -278,12 +272,12 @@ var Tank = mongoose.model("Tank", schema);
 ```javascript
 var Tank = mongoose.model("Tank", yourSchema);
 var small = new Tank({ size: "small" });
-small.save(function(err) {
+small.save(function (err) {
   if (err) return handleError(err);
   // saved!
 });
 // or
-Tank.create({ size: "small" }, function(err, small) {
+Tank.create({ size: "small" }, function (err, small) {
   if (err) return handleError(err);
   // saved!
 });
@@ -294,10 +288,7 @@ Tank.create({ size: "small" }, function(err, small) {
 文档可以被检索通过使用每一个模型的*find,findById,findOne,where*静态方法
 
 ```javascript
-Tank.find({ size: "small" })
-  .where("createdDate")
-  .gt(oneYearAgo)
-  .exec(callback);
+Tank.find({ size: "small" }).where("createdDate").gt(oneYearAgo).exec(callback);
 ```
 
 #### 移除
@@ -305,7 +296,7 @@ Tank.find({ size: "small" })
 模型有一个*remove*静态方法可以移除所有匹配 conditions 的文档
 
 ```javascript
-Tank.remove({ size: "large" }, function(err) {
+Tank.remove({ size: "large" }, function (err) {
   if (err) return handleError(err);
   // removed!
 });
@@ -317,15 +308,16 @@ Tank.remove({ size: "large" }, function(err) {
 
 ```javascript
 MyModel.update({ age: { $gt: 18 } }, { oldEnough: true }, fn);
-MyModel.update({ name: "Tobi" }, { ferret: true }, { multi: true }, function(
-  err,
-  numberAffected,
-  raw
-) {
-  if (err) return handleError(err);
-  console.log("The number of updated documents was %d", numberAffected);
-  console.log("The raw response from Mongo was ", raw);
-});
+MyModel.update(
+  { name: "Tobi" },
+  { ferret: true },
+  { multi: true },
+  function (err, numberAffected, raw) {
+    if (err) return handleError(err);
+    console.log("The number of updated documents was %d", numberAffected);
+    console.log("The raw response from Mongo was ", raw);
+  }
+);
 ```
 
 _如果你想更新单个文档并且希望得到返回值，使用 findOneAndUpdate 方法来代替。_
@@ -341,18 +333,19 @@ _如果你想更新单个文档并且希望得到返回值，使用 findOneAndUp
 ```javascript
 var Person = mongoose.model("Person", yourSchema);
 // find each person with a last name matching 'Ghost', selecting the `name` and `occupation` fields
-Person.findOne({ "name.last": "Ghost" }, "name occupation", function(
-  err,
-  person
-) {
-  if (err) return handleError(err);
-  console.log(
-    "%s %s is a %s.",
-    person.name.first,
-    person.name.last,
-    person.occupation
-  ); // Space Ghost is a talk show host.
-});
+Person.findOne(
+  { "name.last": "Ghost" },
+  "name occupation",
+  function (err, person) {
+    if (err) return handleError(err);
+    console.log(
+      "%s %s is a %s.",
+      person.name.first,
+      person.name.last,
+      person.occupation
+    ); // Space Ghost is a talk show host.
+  }
+);
 ```
 
 也可以使用连缀的形式添加更加细致的查询条件
@@ -379,11 +372,11 @@ Person.find({ occupation: /host/ })
 - 传统方式
 
 ```javascript
-Tank.findById(id, function(err, tank) {
+Tank.findById(id, function (err, tank) {
   if (err) return handleError(err);
 
   tank.size = "large";
-  tank.save(function(err) {
+  tank.save(function (err) {
     if (err) return handleError(err);
     res.send(tank);
   });
@@ -399,7 +392,7 @@ Tank.findById(id, function(err, tank) {
 - 通过模型查找更新（返回更新的文档）
 
   ```javascript
-  Tank.findByIdAndUpdate(id, { $set: { size: "large" } }, function(err, tank) {
+  Tank.findByIdAndUpdate(id, { $set: { size: "large" } }, function (err, tank) {
     if (err) return handleError(err);
     res.send(tank);
   });
@@ -412,7 +405,7 @@ Tank.findById(id, function(err, tank) {
 ```javascript
 var childSchema = new Schema({ name: "string" });
 var parentSchema = new Schema({
-  children: [childSchema]
+  children: [childSchema],
 });
 ```
 
@@ -443,7 +436,7 @@ parent.children.push({ name: "Liesl" });
 var subdoc = parent.children[0];
 console.log(subdoc); // { _id: '501d86090d371bab2c0341c5', name: 'Liesl' }
 subdoc.isNew; // true
-parent.save(function(err) {
+parent.save(function (err) {
   if (err) return handleError(err);
   console.log("Success!");
 });
@@ -461,7 +454,7 @@ var newdoc = parent.children.create({ name: "Aaron" });
 
 ```javascript
 var doc = parent.children.id(id).remove();
-parent.save(function(err) {
+parent.save(function (err) {
   if (err) return handleError(err);
   console.log("the sub-doc was removed");
 });
@@ -483,18 +476,19 @@ parent.save(function(err) {
 ```javascript
 var Person = mongoose.model("Person", yourSchema);
 // find each person with a last name matching 'Ghost', selecting the `name` and `occupation` fields
-Person.findOne({ "name.last": "Ghost" }, "name occupation", function(
-  err,
-  person
-) {
-  if (err) return handleError(err);
-  console.log(
-    "%s %s is a %s.",
-    person.name.first,
-    person.name.last,
-    person.occupation
-  ); // Space Ghost is a talk show host.
-});
+Person.findOne(
+  { "name.last": "Ghost" },
+  "name occupation",
+  function (err, person) {
+    if (err) return handleError(err);
+    console.log(
+      "%s %s is a %s.",
+      person.name.first,
+      person.name.last,
+      person.occupation
+    ); // Space Ghost is a talk show host.
+  }
+);
 ```
 
 方式二：
@@ -505,7 +499,7 @@ var query = Person.findOne({ "name.last": "Ghost" });
 // selecting the `name` and `occupation` fields
 query.select("name occupation");
 // execute the query at a later time
-query.exec(function(err, person) {
+query.exec(function (err, person) {
   if (err) return handleError(err);
   console.log(
     "%s %s is a %s.",
@@ -524,7 +518,7 @@ var query = Person.findOne({ "name.last": "Ghost" });
 // selecting the `name` and `occupation` fields
 query.select("name occupation");
 // execute the query at a later time
-query.exec(function(err, person) {
+query.exec(function (err, person) {
   if (err) return handleError(err);
   console.log(
     "%s %s is a %s.",
@@ -548,14 +542,14 @@ mongoose 有一些自己的内置验证器：
 ```javascript
 var toySchema = new Schema({
   color: String,
-  name: String
+  name: String,
 });
 var Toy = mongoose.model("Toy", toySchema);
-Toy.schema.path("color").validate(function(value) {
+Toy.schema.path("color").validate(function (value) {
   return /blue|green|white|red|orange|periwinkle/i.test(value);
 }, "Invalid color");
 var toy = new Toy({ color: "grease" });
-toy.save(function(err) {
+toy.save(function (err) {
   // err is our ValidationError object
   // err.errors.color is a ValidatorError object
 
@@ -603,16 +597,16 @@ toy.save(function(err) {
 post 中间件会立即执行，在关联的方法和它的*pre*中间件完成的时候，post 中间件不会对操作进行控制，相当于只是监听这些方法
 
 ```javascript
-schema.post("init", function(doc) {
+schema.post("init", function (doc) {
   console.log("%s has been initialized from the db", doc._id);
 });
-schema.post("validate", function(doc) {
+schema.post("validate", function (doc) {
   console.log("%s has been validated (but not saved yet)", doc._id);
 });
-schema.post("save", function(doc) {
+schema.post("save", function (doc) {
   console.log("%s has been saved", doc._id);
 });
-schema.post("remove", function(doc) {
+schema.post("remove", function (doc) {
   console.log("%s has been removed", doc._id);
 });
 ```
@@ -633,12 +627,12 @@ var personSchema = Schema({
   _id: Number,
   name: String,
   age: Number,
-  stories: [{ type: Schema.Types.ObjectId, ref: "Story" }]
+  stories: [{ type: Schema.Types.ObjectId, ref: "Story" }],
 });
 var storySchema = Schema({
   _creator: { type: Number, ref: "Person" },
   title: String,
-  fans: [{ type: Number, ref: "Person" }]
+  fans: [{ type: Number, ref: "Person" }],
 });
 var Story = mongoose.model("Story", storySchema);
 var Person = mongoose.model("Person", personSchema);
@@ -648,15 +642,15 @@ var Person = mongoose.model("Person", personSchema);
 
 ```javascript
 var aaron = new Person({ _id: 0, name: "Aaron", age: 100 });
-aaron.save(function(err) {
+aaron.save(function (err) {
   if (err) return handleError(err);
 
   var story1 = new Story({
     title: "Once upon a timex.",
-    _creator: aaron._id // assign the _id from the person
+    _creator: aaron._id, // assign the _id from the person
   });
 
-  story1.save(function(err) {
+  story1.save(function (err) {
     if (err) return handleError(err);
     // thats it!
   });
@@ -668,7 +662,7 @@ aaron.save(function(err) {
 ```javascript
 Story.findOne({ title: "Once upon a timex." })
   .populate("_creator")
-  .exec(function(err, story) {
+  .exec(function (err, story) {
     if (err) return handleError(err);
     console.log("The creator is %s", story._creator.name);
     // prints "The creator is Aaron"
@@ -682,7 +676,7 @@ Story.findOne({ title: "Once upon a timex." })
 ```javascript
 Story.findOne({ title: /timex/i })
   .populate("_creator", "name") // only return the Persons name
-  .exec(function(err, story) {
+  .exec(function (err, story) {
     if (err) return handleError(err);
 
     console.log("The creator is %s", story._creator.name);

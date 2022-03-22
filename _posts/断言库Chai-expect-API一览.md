@@ -1,17 +1,11 @@
 ---
-layout: blog-post
-
-title: 断言库Chai-expect API一览
-date: 2017-12-20 22:57:11
+title: chai-expect api overview
+date: 2017-12-20
 tags:
   - Chai
-categories:
-  - 单元测试
 ---
 
 花了几天时间简单的翻译并学习了 chai 的官方 API 文档，了解如何写出可读性更好的ＢＤＤ的风格的测试断言。官方的一个核心建议是：尽量使用 language chains 提高可读性，尽量进行正面断言而不是反面断言，即断言被测对象是什么，而不是断言对象不是什么，断言对象包含什么，而不是不包含什么，因为往往能确定的东西是更少部分的、容易覆盖的，不确定的方面可能是多方面的、难以覆盖的。
-
-@(学习)[单元测试]
 
 ## 概述
 
@@ -320,4 +314,4 @@ expect(Foo)
 - @param { Mixed } expected
 - @param { String } message
 - @param { String } operator
-  抛出一个错误 
+  抛出一个错误

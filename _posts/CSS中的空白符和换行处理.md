@@ -1,11 +1,7 @@
 ---
-layout: blog-post
-
 title: CSS中的空白符和换行处理
-date: 2018-09-11 18:14:31
+date: 2018-09-11
 tags:
-  - CSS
-categories:
   - CSS
 ---
 

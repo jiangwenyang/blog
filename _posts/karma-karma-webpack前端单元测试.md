@@ -1,13 +1,9 @@
 ---
-layout: blog-post
-
 title: karma+karma-webpack前端单元测试
-date: 2017-12-20 22:59:09
+date: 2017-12-20
 tags:
-  - karma
-  - karma-webpack
-categories:
-  - 单元测试
+  - 前端测试
+  - E2E测试
 ---
 
 ## karma + karma-webpack
@@ -45,17 +41,17 @@ yarn add -D karma-typescript
 **karma-conf.js 配置**
 
 ```javascript
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
     frameworks: ["jasmine", "karma-typescript"],
     files: [
-      "src/**/*.ts" // *.tsx for React Jsx
+      "src/**/*.ts", // *.tsx for React Jsx
     ],
     preprocessors: {
-      "**/*.ts": "karma-typescript" // *.tsx for React Jsx
+      "**/*.ts": "karma-typescript", // *.tsx for React Jsx
     },
     reporters: ["progress", "karma-typescript"],
-    browsers: ["Chrome"]
+    browsers: ["Chrome"],
   });
 };
 ```
@@ -64,7 +60,7 @@ module.exports = function(config) {
 官方的[cookbook](https://github.com/monounity/karma-typescript/blob/master/cookbook.md)项目上给出了测试代码分离的 demo
 
 ```javascript
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
     frameworks: ["jasmine", "karma-typescript"],
 
@@ -72,12 +68,12 @@ module.exports = function(config) {
 
     preprocessors: {
       "src/**/*.ts": ["karma-typescript", "coverage"],
-      "test/**/*.ts": ["karma-typescript"]
+      "test/**/*.ts": ["karma-typescript"],
     },
 
     reporters: ["progress", "coverage", "karma-typescript"],
 
-    browsers: ["Chrome"]
+    browsers: ["Chrome"],
   });
 };
 ```

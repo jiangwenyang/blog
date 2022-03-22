@@ -1,11 +1,7 @@
 ---
-layout: blog-post
-
 title: React高价组件（HOC）
-date: 2017-12-20 23:15:51
+date: 2017-12-20
 tags:
-  - React
-categories:
   - React
 ---
 
@@ -83,17 +79,17 @@ function HOC(ChildComponent){
 function HOC(ChildComponent) {
   return class Pphoc extends React.Component {
     state = {
-      name: ""
+      name: "",
     };
     onChangeName(e) {
       this.setState({
-        name: e.target.value
+        name: e.target.value,
       });
     }
     render() {
       const newProps = {
         value: this.state.name,
-        onchange: this.onChangeName
+        onchange: this.onChangeName,
       };
       return <ChildComponent {...this.props} {...newProps} />;
     }

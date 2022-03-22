@@ -1,17 +1,22 @@
-# TypeScript简明指北
+---
+title: TypeScript Learning
+date: 2019-10-23
+tags:
+  - TypeScript
+---
+
+# TypeScript 简明指北
 
 [TOC]
 
+## TL;DR
 
-
-## TL;DR 
-
-TypeScript 是 JavaScript 的类型的超集，它可以编译成纯 JavaScript。编译出来的 JavaScript 可以运行在任何浏览器上。可以把Typescript简单理解为带类型的Javascript。
+TypeScript 是 JavaScript 的类型的超集，它可以编译成纯 JavaScript。编译出来的 JavaScript 可以运行在任何浏览器上。可以把 Typescript 简单理解为带类型的 Javascript。
 
 **优点：**
 
 - 代码可读性和可维护性
-- 超好的兼容性，从文件类型、变量类型、编译、第三方库等各个方面都兼容现有JS
+- 超好的兼容性，从文件类型、变量类型、编译、第三方库等各个方面都兼容现有 JS
 - TypeScript 是开源的
 
 **缺点：**
@@ -35,7 +40,7 @@ npm i -g typescript
 
 ### 初始化
 
-使用`tsc --init` 可以在当前目录下快速生成tsconfig.json文件
+使用`tsc --init` 可以在当前目录下快速生成 tsconfig.json 文件
 
 ![UTOOLS1571795855656.png](https://img04.sogoucdn.com/app/a/100520146/28f5cd57df0b7d1db6ecc1af0913cced)
 
@@ -44,18 +49,18 @@ npm i -g typescript
 helloWorld.ts
 
 ```ts
-function helloWorld(name:string){
-  return `${name} say Hello World`
+function helloWorld(name: string) {
+  return `${name} say Hello World`;
 }
 
-const tomName:string = 'tom'
+const tomName: string = "tom";
 
-helloWorld(tomName)
+helloWorld(tomName);
 ```
 
 ### 编译
 
-使用`tsc helloWorld.ts`将ts文件编译为js文件，支持glob模式匹配。
+使用`tsc helloWorld.ts`将 ts 文件编译为 js 文件，支持 glob 模式匹配。
 
 编译过程中如果遇到类型错误会提示，但是仍然能够编译成功。
 
@@ -67,9 +72,9 @@ helloWorld(tomName)
 
 ```js
 function helloWorld(name) {
-    return name + " say Hello World";
+  return name + " say Hello World";
 }
-var tomName = 'tom';
+var tomName = "tom";
 var tomAge = 20;
 helloWorld(tomName);
 helloWorld(tomAge);
@@ -79,7 +84,7 @@ helloWorld(tomAge);
 
 ### 基础类型
 
-Javascript中的基础类型有：
+Javascript 中的基础类型有：
 
 - 值类型（基本类型）
   - 字符串（String）
@@ -87,21 +92,21 @@ Javascript中的基础类型有：
   - 布尔(Boolean)
   - 空（Null）
   - 未定义（Undefined）
-  - Symbol 
+  - Symbol
 - 引用数据类型
-  -  对象(Object)
+  - 对象(Object)
   - 数组(Array)
-  - 函数(Function) 
+  - 函数(Function)
 
-Typescript支持Javascript的所有基础类型，并且新增了 **枚举类型** 供我们使用，后文将单独进行介绍。
+Typescript 支持 Javascript 的所有基础类型，并且新增了 **枚举类型** 供我们使用，后文将单独进行介绍。
 
 #### 基础声明一览
 
 ```ts
 /* 字符串 */
 // 普通字符串
-let firstName: string = 'TypeScript';
-let lastName: string = 'Language';
+let firstName: string = "TypeScript";
+let lastName: string = "Language";
 // 模板字符串
 let fullName: string = `${firstName} ${lastName}`;
 
@@ -115,33 +120,33 @@ let myAge: number = 10;
 // 使用元素类型后跟[]的方式定义
 let list: number[] = [1, 2, 3, 4];
 // 使用数组泛型的方式定义
-let list2: Array<string> = ['foo', 'bar'];
+let list2: Array<string> = ["foo", "bar"];
 
 /* 元组Tuple */
 // ”元组类型“是已知道元素数量和类型的数组的语义类型，在Typescript中并没有定义这一种类型。
-let list3: [string, number, boolean] = ['foo', 20, true];
+let list3: [string, number, boolean] = ["foo", 20, true];
 
 /* 枚举 */
 enum Color {
   Red,
   Green,
-  Blue
+  Blue,
 }
 let c: Color = Color.Green;
 
 /* Any */
 // Any类型是一种动态类型，即可以为任意类型，适用于在编程阶段无法确定的类型（不要滥用Any类型）。
 let notSure: any = 4;
-notSure = 'foo';
+notSure = "foo";
 notSure = false;
 notSure = [1, 2, 3];
 // 当不知道数组中元素类型时，可以使用any类型
-let list4: any[] = [1, true, 'free', {}, undefined, null];
+let list4: any[] = [1, true, "free", {}, undefined, null];
 
 /* Void */
 // Void类型代表没有任何类型，Void类型只能赋予undefined和null，一般用于没有返回值的函数的返回值类型
 function noReturn(): void {
-  console.log('This is a function no return value!');
+  console.log("This is a function no return value!");
 }
 
 /* Null 和 Undefined */
@@ -163,7 +168,6 @@ function infiniteLoop(): never {
 // Object类型
 const obj: object = {};
 const obj3: object = Object.create({});
-
 ```
 
 ### 枚举
@@ -180,91 +184,98 @@ enum Direction {
   Up = 1,
   Down,
   Left,
-  Right
+  Right,
 }
 
 enum Color {
   RED,
   GREEN,
-  BLUE
+  BLUE,
 }
 
 enum DirectionString {
-  Up = 'UP',
-  Down = 'DOWN',
-  Left = 'LEFT',
-  Right = 'RIGHT'
+  Up = "UP",
+  Down = "DOWN",
+  Left = "LEFT",
+  Right = "RIGHT",
 }
-
 ```
 
 将会编译成：
 
 ```js
 var Direction;
-(function(Direction) {
-  Direction[(Direction['Up'] = 1)] = 'Up';
-  Direction[(Direction['Down'] = 2)] = 'Down';
-  Direction[(Direction['Left'] = 3)] = 'Left';
-  Direction[(Direction['Right'] = 4)] = 'Right';
+(function (Direction) {
+  Direction[(Direction["Up"] = 1)] = "Up";
+  Direction[(Direction["Down"] = 2)] = "Down";
+  Direction[(Direction["Left"] = 3)] = "Left";
+  Direction[(Direction["Right"] = 4)] = "Right";
 })(Direction || (Direction = {}));
 
 var Color;
-(function(Color) {
-  Color[(Color['RED'] = 0)] = 'RED';
-  Color[(Color['GREEN'] = 1)] = 'GREEN';
-  Color[(Color['BLUE'] = 2)] = 'BLUE';
+(function (Color) {
+  Color[(Color["RED"] = 0)] = "RED";
+  Color[(Color["GREEN"] = 1)] = "GREEN";
+  Color[(Color["BLUE"] = 2)] = "BLUE";
 })(Color || (Color = {}));
 
 var DirectionString;
-(function(DirectionString) {
-  DirectionString['Up'] = 'UP';
-  DirectionString['Down'] = 'DOWN';
-  DirectionString['Left'] = 'LEFT';
-  DirectionString['Right'] = 'RIGHT';
+(function (DirectionString) {
+  DirectionString["Up"] = "UP";
+  DirectionString["Down"] = "DOWN";
+  DirectionString["Left"] = "LEFT";
+  DirectionString["Right"] = "RIGHT";
 })(DirectionString || (DirectionString = {}));
-
 ```
 
 可以看到，并没有”黑魔法“。
 
 ```js
-console.log(Direction['Down']) // 2
-console.log(Direction[2]) // 'Down'
+console.log(Direction["Down"]); // 2
+console.log(Direction[2]); // 'Down'
 ```
 
 ### 函数
 
-Javascript中的函数有两种类型：命名函数、匿名函数
+Javascript 中的函数有两种类型：命名函数、匿名函数
 
 ```js
 // 命名函数
 function add(x, y) {
-    return x + y;
+  return x + y;
 }
 
 // 匿名函数
-let myAdd = function(x, y) { return x + y; };
+let myAdd = function (x, y) {
+  return x + y;
+};
 ```
 
-使用Typescript分别创建这两种类型的函数
+使用 Typescript 分别创建这两种类型的函数
 
 ```tsx
 // 命名函数
 // 完整的函数声明
-function add(x:number, y:number):number {
-    return x + y;
+function add(x: number, y: number): number {
+  return x + y;
 }
 // 一般我们可以省略返回值声明，TS会自动推断出返回值类型。
-function add(x:number, y:number) {
-    return x + y;
+function add(x: number, y: number) {
+  return x + y;
 }
 
 // 匿名函数
 // 只指定函数类型
-let myAdd = function(x: number, y: number): number { return x + y; };
+let myAdd = function (x: number, y: number): number {
+  return x + y;
+};
 // 完整的函数类型
-let myAdd:(x:number,y:number)=>number = function(x: number, y: number): number { return x + y; };
+let myAdd: (x: number, y: number) => number = function (
+  x: number,
+  y: number
+): number {
+  return x + y;
+};
 ```
 
 ### 接口
@@ -308,122 +319,118 @@ const foo = (fooObj: FooObj) => {
 foo.method = (bar: string) => {
   return bar;
 };
-
 ```
 
 ### 泛型
 
- `泛型`用来创建可重用的组件，一个组件可以支持多种类型的数据。 
+`泛型`用来创建可重用的组件，一个组件可以支持多种类型的数据。
 
 ```tsx
 function foo<T>(arg: T): T {
-    return arg;
+  return arg;
 }
 
-const stringFoo = foo<string>("foo1")
-const numberFoo = foo<number>(1) 
+const stringFoo = foo<string>("foo1");
+const numberFoo = foo<number>(1);
 ```
 
 ### 高级类型
 
 - #### 交叉类型（Intersection Types）
 
-   交叉类型是将多个类型合并为一个类型。 这让我们可以把现有的多种类型叠加到一起成为一种类型，它包含了所需的所有类型的特性。 相当于对所有类型取合集。
+  交叉类型是将多个类型合并为一个类型。 这让我们可以把现有的多种类型叠加到一起成为一种类型，它包含了所需的所有类型的特性。 相当于对所有类型取合集。
 
   ```tsx
   interface Type1 {
     name: string;
     age: number;
   }
-  
+
   interface Type2 {
     name: string;
     method: (name: string) => number;
   }
-  
+
   const type1: Type1 = {
-    name: 'type1',
-    age: 20
+    name: "type1",
+    age: 20,
   };
-  
+
   const type2: Type2 = {
     method(name) {
       return type1.age;
-    }
+    },
   };
-  
+
   const mixedType: Type1 & Type2 = { ...type1, ...type2 };
-  
   ```
 
 - #### 联合类型（Union Types）
 
-    联合类型表示一个值可以是几种类型之一。 写法是用竖线（ `|`）分隔每个类型，因此 `number | string | boolean`表示一个值可以是 `number`， `string`，或 `boolean`。
+  联合类型表示一个值可以是几种类型之一。 写法是用竖线（ `|`）分隔每个类型，因此 `number | string | boolean`表示一个值可以是 `number`， `string`，或 `boolean`。
 
-   >  如果一个值是联合类型，我们只能访问此联合类型的所有类型里共有的成员。 
+  > 如果一个值是联合类型，我们只能访问此联合类型的所有类型里共有的成员。
 
-   ![UTOOLS1571803198315.png](https://img02.sogoucdn.com/app/a/100520146/0de4a3db983db6708e514479e2a29564)
+  ![UTOOLS1571803198315.png](https://img02.sogoucdn.com/app/a/100520146/0de4a3db983db6708e514479e2a29564)
 
-   上面的代码中参数`union` 的类型是 `number|string`的联合类型，因此直接访问`length`属性将会报错，因为`number`类型上没有`length`属性。
+  上面的代码中参数`union` 的类型是 `number|string`的联合类型，因此直接访问`length`属性将会报错，因为`number`类型上没有`length`属性。
 
-## Typescript搭配React
+## Typescript 搭配 React
 
-Typescript和React可以很好的一起工作，一般我们使用React离不开Webpack。因此在这里介绍下如何构建Typescript+React+Webpack技术栈。
+Typescript 和 React 可以很好的一起工作，一般我们使用 React 离不开 Webpack。因此在这里介绍下如何构建 Typescript+React+Webpack 技术栈。
 
 ### 安装依赖：
 
 ```shell
-npm i  react react-dom 
+npm i  react react-dom
 npm i -D webpack-cli webpack @types/react @types/react-dom
 ```
 
-在Webpack中解析Typescript需要使用loader，目前主要有以下几种解决方案：
+在 Webpack 中解析 Typescript 需要使用 loader，目前主要有以下几种解决方案：
 
 - awesome-typescript-loader （没用过。。。）
 - ts-loader (官方)
-- babel-loader (babel 7.0版本之后)
+- babel-loader (babel 7.0 版本之后)
 
-很多情况下我们使用了ts-loader之后仍然需要使用babel-loader转换一些ts-loader无法转换的语法特性，因此为什么不直接使用babel-loader来转换ts文件呢。babel从7.0版本后开始支持编译Typescript。在这里主要介绍一下使用babel-loader编译Typescript和React。
+很多情况下我们使用了 ts-loader 之后仍然需要使用 babel-loader 转换一些 ts-loader 无法转换的语法特性，因此为什么不直接使用 babel-loader 来转换 ts 文件呢。babel 从 7.0 版本后开始支持编译 Typescript。在这里主要介绍一下使用 babel-loader 编译 Typescript 和 React。
 
-- 安装babel-core和babel-loader
+- 安装 babel-core 和 babel-loader
 
   ```shell
   npm i -D @babel/core babel-loader@latest
   ```
 
-- 安装@babel/preset-env 编译ES最新的语法
+- 安装@babel/preset-env 编译 ES 最新的语法
 
   ```shell
   npm i -D @babel/preset-env
   ```
 
-- 安装@babel/preset-react 用于编译React
+- 安装@babel/preset-react 用于编译 React
 
   ```shell
   npm i -D @babel/preset-react
   ```
 
-- 安装 @babel/preset-typescript 用于编译Typescript
+- 安装 @babel/preset-typescript 用于编译 Typescript
 
-  ``` shell
+  ```shell
   npm i -D @babel/preset-typescript
   ```
 
 - 安装 @babel/plugin-proposal-class-properties 插件支持类的静态属性语法
 
   ```tsx
-  class Myclass{
-      static propTypes={
-          
-      }
+  class Myclass {
+    static propTypes = {};
   }
   ```
-  
+
   ```shell
   npm i -D @babel/plugin-proposal-class-properties
   ```
 
-### 配置babel
+### 配置 babel
 
 在根目录下新建并配置`.babelrc`文件
 
@@ -434,46 +441,44 @@ npm i -D webpack-cli webpack @types/react @types/react-dom
     "@babel/preset-typescript",
     "@babel/preset-env"
   ],
-  "plugins": [
-		"@babel/proposal-class-properties",
-	]
+  "plugins": ["@babel/proposal-class-properties"]
 }
 ```
 
-### 配置Webpack
+### 配置 Webpack
 
 新建并配置`webpack.config.js`文件
 
-``` js
-const path = require('path');
+```js
+const path = require("path");
 module.exports = {
-  mode: 'development',
-  entry: path.join(__dirname, 'src', 'index'),
+  mode: "development",
+  entry: path.join(__dirname, "src", "index"),
   watch: true,
   output: {
-    path: path.join(__dirname, 'build'),
-    filename: 'bundle.js',
+    path: path.join(__dirname, "build"),
+    filename: "bundle.js",
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        include: [path.resolve(__dirname, 'src')],
-        exclude: [path.resolve(__dirname, 'node_modules')],
-        loader: 'babel-loader',
+        include: [path.resolve(__dirname, "src")],
+        exclude: [path.resolve(__dirname, "node_modules")],
+        loader: "babel-loader",
       },
     ],
   },
 };
 ```
 
-### 配置package.json script
+### 配置 package.json script
 
 ```json
 {
-    "scripts": {
+  "scripts": {
     "start": "webpack --config webpack.config.js"
-  },
+  }
 }
 ```
 
@@ -482,14 +487,14 @@ module.exports = {
 ButtonFC.tsx
 
 ```tsx
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   name: string;
 }
 
-const Button: React.FC<ButtonProps> = props => {
+const Button: React.FC<ButtonProps> = (props) => {
   const { children, className, ...otherProps } = props;
   const buttonClassName = className;
   return (
@@ -500,18 +505,17 @@ const Button: React.FC<ButtonProps> = props => {
 };
 
 Button.propTypes = {
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
 };
 
 export default Button;
-
 ```
 
 ### 类组件
 
 ```tsx
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 interface ButtonCountProps extends React.HTMLAttributes<HTMLButtonElement> {
   name?: string;
@@ -523,14 +527,14 @@ interface ButtonCountState {
 
 class ButtonCount extends React.Component<ButtonCountProps, ButtonCountState> {
   static propTypes = {
-    name: PropTypes.string
+    name: PropTypes.string,
   };
   state = {
-    count: 0
+    count: 0,
   };
 
   handleClick = () => {
-    this.setState(state => ({ count: state.count + 1 }));
+    this.setState((state) => ({ count: state.count + 1 }));
   };
 
   render() {
@@ -541,7 +545,6 @@ class ButtonCount extends React.Component<ButtonCountProps, ButtonCountState> {
 }
 
 export default ButtonCount;
-
 ```
 
 ### 入口文件
@@ -549,10 +552,10 @@ export default ButtonCount;
 App.ts
 
 ```tsx
-import React from 'react';
+import React from "react";
 
-import ButtonFC from './ButtonFC';
-import ButtonClass from './ButtonClass';
+import ButtonFC from "./ButtonFC";
+import ButtonClass from "./ButtonClass";
 
 const App: React.FC = () => (
   <div>
@@ -566,17 +569,16 @@ const App: React.FC = () => (
 );
 
 export default App;
-
 ```
 
 index.tsx
 
 ```tsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById("root"));
 ```
 
 ### 编译打包

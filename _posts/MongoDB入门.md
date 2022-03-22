@@ -1,14 +1,9 @@
 ---
-layout: blog-post
-
-title: mongoDB入门
+title: MongoDB入门
+date: 2016-05-13
 tags:
   - Node.js
   - MongoDB
-categories:
-  - Node.js
-  - MongoDB
-date: 2016-05-13 19:35:01
 ---
 
 ## 数据库操作

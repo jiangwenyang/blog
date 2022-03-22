@@ -1,10 +1,6 @@
 ---
-layout: blog-post
-
 title: CSS媒体查询入门
 tags:
-  - CSS
-categories:
   - CSS
 date: 2018-09-10 16:59:18
 ---
@@ -132,5 +128,5 @@ date: 2018-09-10 16:59:18
 
   参考链接：
 
-  [W3C media queries]: Thekeyword‘only’canalsobeusedtohidestylesheetsfromolderuseragents.Useragentsmustprocessmediaqueriesstartingwith‘only’asifthe‘only’keywordwasnotpresent.
+  [w3c media queries]: Thekeyword‘only’canalsobeusedtohidestylesheetsfromolderuseragents.Useragentsmustprocessmediaqueriesstartingwith‘only’asifthe‘only’keywordwasnotpresent.
   [what-is-the-difference-between-screen-and-only-screen-in-media-queries]: https://stackoverflow.com/questions/8549529/what-is-the-difference-between-screen-and-only-screen-in-media-queries/14168210#14168210

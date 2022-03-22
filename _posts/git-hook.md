@@ -1,11 +1,7 @@
 ---
-layout: blog-post
-
 title: Git-hook
-date: 2018-03-12 21:33:50
+date: 2018-03-12
 tags:
-  - Git-hook
-categories:
   - Git
 ---
 
@@ -155,7 +151,7 @@ import * as execa from "execa"; // 第三方包，node.js的child_process的prom
 import * as readPkg from "read-pkg"; // 第三方包，读取package.json并返回配置对象
 import getConf from "../getConf"; // 第三方包，通过调用第三方包cosmiconfig读取并返回配置对象
 
-export default function(
+export default function (
   [, , hookName = ""]: string[],
   { cwd = process.cwd() } = {}
 ): number {

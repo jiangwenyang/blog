@@ -1,12 +1,7 @@
 ---
-layout: blog-post
-
 title: React事件绑定
-date: 2017-12-20 23:11:56
+date: 2017-12-20
 tags:
-  - React
-  - 事件
-categories:
   - React
 ---
 

@@ -1,13 +1,9 @@
 ---
-layout: blog-post
-
 title: karma + karm-typescript + mocha + chai+ sinon 单元测试
-date: 2017-12-20 22:43:51
+date: 2017-12-20
 tags:
-  - karma
-  - karma-typescript
-categories:
-  - 单元测试
+  - 前端测试
+  - E2E测试
 ---
 
 ## karma + karm-typescript + mocha + chai+ sinon 单元测试
@@ -51,7 +47,7 @@ _karma.conf.js_
 // Karma configuration
 // Generated on Fri Dec 15 2017 09:35:14 GMT+0800 (中国标准时间)
 
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: "",
@@ -67,7 +63,7 @@ module.exports = function(config) {
       "libs/es6-sham.min.js",
       "libs/es6-promise.auto.min.js",
       "util/**/*.ts",
-      "src/**/*.ts"
+      "src/**/*.ts",
     ],
 
     // list of files to exclude
@@ -80,7 +76,7 @@ module.exports = function(config) {
       "src/skin/*.ts",
       "src/config/*test.ts",
       "src/language/*test.ts",
-      "src/openapi/*test.ts"
+      "src/openapi/*test.ts",
     ],
 
     // preprocess matching files before serving them to the browser
@@ -88,7 +84,7 @@ module.exports = function(config) {
     preprocessors: {
       "libs/fake-server-factory.ts": ["karma-typescript"],
       "util/**/*.ts": ["karma-typescript"],
-      "src/**/*.ts": ["karma-typescript"]
+      "src/**/*.ts": ["karma-typescript"],
     },
 
     // test results reporter to use
@@ -112,7 +108,7 @@ module.exports = function(config) {
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: [
-      "Chrome"
+      "Chrome",
       // 'Firefox',
       // 'IE'
     ],
@@ -125,14 +121,14 @@ module.exports = function(config) {
       "karma-chrome-launcher",
       "karma-firefox-launcher",
       "karma-ie-launcher",
-      "karma-typescript-es6-transform"
+      "karma-typescript-es6-transform",
     ],
 
     karmaTypescriptConfig: {
       bundlerOptions: {
-        transforms: [require("karma-typescript-es6-transform")()]
+        transforms: [require("karma-typescript-es6-transform")()],
       },
-      tsconfig: "./tsconfig.json"
+      tsconfig: "./tsconfig.json",
     },
 
     // Continuous Integration mode
@@ -141,7 +137,7 @@ module.exports = function(config) {
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity
+    concurrency: Infinity,
   });
 };
 ```

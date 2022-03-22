@@ -1,8 +1,6 @@
 ---
-layout: blog-post
-
 title: Enzyme官方API一览
-date: 2017-12-27 22:24:42
+date: 2017-12-27
 tags:
   - Enzyme
 categories:
@@ -39,7 +37,7 @@ import Icon from "./path/to/Icon";
 
 const ICONS = {
   success: <Icon name="check-mark" />,
-  failure: <Icon name="exclamation-mark" />
+  failure: <Icon name="exclamation-mark" />,
 };
 
 const StatusLabel = ({ id, label }) => (

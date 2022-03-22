@@ -1,12 +1,8 @@
 ---
-layout: blog-post
-
 title: Less入门
-date: 2018-08-02 21:16:55
+date: 2018-08-02
 tags:
   - Less
-categories:
-  - CSS
 ---
 
 ## 介绍

@@ -1,12 +1,8 @@
 ---
-layout: blog-post
-
 title: canvas初探
-date: 2018-08-28 10:56:03
+date: 2018-08-28
 tags:
   - Canvas
-categories:
-  - JavaScript
 ---
 
 本文是阅读 MDN 上 Canvas 教程的一些心得和笔记，同时附上现学现用写的一个小的仪表盘 demo。

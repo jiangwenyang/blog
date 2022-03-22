@@ -1,12 +1,8 @@
 ---
-layout: blog-post
-
 title: windows下git ssh配置
 date: 2016-05-30 18:58:33
 tags:
   - Git
-categories:
-  - 前端工具
 ---
 
 > windows 下使用 git bash 每次执行`git push -u origin master`时都需要输入账户密码，这对于追求高效率的程序员来说是不能容忍的
