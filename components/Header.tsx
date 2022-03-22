@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const Header: React.FunctionComponent = () => (
+const Header: React.FC = () => (
   <header>
     <nav>
       <ul>

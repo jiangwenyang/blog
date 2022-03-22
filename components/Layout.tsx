@@ -3,7 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Container from "./Container";
 
-const Layout: React.FunctionComponent = ({ children }) => {
+const Layout: React.FC = ({ children }) => {
   return (
     <>
       <Header />
