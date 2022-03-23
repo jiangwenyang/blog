@@ -42,8 +42,6 @@ npm i -g typescript
 
 使用`tsc --init` 可以在当前目录下快速生成 tsconfig.json 文件
 
-![UTOOLS1571795855656.png](https://img04.sogoucdn.com/app/a/100520146/28f5cd57df0b7d1db6ecc1af0913cced)
-
 ### hello world
 
 helloWorld.ts
@@ -63,10 +61,6 @@ helloWorld(tomName);
 使用`tsc helloWorld.ts`将 ts 文件编译为 js 文件，支持 glob 模式匹配。
 
 编译过程中如果遇到类型错误会提示，但是仍然能够编译成功。
-
-![UTOOLS1571795527353.png](https://img01.sogoucdn.com/app/a/100520146/4772d9fcc714deb6171108a80cba24e8)
-
-![UTOOLS1571796080313.png](https://img04.sogoucdn.com/app/a/100520146/90c4a5ab29be35a33a696f930e6e03bc)
 
 编译完成生成 helloWorld.js 文件
 
@@ -371,9 +365,6 @@ const numberFoo = foo<number>(1);
 
   > 如果一个值是联合类型，我们只能访问此联合类型的所有类型里共有的成员。
 
-  ![UTOOLS1571803198315.png](https://img02.sogoucdn.com/app/a/100520146/0de4a3db983db6708e514479e2a29564)
-
-  上面的代码中参数`union` 的类型是 `number|string`的联合类型，因此直接访问`length`属性将会报错，因为`number`类型上没有`length`属性。
 
 ## Typescript 搭配 React
 
@@ -586,7 +577,3 @@ ReactDOM.render(<App />, document.getElementById("root"));
 ```shell
 npm run start
 ```
-
-### 预览
-
-![1571817425315](C:\Users\dusttodust\AppData\Roaming\Typora\typora-user-images\1571817425315.png)

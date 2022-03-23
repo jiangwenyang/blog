@@ -20,7 +20,7 @@ Enzyme(酶)是一个 Javascript 测试库，提供了类似 Jquery 的简洁灵�
 
 1. 命令行中安装 enzyme 和 react 0.14 的 adapter
 
-```
+```bash
 yarn add -D enzyme enzyme-adapter-react-14
 ```
 
@@ -31,7 +31,7 @@ yarn add -D enzyme enzyme-adapter-react-14
 
 官方 demo：
 
-```typescript
+```react
 import React from "react";
 import Icon from "./path/to/Icon";
 
@@ -49,7 +49,7 @@ const StatusLabel = ({ id, label }) => (
 );
 ```
 
-```typescript
+```react
 import { shallow } from "enzyme";
 import StatusLabel from "./path/to/StatusLabel";
 import Icon from "./path/to/Icon";
@@ -65,7 +65,7 @@ const iconCount = wrapper.find(Icon).length;
 
 官方 demo：
 
-```
+```react
 class Box extends React.Component {
   render() {
     return <div className="box">{this.props.children}</div>;
@@ -113,7 +113,7 @@ wrapper.find(Box).children().debug();
 
 官方 demo：
 
-```
+```react
 class Counter extends React.Component {
   constructor(props) {
     super(props);
@@ -139,7 +139,7 @@ class Counter extends React.Component {
 }
 ```
 
-```
+```js
 const wrapper = shallow(<Counter />);
 // 通过事件模拟下v2.x和v3.x表现一致都会自动更新状态
 wrapper.find('.count').text(); // => "Count: 0"
@@ -178,7 +178,7 @@ wrapper.find('.count').text(); // => "Count: 1"
 在 v2.x 下 ref 返回的是 wrapper 实例，在 v3.x 下和真实的 react 一致，当 ref 定义在 dom 元素上时返回的是 Dom Element，在 React 组件上时返回的是组件的实例。
 在 v2.x 下：
 
-```
+```jsx
 const wrapper = mount(<Box />);
 // this is what would happen with enzyme v2
 expect(wrapper.ref('abc')).toBeInstanceOf(wrapper.constructor);
@@ -188,7 +188,7 @@ expect(wrapper.ref('abc')).toBeInstanceOf(wrapper.constructor);
 
 - 直接定义在 dom 元素上的 ref
 
-```
+```jsx
 const wrapper = mount(<Box />);
 // this is what happens with enzyme v3
 expect(wrapper.ref('abc')).toBeInstanceOf(Element);
@@ -196,7 +196,7 @@ expect(wrapper.ref('abc')).toBeInstanceOf(Element);
 
 - 定义在 React 元素上的 ref
 
-```
+```react
 class Bar extends React.Component {
   render() {
     return <Box ref="abc" />;
@@ -204,7 +204,7 @@ class Bar extends React.Component {
 }
 ```
 
-```
+```react
 const wrapper = mount(<Bar />);
 expect(wrapper.ref('abc')).toBeInstanceOf(Box);
 ```
@@ -234,7 +234,7 @@ v2.x 中的 CSS 选择器使用的是 enzyme 自己的不完整的 CSS 解析，
 
 即在 v3.x 中下面两个节点被认为是 equal，在 v2.x 中被认为是不等的两个节点
 
-```
+```react
 <div />
 <div className={undefined} id={undefined} />
 ```
@@ -246,14 +246,14 @@ v2.x 中的 CSS 选择器使用的是 enzyme 自己的不完整的 CSS 解析，
 
 1. 通过顶层 API`configure()`配置默认关闭：
 
-```
+```react
 import Enzyme from 'enzyme';
 Enzyme.configure({ disableLifecycleMethods: true });
 ```
 
 2. 在渲染的时候通过 flag 关闭
 
-```
+```react
 import { shallow } from 'enzyme';
 // ...
 const wrapper = shallow(<Component />, { disableLifecycleMethods: true });
@@ -266,13 +266,13 @@ const wrapper = shallow(<Component />, { disableLifecycleMethods: true });
 目前我们的项目使用 react@0.14.8 react-dom@0.14.8
 首先安装 test utilities addon
 
-```
+```bash
 yarn add -D react-addons-test-utils@0.14
 ```
 
 然后安装相应 react 版本的 adapter
 
-```
+```bash
 yarn add -D enzyme enzyme-adapter-react-14
 ```
 
@@ -504,7 +504,7 @@ reduce 顺序变为从右到左
 
 > 在调试链式调用的时候很有用
 
-```
+```react
 const result = shallow((
   <ul>
     <li>xxx</li>
@@ -522,12 +522,12 @@ const result = shallow((
 
 > 表现很诡异
 
-```
+```react
 const wrapper = shallow(<div><b>important</b></div>);
 expect(wrapper.text()).to.equal('important');
 ```
 
-```
+```react
 const wrapper = shallow(<div><Foo /><b>important</b></div>);
 expect(wrapper.text()).to.equal('<Foo />important');
 ```
@@ -548,7 +548,7 @@ expect(wrapper.text()).to.equal('<Foo />important');
 
 强制重新渲染，当外部调用改变组件的 State 时，使用`update()`进行 re-render
 
-```
+```react
 class ImpureRender extends React.Component {
   constructor(props) {
     super(props);
@@ -561,7 +561,7 @@ class ImpureRender extends React.Component {
 }
 ```
 
-```
+```react
 const wrapper = shallow(<ImpureRender />);
 expect(wrapper.text()).to.equal('0');
 wrapper.update();
@@ -572,7 +572,7 @@ expect(wrapper.text()).to.equal('1');
 
 将 React 组件渲染为真实的 DOM 节点，因此可以使用 DOM 事件。`mount()`需要环境提供完整的 DOM API,因此需要使用一个“Browser Like”的环境，例如 JSDOM 或者 Phantoms，或者直接在真实浏览器下运行。
 
-```
+```react
 import { mount } from 'enzyme';
 const wrapper = mount(<MyComponent />);
 ```
@@ -585,7 +585,7 @@ const wrapper = mount(<MyComponent />);
 
 > 返回 Cherrio 对象，因此可以使用 Cherrio 的 API
 
-```
+```react
 import { render } from 'enzyme';
 const wrapper = render(<MyComponent />);
 ```
@@ -596,7 +596,7 @@ const wrapper = render(<MyComponent />);
 
 ##### 2.Prop 选择器
 
-```
+```react
 const wrapper = mount((
   <div>
     <span foo={3} bar={false} title="baz" />
@@ -612,7 +612,7 @@ wrapper.find('[title="baz"]');
 
 ##### 3.React Component Constructor
 
-```
+```react
 function MyComponent() {
   return <div />;
 }
@@ -625,7 +625,7 @@ const myComponents = wrapper.find(MyComponent);
 
 ##### 5.对象属性选择器
 
-```
+```react
 const wrapper = mount((
   <div>
     <span foo={3} bar={false} title="baz" />

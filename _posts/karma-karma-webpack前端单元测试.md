@@ -90,7 +90,7 @@ module.exports = function (config) {
 通过 karma-webpack 能在 karma 中集成 webpack，如果在项目中已经使用 webpack，那么使用 karma-webpack 可能是个更好的选择，能给直接使用原有的 webpack 配置。
 **安装：**
 
-```
+```bash
 yarn add karma-webpack
 ```
 

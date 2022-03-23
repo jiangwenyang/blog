@@ -70,7 +70,7 @@ yarn add -D babel-core
 在根目录下创建`.storybook`文件夹，然后在该目录下创建`config.js`文件。
 最简单的配置：
 
-```
+```javascript
 import { configure } from '@storybook/react';
 
 function loadStories() {
@@ -83,7 +83,7 @@ configure(loadStories, module);
 
 上面的配置文件将会使用`stories/index.js`中的 stories，如果你有多个 stories，每次写 stories 的时候需要对应的进行 require，比较繁琐。如果使用 Webpack，可以使用 Webpack 的[require.context](https://webpack.js.org/guides/dependency-management/)语法：
 
-```
+```javascript
 import { configure } from '@storybook/react';
 
 function loadStories() {
@@ -100,7 +100,7 @@ configure(loadStories, module);
 
 在组件目录下新建对应 stories 文件，例如在 Button 组件目录下新建`stories/Button.stories.tsx`
 
-```
+```javascript
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
@@ -127,7 +127,7 @@ Decorators 插件又分为两种:
 1. Wrapper Components
    就是普通的 react 容器组件，简单的将你需要 story 的组件包裹在其中。
 
-```
+```javascript
 const styles = {
   textAlign: 'center',
 };
@@ -141,7 +141,7 @@ const Center = ({ children }) => (
 2. Storybook Decorators
    扩展一个函数作为 storybook decorator。
 
-```
+```javascript
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
@@ -171,7 +171,7 @@ storiesOf('Button', module)
 
 例如需要居中显示所有的 stories：
 
-```
+```javascript
 import * as React from 'react'
 import { configure,addDecorator,setAddon } from '@storybook/react';
 addDecorator(stories=>(
@@ -201,7 +201,7 @@ import "@storybook/addon-notes/register";
 **Extend Mode (扩展模式)**
 在`.storybook`目录下新建文件`webpack.config.js`，导出一个**object**
 
-```
+```javascript
 const path = require('path');
 
 module.exports = {
@@ -229,7 +229,7 @@ module.exports = {
 通过导出一个函数，函数接受两个参数 storybookBaseConfig 和 configType，一个是 Storybook 的基础配置对象，一个是当前的环境（'DEVELOPMENT' or 'PRODUCTION'），然后通过修改 storybookBaseConfig 后返回自定义的配置对象达到完全控制的目的。
 官方的 DMEO：
 
-```
+```javascript
 const path = require('path');
 
 // Export a function. Accept the base config as the only param.
@@ -260,7 +260,7 @@ module.exports = (storybookBaseConfig, configType) => {
 **Full control mode + default （完全控制+默认配置 模式）**
 和完全配置模式几乎一样，唯一的区别是导出的函数多了一个参数 defaultConfig，当导出的函数有三个参数时将会使用这种模式。
 
-```
+```javascript
 const path = require('path');
 
 module.exports = (baseConfig, env, defaultConfig) => {
@@ -290,7 +290,7 @@ module.exports = (baseConfig, env, defaultConfig) => {
    例如希望每个 UI 组件使用 reset.css
    在`preview-head.html`中添加
 
-```
+```javascript
 <style>
 *{
 	margin: 0;
@@ -304,12 +304,7 @@ module.exports = (baseConfig, env, defaultConfig) => {
 
 ### 配置参考
 
-目录结构：
-![](http://ow67vzejn.bkt.clouddn.com/18-2-1/63393048.jpg)
-
-ShareWebUI/.storybpook/config.js --- Storybook 配置文件
-
-```
+```javascript
 import * as React from 'react'
 import { configure,addDecorator,setAddon } from '@storybook/react';
 
@@ -352,7 +347,7 @@ configure(loadStories, module);
 
 ShareWebUI/.sotrybook/addon.js --- Storybook 注册插件配置文件
 
-```
+```javascript
 import '@storybook/addon-options/register';
 import '@storybook/addon-actions/register';
 import '@storybook/addon-links/register';
@@ -364,7 +359,7 @@ import 'storybook-readme/register';
 
 ShareWebUI/.storybook/webpack.config.js --- 自定义 webpack 配置
 
-```
+```javascript
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
@@ -447,7 +442,7 @@ module.exports = {
 
 ShareWebUI/src/Button/stories/Button.stroies.tsx --- stories 文件
 
-```
+```javascript
 import * as React from 'react';
 
 import { storiesOf } from '@storybook/react';
@@ -493,7 +488,7 @@ storiesOf('Button@desktop', module)
 
 ShareWebUI/src/Button/ui.desktop.tsx --- 对应的 Button 组件
 
-```
+```javascript
 import * as React from 'react';
 import { noop } from 'lodash';
 import * as classnames from 'classnames';

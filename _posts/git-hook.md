@@ -13,8 +13,6 @@ Git-hook（git 钩子）是 Git 提供的当特定动作如提交、推送等 Gi
 
 其实当初始化一个 Git 项目的时候，hooks 就已经被安装到项目中，只是默认未启用。当执行`git init`的时候，Git 会初始化示例脚本到`.git/hooks`目录中。
 
-![](http://ow67vzejn.bkt.clouddn.com/18-3-12/80507224.jpg)
-
 如果想启用这些 hooks 非常简单，只需要去掉`.sample`后缀即可启用。示例代码是使用 shell 编写的,但是 git 并没没有显示编写 hooks 使用的语言,任何可执行脚本都可以使用。
 
 > `.git`目录无法加入到版本控制中，因为每次 clone 一个新的仓库的时候都会新生成`.git`目录。

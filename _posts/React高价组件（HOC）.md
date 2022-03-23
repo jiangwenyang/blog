@@ -38,7 +38,7 @@ function HOC(ChildComponent) {
 
 ##### 操作 props
 
-```
+```javascript
 function HOC(ChildComponent){
     return class Pphoc extends React.Component{
         const newProps={
@@ -124,7 +124,7 @@ function HOC(ChildComponent){
 
 反向继承通过返回一个继承自传入组件的新组件的方式实现：
 
-```
+```javascript
 function HOC(childComponent) {
   return class NewComponent extends childComponent{
     render() {
