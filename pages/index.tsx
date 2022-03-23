@@ -1,23 +1,19 @@
+import type { GetStaticProps } from "next";
+import type { Post } from "typings/post";
+import type { NextPageWithLayout } from "typings/app";
+
 import React from "react";
-import type { NextPage } from "next";
-import styles from "../styles/Home.module.css";
-import classNames from "classnames";
 import Layout from "components/Layout";
 import { getAllPosts } from "utils/posts";
-import type { Post } from "utils/posts";
 import Posts from "components/Posts";
 
 interface Props {
   allPosts: Post[];
 }
 
-type withLayoutNextPage = NextPage<Props> & {
-  getLayout: (page: React.ReactElement) => React.ReactNode;
-};
-
-const Home: withLayoutNextPage = ({ allPosts }) => {
+const Home: NextPageWithLayout<Props> = ({ allPosts }) => {
   return (
-    <div className={classNames(["prose", styles.container])}>
+    <div>
       <Posts posts={allPosts} />
     </div>
   );
@@ -27,7 +23,7 @@ Home.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout>{page}</Layout>;
 };
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async (context) => {
   const allPosts = getAllPosts([
     "title",
     "date",
@@ -39,6 +35,6 @@ export async function getStaticProps() {
   return {
     props: { allPosts },
   };
-}
+};
 
 export default Home;

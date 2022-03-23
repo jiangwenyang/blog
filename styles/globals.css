@@ -2,12 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
+@layer base {
   html,
   body {
-    @apply min-h-screen;
+    @apply min-h-screen text-gray-900;
   }
   #__next {
     @apply flex flex-col min-h-screen;
+  }
+  .post {
+    & a {
+      @apply inline-block relative;
+      &::after {
+        content: "";
+        bottom: 2px;
+        left: 4px;
+        @apply absolute bg-rose-500 bg-opacity-30 w-full h-2;
+      }
+    }
   }
 }

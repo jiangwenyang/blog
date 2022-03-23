@@ -3,16 +3,13 @@ import { join } from "path";
 import matter from "gray-matter";
 import { isNotJunk } from "junk";
 import formatISO from "date-fns/formatISO";
+import type { Post } from "typings/post";
 
 const postsDirectory = join(process.cwd(), "_posts");
 
 export function getPostSlugs() {
   return fs.readdirSync(postsDirectory).filter(isNotJunk);
 }
-
-type PostMeta = "title" | "date" | "slug" | "coverImage" | "excerpt";
-
-export type Post = Record<PostMeta, string> | Record<string, string>;
 
 export function getPostBySlug(slug: string, fields: string[] = []): Post {
   const realSlug = slug.replace(/\.md$/, "");
