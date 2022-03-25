@@ -1,6 +1,10 @@
 import Gitalk from "gitalk";
 
 const initGitalk = (container: string, id: string) => {
+  console.log("环境变量");
+  console.log(process.env.GIT_TALK_CLIENT_ID);
+  console.log(process.env.GIT_TALK_CLIENT_SECRET);
+
   const gitalkOptions = {
     clientID: process.env.GIT_TALK_CLIENT_ID!,
     clientSecret: process.env.GIT_TALK_CLIENT_SECRET!,
