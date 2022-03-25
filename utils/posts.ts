@@ -60,8 +60,6 @@ export function getFeaturedPosts(fields: string[] = [], limit = 3) {
 
   const allPost = getAllPosts(realFields);
 
-  console.log(allPost);
-
   let allFeaturedPosts = allPost.filter((post) => post.featured);
 
   const realFeaturedPosts = allFeaturedPosts.length
