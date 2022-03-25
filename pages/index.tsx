@@ -3,6 +3,7 @@ import type { Post } from "typings/post";
 import type { NextPageWithLayout } from "typings/app";
 
 import React from "react";
+import Head from "next/head";
 import Layout from "components/Layout";
 import { getAllPosts, getFeaturedPosts } from "utils/posts";
 import generateRssFeed from "utils/feed";
@@ -17,6 +18,9 @@ interface Props {
 const Home: NextPageWithLayout<Props> = ({ allPosts, featuredPosts }) => {
   return (
     <>
+      <Head>
+        <title>{process.env.NEXT_PUBLIC_TITLE}</title>
+      </Head>
       <Intro />
       <div className="max-w-5xl mx-auto flex justify-between flex-wrap">
         <Posts posts={featuredPosts} title="Featured" />

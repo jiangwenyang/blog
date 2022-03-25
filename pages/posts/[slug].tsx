@@ -5,6 +5,7 @@ import type { NextPageWithLayout } from "typings/app";
 
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
+import Head from "next/head";
 import PostLayout from "components/PostLayout";
 import PostContent from "components/PostContent";
 import { getPostBySlug, getAllPosts } from "utils/posts";
@@ -32,6 +33,11 @@ const Post: NextPageWithLayout<Props> = ({ post }) => {
 
   return (
     <>
+      <Head>
+        <title>
+          {post.title} - {process.env.NEXT_PUBLIC_TITLE}
+        </title>
+      </Head>
       <article className="prose prose-slate">
         <PostContent content={post.content}></PostContent>
       </article>
