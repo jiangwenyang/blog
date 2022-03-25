@@ -5,7 +5,7 @@ import Container from "./Container";
 
 const PostLayout: React.FC = ({ children }) => {
   return (
-    <div className="py-24 max-w-prose mx-auto">
+    <div className="p-8 w-full max-w-prose mx-auto">
       <HeaderWithNav />
       <main className="flex-1">
         <Container>{children}</Container>

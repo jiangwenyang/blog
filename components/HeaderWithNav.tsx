@@ -5,6 +5,9 @@ import Logo from "./Logo";
 const HeaderWithNav: React.FC = () => (
   <header className="flex flex-row justify-between items-center pb-8">
     <Logo />
+    <h1 className="text-rose-500 font-semibold text-2xl ml-4 capitalize tracking-wider hidden sm:block">
+      jiangwenyang&rsquo;s blog
+    </h1>
     <nav>
       <ul className="flex items-center justify-between">
         <li>
