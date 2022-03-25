@@ -5,8 +5,8 @@ import ExternalLink from "./ExternalLink";
 import UseAnimationsIcon from "./UseAnimationsIcon";
 
 const Footer: React.FC = () => (
-  <footer className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full my-8">
-    <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
+  <footer className="text-sm leading-6 text-center text-gray-500">
+    <hr className="w-full border-1 border-gray-200 my-10" />
     <ul className="w-full flex flex-row gap-5 justify-center">
       <li style={{ color: "#2e333a" }}>
         <ExternalLink href="https://github.com/jiangwenyang">
@@ -27,6 +27,22 @@ const Footer: React.FC = () => (
         </ExternalLink>
       </li>
     </ul>
+    <p>
+      Power by
+      <ExternalLink
+        className="inline-flex px-2 underline"
+        href="https://nextjs.org/"
+      >
+        Next.js
+      </ExternalLink>
+      &
+      <ExternalLink
+        className="inline-flex px-2 underline"
+        href="https://vercel.com/"
+      >
+        Vercel
+      </ExternalLink>
+    </p>
   </footer>
 );
 

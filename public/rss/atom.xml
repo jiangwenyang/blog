@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://jiangwenyang.com</id>
+    <title>Jiang Wenyang's Blog</title>
+    <updated>2022-03-25T06:53:01.306Z</updated>
+    <generator>Feed for Node.js</generator>
+    <author>
+        <name>Jiang Wenyang</name>
+        <email>u19950930@gmail.com</email>
+        <uri>https://jiangwenyang.com</uri>
+    </author>
+    <link rel="alternate" href="https://jiangwenyang.com"/>
+    <link rel="self" href="https://jiangwenyang.com/atom"/>
+    <subtitle>Jiang Wenyang's Blog</subtitle>
+    <logo>https://jiangwenyang.com/logo.svg</logo>
+    <icon>https://jiangwenyang.com/favicon.ico</icon>
+    <rights>All rights reserved 2022, Jiang Wenyang</rights>
+    <entry>
+        <title type="html"><![CDATA[一个真实的Vue CLI项目迁移到vite]]></title>
+        <id>https://jiangwenyang.com/posts/一个真实的vue-cli项目迁移到vite</id>
+        <link href="https://jiangwenyang.com/posts/一个真实的vue-cli项目迁移到vite"/>
+        <updated>2021-09-22T00:00:00.000Z</updated>
+        <author>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </author>
+        <contributor>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[TypeScript Learning]]></title>
+        <id>https://jiangwenyang.com/posts/TypeScript简明指北</id>
+        <link href="https://jiangwenyang.com/posts/TypeScript简明指北"/>
+        <updated>2019-10-23T00:00:00.000Z</updated>
+        <author>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </author>
+        <contributor>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[CSS中的空白符和换行处理]]></title>
+        <id>https://jiangwenyang.com/posts/CSS中的空白符和换行处理</id>
+        <link href="https://jiangwenyang.com/posts/CSS中的空白符和换行处理"/>
+        <updated>2018-09-11T00:00:00.000Z</updated>
+        <author>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </author>
+        <contributor>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[前端自动化测试]]></title>
+        <id>https://jiangwenyang.com/posts/前端自动化测试</id>
+        <link href="https://jiangwenyang.com/posts/前端自动化测试"/>
+        <updated>2018-06-19T10:20:26.000Z</updated>
+        <author>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </author>
+        <contributor>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Stroybook]]></title>
+        <id>https://jiangwenyang.com/posts/Stroybook</id>
+        <link href="https://jiangwenyang.com/posts/Stroybook"/>
+        <updated>2018-03-28T00:00:00.000Z</updated>
+        <author>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </author>
+        <contributor>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Git-hook]]></title>
+        <id>https://jiangwenyang.com/posts/git-hook</id>
+        <link href="https://jiangwenyang.com/posts/git-hook"/>
+        <updated>2018-03-12T00:00:00.000Z</updated>
+        <author>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </author>
+        <contributor>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Enzyme官方API一览]]></title>
+        <id>https://jiangwenyang.com/posts/Enzyme官方API一览</id>
+        <link href="https://jiangwenyang.com/posts/Enzyme官方API一览"/>
+        <updated>2017-12-27T00:00:00.000Z</updated>
+        <author>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </author>
+        <contributor>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[断言库Chai-expect-API一览]]></title>
+        <id>https://jiangwenyang.com/posts/Chai-expect API一览</id>
+        <link href="https://jiangwenyang.com/posts/Chai-expect API一览"/>
+        <updated>2017-12-20T00:00:00.000Z</updated>
+        <author>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </author>
+        <contributor>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[React事件绑定]]></title>
+        <id>https://jiangwenyang.com/posts/React事件绑定</id>
+        <link href="https://jiangwenyang.com/posts/React事件绑定"/>
+        <updated>2017-12-20T00:00:00.000Z</updated>
+        <author>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </author>
+        <contributor>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[React高价组件（HOC）]]></title>
+        <id>https://jiangwenyang.com/posts/React高价组件（HOC）</id>
+        <link href="https://jiangwenyang.com/posts/React高价组件（HOC）"/>
+        <updated>2017-12-20T00:00:00.000Z</updated>
+        <author>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </author>
+        <contributor>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[karma+karma-webpack前端单元测试]]></title>
+        <id>https://jiangwenyang.com/posts/karma-karma-webpack前端单元测试</id>
+        <link href="https://jiangwenyang.com/posts/karma-karma-webpack前端单元测试"/>
+        <updated>2017-12-20T00:00:00.000Z</updated>
+        <author>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </author>
+        <contributor>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Mongoose官方API一览]]></title>
+        <id>https://jiangwenyang.com/posts/Mongoose官方API一览</id>
+        <link href="https://jiangwenyang.com/posts/Mongoose官方API一览"/>
+        <updated>2017-04-16T11:30:16.000Z</updated>
+        <author>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </author>
+        <contributor>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[windows下git ssh配置]]></title>
+        <id>https://jiangwenyang.com/posts/git-ssh配置</id>
+        <link href="https://jiangwenyang.com/posts/git-ssh配置"/>
+        <updated>2016-05-30T18:58:33.000Z</updated>
+        <author>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </author>
+        <contributor>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[MongoDB入门]]></title>
+        <id>https://jiangwenyang.com/posts/MongoDB入门</id>
+        <link href="https://jiangwenyang.com/posts/MongoDB入门"/>
+        <updated>2016-05-13T00:00:00.000Z</updated>
+        <author>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </author>
+        <contributor>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </contributor>
+    </entry>
+</feed>

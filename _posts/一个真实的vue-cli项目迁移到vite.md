@@ -1,6 +1,7 @@
 ---
 title: 一个真实的Vue CLI项目迁移到vite
 date: 2021-09-22
+featured: true
 tags:
   - Vue
   - Vite

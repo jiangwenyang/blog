@@ -10,14 +10,14 @@
   #__next {
     @apply flex flex-col min-h-screen;
   }
-  .post {
+  .prose {
     & a {
-      @apply inline-block relative;
+      @apply inline-block relative no-underline;
       &::after {
         content: "";
         bottom: 2px;
         left: 4px;
-        @apply absolute bg-rose-500 bg-opacity-30 w-full h-2;
+        @apply absolute bg-rose-500 bg-opacity-40 w-full h-2;
       }
     }
   }

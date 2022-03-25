@@ -17,7 +17,7 @@ const PostPreview: React.FC<Props> = ({
   excerpt,
 }) => (
   <div>
-    <h3 className="text-3xl mb-3 leading-snug">
+    <h3 className="text-xl mb-3">
       <Link href={`/posts/${slug}`}>
         <a>{title}</a>
       </Link>

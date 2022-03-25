@@ -54,3 +54,19 @@ export function getAllPosts(fields: string[] = []) {
     });
   return posts;
 }
+
+export function getFeaturedPosts(fields: string[] = [], limit = 3) {
+  const realFields = Array.from(new Set([...fields, "featured"]));
+
+  const allPost = getAllPosts(realFields);
+
+  console.log(allPost);
+
+  let allFeaturedPosts = allPost.filter((post) => post.featured);
+
+  const realFeaturedPosts = allFeaturedPosts.length
+    ? allFeaturedPosts
+    : allPost;
+
+  return realFeaturedPosts.slice(0, limit);
+}

@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "./Header";
+import HeaderWithNav from "./HeaderWithNav";
 import Footer from "./Footer";
 import Container from "./Container";
 
-const Layout: React.FC = ({ children }) => {
+const PostLayout: React.FC = ({ children }) => {
   return (
-    <div className="p-8 md:px-32 md:py-16 lg:container lg:mx-auto">
-      <Header />
+    <div className="py-24 max-w-prose mx-auto">
+      <HeaderWithNav />
       <main className="flex-1">
         <Container>{children}</Container>
       </main>
@@ -15,4 +15,4 @@ const Layout: React.FC = ({ children }) => {
   );
 };
 
-export default Layout;
+export default PostLayout;

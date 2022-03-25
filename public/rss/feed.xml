@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Jiang Wenyang's Blog</title>
+        <link>https://jiangwenyang.com</link>
+        <description>Jiang Wenyang's Blog</description>
+        <lastBuildDate>Fri, 25 Mar 2022 06:53:01 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>Feed for Node.js</generator>
+        <language>zh</language>
+        <image>
+            <title>Jiang Wenyang's Blog</title>
+            <url>https://jiangwenyang.com/logo.svg</url>
+            <link>https://jiangwenyang.com</link>
+        </image>
+        <copyright>All rights reserved 2022, Jiang Wenyang</copyright>
+        <item>
+            <title><![CDATA[一个真实的Vue CLI项目迁移到vite]]></title>
+            <link>https://jiangwenyang.com/posts/一个真实的vue-cli项目迁移到vite</link>
+            <guid>https://jiangwenyang.com/posts/一个真实的vue-cli项目迁移到vite</guid>
+            <pubDate>Wed, 22 Sep 2021 00:00:00 GMT</pubDate>
+            <author>u19950930@gmail.com (Jiang Wenyang)</author>
+        </item>
+        <item>
+            <title><![CDATA[TypeScript Learning]]></title>
+            <link>https://jiangwenyang.com/posts/TypeScript简明指北</link>
+            <guid>https://jiangwenyang.com/posts/TypeScript简明指北</guid>
+            <pubDate>Wed, 23 Oct 2019 00:00:00 GMT</pubDate>
+            <author>u19950930@gmail.com (Jiang Wenyang)</author>
+        </item>
+        <item>
+            <title><![CDATA[CSS中的空白符和换行处理]]></title>
+            <link>https://jiangwenyang.com/posts/CSS中的空白符和换行处理</link>
+            <guid>https://jiangwenyang.com/posts/CSS中的空白符和换行处理</guid>
+            <pubDate>Tue, 11 Sep 2018 00:00:00 GMT</pubDate>
+            <author>u19950930@gmail.com (Jiang Wenyang)</author>
+        </item>
+        <item>
+            <title><![CDATA[前端自动化测试]]></title>
+            <link>https://jiangwenyang.com/posts/前端自动化测试</link>
+            <guid>https://jiangwenyang.com/posts/前端自动化测试</guid>
+            <pubDate>Tue, 19 Jun 2018 10:20:26 GMT</pubDate>
+            <author>u19950930@gmail.com (Jiang Wenyang)</author>
+        </item>
+        <item>
+            <title><![CDATA[Stroybook]]></title>
+            <link>https://jiangwenyang.com/posts/Stroybook</link>
+            <guid>https://jiangwenyang.com/posts/Stroybook</guid>
+            <pubDate>Wed, 28 Mar 2018 00:00:00 GMT</pubDate>
+            <author>u19950930@gmail.com (Jiang Wenyang)</author>
+        </item>
+        <item>
+            <title><![CDATA[Git-hook]]></title>
+            <link>https://jiangwenyang.com/posts/git-hook</link>
+            <guid>https://jiangwenyang.com/posts/git-hook</guid>
+            <pubDate>Mon, 12 Mar 2018 00:00:00 GMT</pubDate>
+            <author>u19950930@gmail.com (Jiang Wenyang)</author>
+        </item>
+        <item>
+            <title><![CDATA[Enzyme官方API一览]]></title>
+            <link>https://jiangwenyang.com/posts/Enzyme官方API一览</link>
+            <guid>https://jiangwenyang.com/posts/Enzyme官方API一览</guid>
+            <pubDate>Wed, 27 Dec 2017 00:00:00 GMT</pubDate>
+            <author>u19950930@gmail.com (Jiang Wenyang)</author>
+        </item>
+        <item>
+            <title><![CDATA[断言库Chai-expect-API一览]]></title>
+            <link>https://jiangwenyang.com/posts/Chai-expect API一览</link>
+            <guid>https://jiangwenyang.com/posts/Chai-expect API一览</guid>
+            <pubDate>Wed, 20 Dec 2017 00:00:00 GMT</pubDate>
+            <author>u19950930@gmail.com (Jiang Wenyang)</author>
+        </item>
+        <item>
+            <title><![CDATA[React事件绑定]]></title>
+            <link>https://jiangwenyang.com/posts/React事件绑定</link>
+            <guid>https://jiangwenyang.com/posts/React事件绑定</guid>
+            <pubDate>Wed, 20 Dec 2017 00:00:00 GMT</pubDate>
+            <author>u19950930@gmail.com (Jiang Wenyang)</author>
+        </item>
+        <item>
+            <title><![CDATA[React高价组件（HOC）]]></title>
+            <link>https://jiangwenyang.com/posts/React高价组件（HOC）</link>
+            <guid>https://jiangwenyang.com/posts/React高价组件（HOC）</guid>
+            <pubDate>Wed, 20 Dec 2017 00:00:00 GMT</pubDate>
+            <author>u19950930@gmail.com (Jiang Wenyang)</author>
+        </item>
+        <item>
+            <title><![CDATA[karma+karma-webpack前端单元测试]]></title>
+            <link>https://jiangwenyang.com/posts/karma-karma-webpack前端单元测试</link>
+            <guid>https://jiangwenyang.com/posts/karma-karma-webpack前端单元测试</guid>
+            <pubDate>Wed, 20 Dec 2017 00:00:00 GMT</pubDate>
+            <author>u19950930@gmail.com (Jiang Wenyang)</author>
+        </item>
+        <item>
+            <title><![CDATA[Mongoose官方API一览]]></title>
+            <link>https://jiangwenyang.com/posts/Mongoose官方API一览</link>
+            <guid>https://jiangwenyang.com/posts/Mongoose官方API一览</guid>
+            <pubDate>Sun, 16 Apr 2017 11:30:16 GMT</pubDate>
+            <author>u19950930@gmail.com (Jiang Wenyang)</author>
+        </item>
+        <item>
+            <title><![CDATA[windows下git ssh配置]]></title>
+            <link>https://jiangwenyang.com/posts/git-ssh配置</link>
+            <guid>https://jiangwenyang.com/posts/git-ssh配置</guid>
+            <pubDate>Mon, 30 May 2016 18:58:33 GMT</pubDate>
+            <author>u19950930@gmail.com (Jiang Wenyang)</author>
+        </item>
+        <item>
+            <title><![CDATA[MongoDB入门]]></title>
+            <link>https://jiangwenyang.com/posts/MongoDB入门</link>
+            <guid>https://jiangwenyang.com/posts/MongoDB入门</guid>
+            <pubDate>Fri, 13 May 2016 00:00:00 GMT</pubDate>
+            <author>u19950930@gmail.com (Jiang Wenyang)</author>
+        </item>
+    </channel>
+</rss>

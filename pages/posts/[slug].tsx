@@ -5,7 +5,7 @@ import type { NextPageWithLayout } from "typings/app";
 
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
-import Layout from "components/Layout";
+import PostLayout from "components/PostLayout";
 import PostContent from "components/PostContent";
 import { getPostBySlug, getAllPosts } from "utils/posts";
 import markdownToHtml from "utils/markdownToHtml";
@@ -22,7 +22,7 @@ const Post: NextPageWithLayout<Props> = ({ post }) => {
   }
   return (
     <>
-      <article className="prose-sm">
+      <article className="prose prose-slate">
         <PostContent content={post.content}></PostContent>
       </article>
     </>
@@ -30,7 +30,7 @@ const Post: NextPageWithLayout<Props> = ({ post }) => {
 };
 
 Post.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout>{page}</Layout>;
+  return <PostLayout>{page}</PostLayout>;
 };
 
 interface Params extends ParsedUrlQuery {

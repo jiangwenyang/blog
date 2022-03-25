@@ -4,18 +4,25 @@ import type { NextPageWithLayout } from "typings/app";
 
 import React from "react";
 import Layout from "components/Layout";
-import { getAllPosts } from "utils/posts";
+import { getAllPosts, getFeaturedPosts } from "utils/posts";
+import generateRssFeed from "utils/feed";
 import Posts from "components/Posts";
+import Intro from "components/Intro";
 
 interface Props {
   allPosts: Post[];
+  featuredPosts: Post[];
 }
 
-const Home: NextPageWithLayout<Props> = ({ allPosts }) => {
+const Home: NextPageWithLayout<Props> = ({ allPosts, featuredPosts }) => {
   return (
-    <div>
-      <Posts posts={allPosts} />
-    </div>
+    <>
+      <Intro />
+      <div className="max-w-5xl mx-auto flex justify-between flex-wrap">
+        <Posts posts={featuredPosts} title="Featured" />
+        <Posts posts={allPosts} title="Posts" />
+      </div>
+    </>
   );
 };
 
@@ -24,16 +31,17 @@ Home.getLayout = function getLayout(page: React.ReactElement) {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const allPosts = getAllPosts([
-    "title",
-    "date",
-    "slug",
-    "coverImage",
-    "excerpt",
-  ]);
+  const fileds = ["title", "date", "slug"];
+
+  const featuredFileds = ["title", "date", "slug", "coverImage", "excerpt"];
+
+  const allPosts = getAllPosts(fileds);
+  const featuredPosts = getFeaturedPosts(featuredFileds);
+
+  await generateRssFeed();
 
   return {
-    props: { allPosts },
+    props: { allPosts, featuredPosts },
   };
 };
 
