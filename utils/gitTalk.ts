@@ -7,6 +7,7 @@ const initGitalk = (container: string, id: string) => {
     repo: process.env.NEXT_PUBLIC_GIT_TALK_REPO!,
     owner: process.env.NEXT_PUBLIC_GIT_TALK_OWNER!,
     admin: [process.env.NEXT_PUBLIC_GIT_TALK_OWNER!],
+    createIssueManually: true,
     id,
   };
   const gitalk = new Gitalk(gitalkOptions);
