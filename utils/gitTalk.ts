@@ -1,4 +1,5 @@
 import Gitalk from "gitalk";
+import md5 from "md5";
 
 const initGitalk = (container: string, id: string) => {
   const gitalkOptions = {
@@ -8,7 +9,7 @@ const initGitalk = (container: string, id: string) => {
     owner: process.env.NEXT_PUBLIC_GIT_TALK_OWNER!,
     admin: [process.env.NEXT_PUBLIC_GIT_TALK_OWNER!],
     createIssueManually: true,
-    id,
+    id: md5(location.pathname),
   };
   const gitalk = new Gitalk(gitalkOptions);
 
