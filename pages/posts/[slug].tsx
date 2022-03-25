@@ -8,8 +8,12 @@ import ErrorPage from "next/error";
 import PostLayout from "components/PostLayout";
 import PostContent from "components/PostContent";
 import { getPostBySlug, getAllPosts } from "utils/posts";
+import initGitalk from "utils/gitTalk";
 import markdownToHtml from "utils/markdownToHtml";
+
 import "prism-themes/themes/prism-atom-dark.min.css";
+import "gitalk/dist/gitalk.css";
+import { useEffect } from "react";
 
 interface Props {
   post: Post;
@@ -17,14 +21,21 @@ interface Props {
 
 const Post: NextPageWithLayout<Props> = ({ post }) => {
   const router = useRouter();
+
+  useEffect(() => {
+    initGitalk("gitalk-container", post.slug);
+  }, [post.slug]);
+
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
+
   return (
     <>
       <article className="prose prose-slate">
         <PostContent content={post.content}></PostContent>
       </article>
+      <div id="gitalk-container"></div>
     </>
   );
 };
