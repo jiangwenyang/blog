@@ -1,11 +1,9 @@
 import React from "react";
-import Logo from "./Logo";
-import Title from "./Title";
+import Brand from "./Brand";
 
 const Header: React.FC = () => (
   <header className="flex flex-row items-center pb-8">
-    <Logo />
-    <Title />
+    <Brand></Brand>
   </header>
 );
 
