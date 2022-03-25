@@ -12,7 +12,7 @@ const initGitalk = (container: string, id: string) => {
   };
   const gitalk = new Gitalk(gitalkOptions);
 
-  gitalk.render("gitalk-container");
+  gitalk.render(container);
 };
 
 export default initGitalk;
