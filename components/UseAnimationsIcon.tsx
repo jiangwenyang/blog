@@ -5,7 +5,7 @@ import classNames from "classnames";
 
 interface Props {
   animation: Animation;
-  label: string;
+  label?: string;
   size?: number;
   className?: string;
   [key: string]: any;

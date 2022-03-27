@@ -8,6 +8,7 @@ import ErrorPage from "next/error";
 import Head from "next/head";
 import PostLayout from "components/PostLayout";
 import PostContent from "components/PostContent";
+import Backtop from "components/Backtop";
 import { getPostBySlug, getAllPosts } from "utils/posts";
 import initGitalk from "utils/gitTalk";
 import markdownToHtml from "utils/markdownToHtml";
@@ -42,6 +43,7 @@ const Post: NextPageWithLayout<Props> = ({ post }) => {
         <PostContent content={post.content}></PostContent>
       </article>
       <div id="gitalk-container"></div>
+      <Backtop />
     </>
   );
 };

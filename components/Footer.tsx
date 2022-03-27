@@ -1,4 +1,3 @@
-import UseAnimations from "react-useanimations";
 import github from "react-useanimations/lib/github";
 import twitter from "react-useanimations/lib/twitter";
 import ExternalLink from "./ExternalLink";
