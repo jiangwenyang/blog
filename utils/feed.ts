@@ -9,7 +9,17 @@ const author = {
   link: siteURL,
 };
 
-const generateRssFeed = () => {
+interface FeedXML {
+  rss2: string;
+  atom1: string;
+  json1: string;
+}
+
+interface GenerateOptions {
+  write: boolean; // 是否写入文件
+}
+
+const generateRssFeed = ({ write = false }: GenerateOptions) => {
   const feed = new Feed({
     title: "Jiang Wenyang's Blog",
     description: `${author.name}'s Blog`,
@@ -50,10 +60,24 @@ const generateRssFeed = () => {
     });
   });
 
-  fs.mkdirSync("./public/rss", { recursive: true });
-  fs.writeFileSync("./public/rss/feed.xml", feed.rss2());
-  fs.writeFileSync("./public/rss/atom.xml", feed.atom1());
-  fs.writeFileSync("./public/rss/feed.json", feed.json1());
+  const feedXML: FeedXML = {
+    rss2: feed.rss2(),
+    atom1: feed.atom1(),
+    json1: feed.json1(),
+  };
+
+  write && writeRssFeed(feedXML);
+
+  return feedXML;
 };
+
+const writeRssFeed = ({ rss2, atom1, json1 }: FeedXML) => {
+  fs.mkdirSync("./public/rss", { recursive: true });
+  fs.writeFileSync("./public/rss/feed.xml", rss2);
+  fs.writeFileSync("./public/rss/atom.xml", atom1);
+  fs.writeFileSync("./public/rss/feed.json", json1);
+};
+
+export { writeRssFeed };
 
 export default generateRssFeed;

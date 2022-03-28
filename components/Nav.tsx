@@ -7,7 +7,7 @@ const Nav: React.FC = () => (
         <NavLink href="/about">关于我</NavLink>
       </li>
       <li>
-        <NavLink href="/rss/feed.xml">RSS</NavLink>
+        <NavLink href="/api/rss">RSS</NavLink>
       </li>
     </ul>
   </nav>

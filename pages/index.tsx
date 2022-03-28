@@ -6,7 +6,6 @@ import React from "react";
 import Head from "next/head";
 import Layout from "components/Layout";
 import { getAllPosts, getFeaturedPosts } from "utils/posts";
-import generateRssFeed from "utils/feed";
 import Posts from "components/Posts";
 import Intro from "components/Intro";
 
@@ -41,8 +40,6 @@ export const getStaticProps: GetStaticProps = (context) => {
 
   const allPosts = getAllPosts(fileds);
   const featuredPosts = getFeaturedPosts(featuredFileds);
-
-  generateRssFeed();
 
   return {
     props: { allPosts, featuredPosts },
