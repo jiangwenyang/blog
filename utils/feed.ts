@@ -26,7 +26,7 @@ const writeRssFeed = ({ rss2, atom1, json1 }: FeedXML) => {
   fs.writeFileSync("./public/rss/feed.json", json1);
 };
 
-const generateRssFeed = ({ write = false }: GenerateOptions) => {
+const generateRssFeed = ({ write }: GenerateOptions = { write: false }) => {
   const feed = new Feed({
     title: "Jiang Wenyang's Blog",
     description: `${author.name}'s Blog`,
