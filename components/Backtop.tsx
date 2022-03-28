@@ -79,7 +79,7 @@ const Backtop: React.FC<Props> = ({
           strokeColor="#fff"
           render={(eventProps, animationProps) => (
             <button
-              className="shadow-2xl bg-rose-500 opacity-50 rounded-full font-semibold hover:opacity-100"
+              className="shadow-2xl bg-rose-500 opacity-50 rounded-full font-semibold hover:opacity-100 outline-none"
               type="button"
               {...eventProps}
             >

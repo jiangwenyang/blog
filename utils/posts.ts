@@ -1,9 +1,12 @@
+import type { Post } from "typings/post";
+
 import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
 import { isNotJunk } from "junk";
+import readingTime from "reading-time";
 import formatISO from "date-fns/formatISO";
-import type { Post } from "typings/post";
+import isFunction from "lodash/isFunction";
 
 const postsDirectory = join(process.cwd(), "_posts");
 
@@ -15,37 +18,44 @@ export function getPostBySlug(slug: string, fields: string[] = []): Post {
   const realSlug = slug.replace(/\.md$/, "");
   const fullPath = join(postsDirectory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents);
+  const { data, content, excerpt } = matter(fileContents, { excerpt: true });
+  const { minutes, words } = readingTime(content);
 
-  const items: Post = {};
+  const post: Post = {};
 
-  // Ensure only the minimal needed data is exposed
+  const defaultFieldGetter = (field: string) => {
+    if (data[field] instanceof Date) {
+      // 解决日期对象无法在getStaticProps中序列化问题
+      return formatISO(data[field]);
+    } else {
+      return data[field];
+    }
+  };
+
+  const fieldGetterMap: Post = {
+    slug: realSlug,
+    content,
+    excerpt,
+    minutes: Math.round(minutes),
+    words,
+  };
+
   fields.forEach((field) => {
-    if (field === "slug") {
-      items[field] = realSlug;
-    }
-    if (field === "content") {
-      items[field] = content;
-    }
+    const filedGetter = fieldGetterMap[field] ?? defaultFieldGetter;
 
-    if (typeof data[field] !== "undefined") {
-      if (data[field] instanceof Date) {
-        // 解决日期对象无法在getStaticProps中序列化问题
-        items[field] = formatISO(data[field]);
-      } else {
-        items[field] = data[field];
-      }
-    }
+    const filedData = isFunction(filedGetter)
+      ? filedGetter(field)
+      : filedGetter;
+
+    filedData && (post[field] = filedData);
   });
-
-  return items;
+  return post;
 }
 
 export function getAllPosts(fields: string[] = []) {
   const slugs = getPostSlugs();
   const posts = slugs
     .map((slug) => getPostBySlug(slug, fields))
-    // sort posts by date in descending order
     .sort((post1, post2) => {
       if (!(post1.date && post2.date)) {
         return 1;

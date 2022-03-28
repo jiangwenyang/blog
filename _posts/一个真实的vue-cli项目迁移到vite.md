@@ -7,8 +7,6 @@ tags:
   - Vite
 ---
 
-# 一个真实的 Vue CLI 项目迁移到 vite
-
 ## 是谁？叫什么？来自哪里？要去往那里？
 
 先来回答灵魂拷问。我们原有的项目是一个使用 Vue CLI 生成的 vue2 项目，项目整体上是没有什么大问题的，但是随着模块的不断增多，Vue CLI 基于 Webpack 构建速度越来越慢，开发体验上比较差，为了减少抓狂时间，我们将目光转向了号称很快的 Vite。
@@ -588,17 +586,17 @@ const modules = Object.keys(files).reduce((pre, path) => {
 ```js
 // 启用模块热更新
 if (module.hot) {
-  const modulePaths = getModuleFiles().keys()
-  module.hot.accept(['./getters', ...[modulePaths]], () => {
+  const modulePaths = getModuleFiles().keys();
+  module.hot.accept(["./getters", ...[modulePaths]], () => {
     // 获取更新后的模块
-    const getters = require('./getters').default
-    const modules = getModules()
+    const getters = require("./getters").default;
+    const modules = getModules();
     // 加载新模块
     store.hotUpdate({
       getters,
       modules,
-    })
-  })
+    });
+  });
 }
 ```
 

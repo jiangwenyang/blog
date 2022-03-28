@@ -6,16 +6,19 @@ import type { NextPageWithLayout } from "typings/app";
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import Head from "next/head";
+import { useEffect } from "react";
+
 import PostLayout from "components/PostLayout";
 import PostContent from "components/PostContent";
+import PostMeta from "components/PostMeta";
 import Backtop from "components/Backtop";
+
 import { getPostBySlug, getAllPosts } from "utils/posts";
 import initGitalk from "utils/gitTalk";
 import markdownToHtml from "utils/markdownToHtml";
 
 import "prism-themes/themes/prism-atom-dark.min.css";
 import "gitalk/dist/gitalk.css";
-import { useEffect } from "react";
 
 interface Props {
   post: Post;
@@ -25,8 +28,8 @@ const Post: NextPageWithLayout<Props> = ({ post }) => {
   const router = useRouter();
 
   useEffect(() => {
-    initGitalk("gitalk-container", post.slug);
-  }, [post.slug]);
+    initGitalk("gitalk-container", post.slug!);
+  });
 
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
@@ -40,7 +43,13 @@ const Post: NextPageWithLayout<Props> = ({ post }) => {
         </title>
       </Head>
       <article className="prose prose-slate">
-        <PostContent content={post.content}></PostContent>
+        <h1>{post.title}</h1>
+        <PostMeta
+          words={post.words!}
+          minutes={post.minutes!}
+          date={post.date!}
+        />
+        <PostContent content={post.content!} />
       </article>
       <div id="gitalk-container"></div>
       <Backtop />
@@ -65,7 +74,10 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
     "slug",
     "content",
     "coverImage",
+    "minutes",
+    "words",
   ]);
+
   const content = await markdownToHtml(post.content || "");
 
   return {

@@ -1,10 +1,12 @@
-type PostMeta =
-  | "title"
-  | "date"
-  | "slug"
-  | "coverImage"
-  | "excerpt"
-  | "featured"
-  | "content";
-
-export type Post = Record<PostMeta, string> | Record<string, string>;
+export interface Post {
+  title?: string;
+  date?: string | Date;
+  slug?: string;
+  coverImage?: string;
+  excerpt?: string;
+  featured?: string;
+  content?: string;
+  words?: number;
+  minutes?: number;
+  [key: string]: unknown;
+}
