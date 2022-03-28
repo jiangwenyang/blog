@@ -5,10 +5,6 @@ tags:
   - TypeScript
 ---
 
-# TypeScript 简明指北
-
-[TOC]
-
 ## TL;DR
 
 TypeScript 是 JavaScript 的类型的超集，它可以编译成纯 JavaScript。编译出来的 JavaScript 可以运行在任何浏览器上。可以把 Typescript 简单理解为带类型的 Javascript。
@@ -364,7 +360,6 @@ const numberFoo = foo<number>(1);
   联合类型表示一个值可以是几种类型之一。 写法是用竖线（ `|`）分隔每个类型，因此 `number | string | boolean`表示一个值可以是 `number`， `string`，或 `boolean`。
 
   > 如果一个值是联合类型，我们只能访问此联合类型的所有类型里共有的成员。
-
 
 ## Typescript 搭配 React
 

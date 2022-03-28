@@ -5,7 +5,7 @@ tags:
   - Git
 ---
 
-## Git-hook
+## 什么是 Git-hook
 
 Git-hook（git 钩子）是 Git 提供的当特定动作如提交、推送等 Git 行为发生时执行的自定义脚本。主要分为客户端脚本和服务器端脚本。
 
