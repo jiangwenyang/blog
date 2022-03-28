@@ -1,6 +1,7 @@
 import { Feed } from "feed";
 import fs from "fs";
 import { getAllPosts } from "./posts";
+import markdownToHtml from "./markdownToHtml";
 
 const siteURL = "https://jiangwenyang.com";
 const author = {
@@ -9,7 +10,7 @@ const author = {
   link: siteURL,
 };
 
-interface FeedXML {
+export interface FeedXML {
   rss2: string;
   atom1: string;
   json1: string;
@@ -26,7 +27,9 @@ const writeRssFeed = ({ rss2, atom1, json1 }: FeedXML) => {
   fs.writeFileSync("./public/rss/feed.json", json1);
 };
 
-const generateRssFeed = ({ write }: GenerateOptions = { write: false }) => {
+const generateRssFeed = async (
+  { write }: GenerateOptions = { write: false }
+) => {
   const feed = new Feed({
     title: "Jiang Wenyang's Blog",
     description: `${author.name}'s Blog`,
@@ -50,22 +53,25 @@ const generateRssFeed = ({ write }: GenerateOptions = { write: false }) => {
     "slug",
     "coverImage",
     "excerpt",
+    "content",
   ]);
 
-  allPost.forEach((post) => {
+  for (let index = 0; index < allPost.length; index++) {
+    const post = allPost[index];
     const url = `${siteURL}/posts/${post.slug}`;
+    const content = await markdownToHtml(post.content || "");
 
     feed.addItem({
       title: post.title!,
       id: url,
       link: url,
       description: post.excerpt,
-      content: post.content,
+      content: content,
       author: [author],
       contributor: [author],
       date: new Date(post.date!),
     });
-  });
+  }
 
   const feedXML: FeedXML = {
     rss2: feed.rss2(),
