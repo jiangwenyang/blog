@@ -34,7 +34,7 @@ Home.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout>{page}</Layout>;
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = (context) => {
   const fileds = ["title", "date", "slug"];
 
   const featuredFileds = ["title", "date", "slug", "coverImage", "excerpt"];
@@ -42,7 +42,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const allPosts = getAllPosts(fileds);
   const featuredPosts = getFeaturedPosts(featuredFileds);
 
-  await generateRssFeed();
+  generateRssFeed();
 
   return {
     props: { allPosts, featuredPosts },

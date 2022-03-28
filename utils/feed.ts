@@ -9,7 +9,7 @@ const author = {
   link: siteURL,
 };
 
-const generateRssFeed = async () => {
+const generateRssFeed = () => {
   const feed = new Feed({
     title: "Jiang Wenyang's Blog",
     description: `${author.name}'s Blog`,
@@ -39,14 +39,14 @@ const generateRssFeed = async () => {
     const url = `${siteURL}/posts/${post.slug}`;
 
     feed.addItem({
-      title: post.title,
+      title: post.title!,
       id: url,
       link: url,
       description: post.excerpt,
       content: post.content,
       author: [author],
       contributor: [author],
-      date: new Date(post.date),
+      date: new Date(post.date!),
     });
   });
 
