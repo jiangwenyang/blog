@@ -1,21 +1,21 @@
-import { useEffect, useState } from "react";
-import format from "date-fns/format";
 import {
   BookClock24Regular,
   TextWordCount20Filled,
   CalendarLtr20Regular,
 } from "@ricons/fluent";
 
+import DateFormatter from "./DateFormatter";
+
 interface Props {
-  date: Date | string;
+  date: string;
   words: number;
   minutes: number;
 }
 
 interface MetaProps {
   title: string;
-  content: string;
-  icon: React.ReactElement;
+  content: React.ReactNode;
+  icon: React.ReactNode;
 }
 
 const Meta: React.FC<MetaProps> = ({ title, content, icon }) => {
@@ -33,7 +33,7 @@ const PostMeta: React.FC<Props> = ({ date, words, minutes }) => {
     <div className="flex flex-col items-start  justify-between gap-4 py-2 sm:flex-row sm:items-center">
       <Meta
         title="发布时间"
-        content={format(new Date(date), "yyyy-MM-dd")}
+        content={<DateFormatter dateString={date} />}
         icon={<BookClock24Regular />}
       />
 

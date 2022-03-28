@@ -13,9 +13,9 @@ const Posts: React.FC<Props> = ({ posts, title }) => (
     {posts.map(({ title, date, slug, coverImage, excerpt }) => (
       <PostPreview
         key={slug}
-        title={title}
+        title={title!}
         date={date}
-        slug={slug}
+        slug={slug!}
         coverImage={coverImage}
         excerpt={excerpt}
       />

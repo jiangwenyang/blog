@@ -3,8 +3,8 @@ import DateFormatter from "./DateFormatter";
 
 interface Props {
   title: string;
-  date: string;
   slug: string;
+  date?: string;
   coverImage?: string;
   excerpt?: string;
 }
