@@ -16,8 +16,15 @@ interface FeedXML {
 }
 
 interface GenerateOptions {
-  write: boolean; // 是否写入文件
+  write?: boolean; // 是否写入文件
 }
+
+const writeRssFeed = ({ rss2, atom1, json1 }: FeedXML) => {
+  fs.mkdirSync("./public/rss", { recursive: true });
+  fs.writeFileSync("./public/rss/feed.xml", rss2);
+  fs.writeFileSync("./public/rss/atom.xml", atom1);
+  fs.writeFileSync("./public/rss/feed.json", json1);
+};
 
 const generateRssFeed = ({ write = false }: GenerateOptions) => {
   const feed = new Feed({
@@ -70,14 +77,5 @@ const generateRssFeed = ({ write = false }: GenerateOptions) => {
 
   return feedXML;
 };
-
-const writeRssFeed = ({ rss2, atom1, json1 }: FeedXML) => {
-  fs.mkdirSync("./public/rss", { recursive: true });
-  fs.writeFileSync("./public/rss/feed.xml", rss2);
-  fs.writeFileSync("./public/rss/atom.xml", atom1);
-  fs.writeFileSync("./public/rss/feed.json", json1);
-};
-
-export { writeRssFeed };
 
 export default generateRssFeed;
