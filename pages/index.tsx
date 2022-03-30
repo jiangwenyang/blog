@@ -12,12 +12,12 @@ import Intro from "components/Intro";
 import { getAllPosts, getFeaturedPosts } from "utils/posts";
 import generateRssFeed from "utils/feed";
 
-interface Props {
+type Props = {
   allPosts: Post[];
   featuredPosts: Post[];
-}
+};
 
-const Home: NextPageWithLayout<Props> = ({ allPosts, featuredPosts }) => {
+const HomePage: NextPageWithLayout<Props> = ({ allPosts, featuredPosts }) => {
   return (
     <>
       <Head>
@@ -32,7 +32,7 @@ const Home: NextPageWithLayout<Props> = ({ allPosts, featuredPosts }) => {
   );
 };
 
-Home.getLayout = function getLayout(page: React.ReactElement) {
+HomePage.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout>{page}</Layout>;
 };
 
@@ -44,6 +44,7 @@ export const getStaticProps: GetStaticProps = (context) => {
   const allPosts = getAllPosts(fileds);
   const featuredPosts = getFeaturedPosts(featuredFileds);
 
+  // FIXME: 每次访问都会生成，考虑使用npm srcipt手动生成
   generateRssFeed({ write: true });
 
   return {
@@ -51,4 +52,4 @@ export const getStaticProps: GetStaticProps = (context) => {
   };
 };
 
-export default Home;
+export default HomePage;

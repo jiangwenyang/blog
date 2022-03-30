@@ -1,4 +1,4 @@
-import type { Post } from "typings/post";
+import type { Post, PostCoverImage, CoverImage } from "typings/post";
 
 import fs from "fs";
 import { join } from "path";
@@ -10,9 +10,34 @@ import isFunction from "lodash/isFunction";
 
 const postsDirectory = join(process.cwd(), "_posts");
 
+const CoverDirectoryName = "covers";
+
+const getCoverPath = (coverSrc: CoverImage["src"]) =>
+  `/${CoverDirectoryName}/${coverSrc}`;
+
 export function getPostSlugs() {
   return fs.readdirSync(postsDirectory).filter(isNotJunk);
 }
+
+const tranformCoverImage = (
+  postCoverImage: PostCoverImage,
+  title: Post["title"]
+) => {
+  let src = "",
+    name: CoverImage["name"] = "";
+  if (typeof postCoverImage === "string") {
+    src = postCoverImage;
+    name = title;
+  } else {
+    src = postCoverImage.src;
+    name = postCoverImage.name || title;
+  }
+
+  return {
+    src: getCoverPath(src),
+    name,
+  };
+};
 
 export function getPostBySlug(slug: string, fields: string[] = []): Post {
   const realSlug = slug.replace(/\.md$/, "");
@@ -38,6 +63,8 @@ export function getPostBySlug(slug: string, fields: string[] = []): Post {
     excerpt,
     minutes: Math.round(minutes),
     words,
+    coverImage:
+      data.coverImage && tranformCoverImage(data.coverImage, data.title),
   };
 
   fields.forEach((field) => {

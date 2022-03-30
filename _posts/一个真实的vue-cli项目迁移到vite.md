@@ -2,6 +2,7 @@
 title: 一个真实的Vue CLI项目迁移到vite
 date: 2021-09-22
 featured: true
+coverImage: 一个真实的vue-cli项目迁移到vite.webp
 tags:
   - Vue
   - Vite

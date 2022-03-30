@@ -1,6 +1,6 @@
 import type { GetStaticPaths, GetStaticProps } from "next";
 import type { ParsedUrlQuery } from "querystring";
-import type { Post } from "typings/post";
+import type { Post as PostType } from "typings/post";
 import type { NextPageWithLayout } from "typings/app";
 
 import { useRouter } from "next/router";
@@ -9,8 +9,7 @@ import Head from "next/head";
 import { useEffect } from "react";
 
 import PostLayout from "components/PostLayout";
-import PostContent from "components/PostContent";
-import PostMeta from "components/PostMeta";
+import Post from "components/Post";
 import Backtop from "components/Backtop";
 
 import { getPostBySlug, getAllPosts } from "utils/posts";
@@ -21,10 +20,10 @@ import "prism-themes/themes/prism-atom-dark.min.css";
 import "gitalk/dist/gitalk.css";
 
 interface Props {
-  post: Post;
+  post: PostType;
 }
 
-const Post: NextPageWithLayout<Props> = ({ post }) => {
+const PostPage: NextPageWithLayout<Props> = ({ post }) => {
   const router = useRouter();
 
   useEffect(() => {
@@ -42,22 +41,14 @@ const Post: NextPageWithLayout<Props> = ({ post }) => {
           {post.title} - {process.env.NEXT_PUBLIC_TITLE}
         </title>
       </Head>
-      <article className="prose prose-slate">
-        <h1>{post.title}</h1>
-        <PostMeta
-          words={post.words!}
-          minutes={post.minutes!}
-          date={post.date!}
-        />
-        <PostContent content={post.content!} />
-      </article>
+      <Post post={post} />
       <div id="gitalk-container"></div>
       <Backtop />
     </>
   );
 };
 
-Post.getLayout = function getLayout(page: React.ReactElement) {
+PostPage.getLayout = function getLayout(page: React.ReactElement) {
   return <PostLayout>{page}</PostLayout>;
 };
 
@@ -105,4 +96,4 @@ export const getStaticPaths: GetStaticPaths = () => {
   };
 };
 
-export default Post;
+export default PostPage;
