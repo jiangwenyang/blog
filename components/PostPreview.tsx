@@ -1,3 +1,4 @@
+import type { CoverImage } from "typings/post";
 import Link from "next/link";
 import DateFormatter from "./DateFormatter";
 
@@ -5,7 +6,7 @@ interface Props {
   title: string;
   slug: string;
   date?: string;
-  coverImage?: string;
+  coverImage?: CoverImage;
   excerpt?: string;
 }
 
