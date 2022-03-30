@@ -11,7 +11,7 @@ const Brand: React.FC<Props> = ({ hideTitle = false }) => (
     <Link href="/">
       <a className="flex items-center">
         <Logo />
-        <Title className={hideTitle ? "hidden sm:block" : ""} />
+        <Title className={hideTitle ? "hidden" : "block"} />
       </a>
     </Link>
   </div>

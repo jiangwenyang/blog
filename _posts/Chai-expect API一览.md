@@ -1,6 +1,7 @@
 ---
 title: 断言库Chai-expect-API一览
 date: 2017-12-20
+excerpt: 简单介绍断言库 excerpt 风格的断言语法
 tags:
   - Chai
 ---

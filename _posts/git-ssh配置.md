@@ -1,6 +1,8 @@
 ---
-title: windows下git ssh配置
+title: git ssh配置
 date: 2016-05-30 18:58:33
+featured: true
+excerpt: 介绍windows下如何快速配置git-ssh,一般而言 Mac 或 linux基本上也适用
 tags:
   - Git
 ---

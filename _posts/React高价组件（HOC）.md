@@ -1,6 +1,7 @@
 ---
 title: React高价组件（HOC）
 date: 2017-12-20
+excerpt: 简单介绍什么是React高阶组件
 tags:
   - React
 ---
@@ -126,11 +127,11 @@ function HOC(ChildComponent){
 
 ```javascript
 function HOC(childComponent) {
-  return class NewComponent extends childComponent{
+  return class NewComponent extends childComponent {
     render() {
       return super.render();
     }
-  }
+  };
 }
 ```
 

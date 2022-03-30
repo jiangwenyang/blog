@@ -1,6 +1,7 @@
 ---
 title: CSS中的空白符和换行处理
 date: 2018-09-11
+excerpt: 简单介绍CSS中空白符和换行处理，主要介绍white-space、word-break、word-wrap三个属性
 tags:
   - CSS
 ---

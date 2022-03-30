@@ -1,6 +1,7 @@
 ---
 title: Mongoose官方API一览
 date: 2017-04-16 11:30:16
+excerpt: "Mongoose是比较流行的MongoDB的ODM库，简化了对MongoDB的操作，本文简单介绍（翻译）了部分常用API"
 tags:
   - Node.js
   - MongoDB

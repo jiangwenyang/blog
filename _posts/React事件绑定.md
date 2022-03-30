@@ -1,6 +1,7 @@
 ---
 title: React事件绑定
 date: 2017-12-20
+excerpt: 简单介绍及对比了React事件绑定的几种方式
 tags:
   - React
 ---

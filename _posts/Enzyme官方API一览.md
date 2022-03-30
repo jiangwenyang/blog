@@ -1,6 +1,7 @@
 ---
 title: Enzyme官方API一览
 date: 2017-12-27
+excerpt: Enzyme是Airbnb维护的一个React测试套件，简单介绍一下如何使用
 tags:
   - Enzyme
 categories:
@@ -142,35 +143,34 @@ class Counter extends React.Component {
 ```js
 const wrapper = shallow(<Counter />);
 // 通过事件模拟下v2.x和v3.x表现一致都会自动更新状态
-wrapper.find('.count').text(); // => "Count: 0"
-wrapper.find('.inc').simulate('click');
-wrapper.find('.count').text(); // => "Count: 1"
-wrapper.find('.inc').simulate('click');
-wrapper.find('.count').text(); // => "Count: 2"
-wrapper.find('.dec').simulate('click');
-wrapper.find('.count').text(); // => "Count: 1"
+wrapper.find(".count").text(); // => "Count: 0"
+wrapper.find(".inc").simulate("click");
+wrapper.find(".count").text(); // => "Count: 1"
+wrapper.find(".inc").simulate("click");
+wrapper.find(".count").text(); // => "Count: 2"
+wrapper.find(".dec").simulate("click");
+wrapper.find(".count").text(); // => "Count: 1"
 
 // 调用实例上的方法 v3.x不会自动更新
-wrapper.find('.count').text(); // => "Count: 0"
+wrapper.find(".count").text(); // => "Count: 0"
 wrapper.instance().increment();
-wrapper.find('.count').text(); // => "Count: 0" (would have been "Count: 1" in v2)
+wrapper.find(".count").text(); // => "Count: 0" (would have been "Count: 1" in v2)
 wrapper.instance().increment();
-wrapper.find('.count').text(); // => "Count: 0" (would have been "Count: 2" in v2)
+wrapper.find(".count").text(); // => "Count: 0" (would have been "Count: 2" in v2)
 wrapper.instance().decrement();
-wrapper.find('.count').text(); // => "Count: 0" (would have been "Count: 1" in v2)
-
+wrapper.find(".count").text(); // => "Count: 0" (would have been "Count: 1" in v2)
 
 // 在v3.x下需要手动更新
-wrapper.find('.count').text(); // => "Count: 0"
+wrapper.find(".count").text(); // => "Count: 0"
 wrapper.instance().increment();
 wrapper.update();
-wrapper.find('.count').text(); // => "Count: 1"
+wrapper.find(".count").text(); // => "Count: 1"
 wrapper.instance().increment();
 wrapper.update();
-wrapper.find('.count').text(); // => "Count: 2"
+wrapper.find(".count").text(); // => "Count: 2"
 wrapper.instance().decrement();
 wrapper.update();
-wrapper.find('.count').text(); // => "Count: 1"
+wrapper.find(".count").text(); // => "Count: 1"
 ```
 
 #### `ref()`返回真实的 ref 而不是 wrapper
@@ -181,7 +181,7 @@ wrapper.find('.count').text(); // => "Count: 1"
 ```jsx
 const wrapper = mount(<Box />);
 // this is what would happen with enzyme v2
-expect(wrapper.ref('abc')).toBeInstanceOf(wrapper.constructor);
+expect(wrapper.ref("abc")).toBeInstanceOf(wrapper.constructor);
 ```
 
 在 v3.x 下:
@@ -191,7 +191,7 @@ expect(wrapper.ref('abc')).toBeInstanceOf(wrapper.constructor);
 ```jsx
 const wrapper = mount(<Box />);
 // this is what happens with enzyme v3
-expect(wrapper.ref('abc')).toBeInstanceOf(Element);
+expect(wrapper.ref("abc")).toBeInstanceOf(Element);
 ```
 
 - 定义在 React 元素上的 ref

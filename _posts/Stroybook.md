@@ -1,6 +1,7 @@
 ---
 title: Stroybook
 date: 2018-03-28
+excerpt: Storybook是一个可视化的UI 开发环境，本文简单介绍如何进行搭建它并进行使用
 tags:
   - Stroybook
 ---

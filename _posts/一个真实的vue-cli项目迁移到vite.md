@@ -3,6 +3,7 @@ title: 一个真实的Vue CLI项目迁移到vite
 date: 2021-09-22
 featured: true
 coverImage: 一个真实的vue-cli项目迁移到vite.webp
+excerpt: "需要迁移到Vite的理由，并以真实项目为例，详细介绍从vue-cli迁移到Vite的可能会遇到的问题，以及如何解决这些问题"
 tags:
   - Vue
   - Vite

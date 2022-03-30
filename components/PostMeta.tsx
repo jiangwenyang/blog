@@ -5,27 +5,12 @@ import {
 } from "@ricons/fluent";
 
 import DateFormatter from "./DateFormatter";
+import Meta from "./Meta";
 
-interface Props {
+type Props = {
   date: string;
   words: number;
   minutes: number;
-}
-
-interface MetaProps {
-  title: string;
-  content: React.ReactNode;
-  icon: React.ReactNode;
-}
-
-const Meta: React.FC<MetaProps> = ({ title, content, icon }) => {
-  return (
-    <div className="flex items-center ">
-      <div className="flex items-center mr-1 w-6">{icon}</div>
-      <div className="mr-2">{title}:</div>
-      <div className="text-slate-500">{content}</div>
-    </div>
-  );
 };
 
 const PostMeta: React.FC<Props> = ({ date, words, minutes }) => {

@@ -2,14 +2,30 @@ import parseISO from "date-fns/parseISO";
 import format from "date-fns/format";
 import { zhCN } from "date-fns/locale";
 
-interface Props {
-  dateString: string;
-}
+import { CalendarLtr20Regular } from "@ricons/fluent";
+import classNames from "classnames";
 
-const DateFormatter: React.FC<Props> = ({ dateString }) => {
+type Props = {
+  dateString: string;
+  className?: string;
+  showIcon?: boolean;
+  formatString?: string;
+};
+
+const DateFormatter: React.FC<Props> = ({
+  dateString,
+  className,
+  formatString = "yyyy年M月d日",
+  showIcon = true,
+}) => {
   const date = parseISO(dateString);
-  const dateFormatter = format(date, "yyyy年M月d日", { locale: zhCN });
-  return <time dateTime={dateString}>{dateFormatter}</time>;
+  const dateFormatter = format(date, formatString, { locale: zhCN });
+  return (
+    <div className={classNames("flex flex-row items-center", className)}>
+      {showIcon && <CalendarLtr20Regular className="mr-1 w-4" />}
+      <time dateTime={dateString}>{dateFormatter}</time>
+    </div>
+  );
 };
 
 export default DateFormatter;

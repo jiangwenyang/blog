@@ -1,15 +1,16 @@
 ---
-title: Git-hook
+title: Git Hooks
 date: 2018-03-12
+excerpt: 介绍Git Hooks是什么，以及如何使用
 tags:
   - Git
 ---
 
-## 什么是 Git-hook
+## 什么是 Git Hooks
 
-Git-hook（git 钩子）是 Git 提供的当特定动作如提交、推送等 Git 行为发生时执行的自定义脚本。主要分为客户端脚本和服务器端脚本。
+Git Hooks（Git 钩子）是 Git 提供的当特定动作如提交、推送等 Git 行为发生时执行的自定义脚本。主要分为客户端脚本和服务器端脚本。
 
-### Git-hook 的安装
+### Git Hooks 的安装
 
 其实当初始化一个 Git 项目的时候，hooks 就已经被安装到项目中，只是默认未启用。当执行`git init`的时候，Git 会初始化示例脚本到`.git/hooks`目录中。
 

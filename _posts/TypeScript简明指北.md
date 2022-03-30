@@ -1,6 +1,8 @@
 ---
 title: TypeScript Learning
 date: 2019-10-23
+featured: true
+excerpt: "一份简单的TypeScript入门指南"
 tags:
   - TypeScript
 ---

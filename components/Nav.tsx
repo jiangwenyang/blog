@@ -4,6 +4,9 @@ const Nav: React.FC = () => (
   <nav>
     <ul className="flex items-center justify-between">
       <li>
+        <NavLink href="/posts">文章</NavLink>
+      </li>
+      <li>
         <NavLink href="/about">关于我</NavLink>
       </li>
       <li>

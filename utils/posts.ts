@@ -43,7 +43,7 @@ export function getPostBySlug(slug: string, fields: string[] = []): Post {
   const realSlug = slug.replace(/\.md$/, "");
   const fullPath = join(postsDirectory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content, excerpt } = matter(fileContents, { excerpt: true });
+  const { data, content } = matter(fileContents);
   const { minutes, words } = readingTime(content);
 
   const post: Post = {};
@@ -60,7 +60,6 @@ export function getPostBySlug(slug: string, fields: string[] = []): Post {
   const fieldGetterMap: Post = {
     slug: realSlug,
     content,
-    excerpt,
     minutes: Math.round(minutes),
     words,
     coverImage:
@@ -92,7 +91,7 @@ export function getAllPosts(fields: string[] = []) {
   return posts;
 }
 
-export function getFeaturedPosts(fields: string[] = [], limit = 3) {
+export function getFeaturedPosts(fields: string[] = [], limit = 4) {
   const realFields = Array.from(new Set([...fields, "featured"]));
 
   const allPost = getAllPosts(realFields);

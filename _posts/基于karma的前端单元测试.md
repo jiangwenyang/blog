@@ -1,6 +1,7 @@
 ---
-title: karma+karma-webpack前端单元测试
+title: 基于karma的前端单元测试
 date: 2017-12-20
+excerpt: 简单介绍如何配置karma和webpack来进行前端测试
 tags:
   - 前端测试
   - E2E测试
