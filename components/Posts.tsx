@@ -7,13 +7,12 @@ interface Props {
 
 const Posts: React.FC<Props> = ({ posts }) => (
   <section>
-    {posts.map(({ title, date, slug, coverImage, excerpt }) => (
+    {posts.map(({ title, date, slug, excerpt }) => (
       <PostPreview
         key={slug}
         slug={slug!}
         title={title!}
         date={date}
-        coverImage={coverImage}
         excerpt={excerpt}
       />
     ))}
