@@ -1,30 +1,18 @@
 import classNames from "classnames";
-
-import UseAnimations from "react-useanimations";
-import menu from "react-useanimations/lib/menu3";
+import styles from "styles/menu-button.module.css";
 
 type Props = {
   isOpen: boolean;
-  onClick: React.MouseEventHandler<HTMLDivElement>;
-  className?: string;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const MenuButton: React.FC<Props> = ({ isOpen, onClick, className }) => {
+const MenuButton: React.FC<Props> = ({ isOpen, onClick }) => {
   return (
-    <UseAnimations
-      animation={menu}
-      size={32}
-      reverse={isOpen}
+    <button
       onClick={onClick}
-      speed={2}
-      render={(eventProps, animationProps) => (
-        <button
-          className={classNames("block sm:hidden relative z-20", className)}
-          {...eventProps}
-        >
-          <div {...animationProps} />
-        </button>
-      )}
+      className={classNames(styles["menu-button"], {
+        [styles["is-open"]]: isOpen,
+      })}
     />
   );
 };

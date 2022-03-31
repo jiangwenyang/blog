@@ -27,14 +27,20 @@ const NAV_LINKS: NavLinkType[] = [
 
 const Nav: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [key, setKey] = useState(Date.now());
 
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleLink = () => {
+    setIsOpen(false);
+    // setKey(Date.now());
+  };
+
   return (
     <nav>
-      <MenuButton isOpen={isOpen} onClick={handleClick}></MenuButton>
+      <MenuButton key={key} isOpen={isOpen} onClick={handleClick}></MenuButton>
       <ul
         className={classNames(styles["nav-links"], {
           [styles["is-open"]]: isOpen,
@@ -47,7 +53,7 @@ const Nav: React.FC = () => {
             style={{
               transitionDelay: `${500 + index * 100}ms`,
             }}
-            onClick={handleClick}
+            onClick={handleLink}
           >
             <NavLink href={item.href}>{item.title}</NavLink>
           </li>
