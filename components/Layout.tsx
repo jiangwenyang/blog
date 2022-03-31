@@ -5,7 +5,7 @@ import Container from "./Container";
 
 const Layout: React.FC = ({ children }) => {
   return (
-    <div className="p-8 md:px-16 lg:container lg:mx-auto">
+    <div className="p-8 md:px-8 lg:container lg:mx-auto">
       <Header />
       <main className="flex-1">
         <Container>{children}</Container>
