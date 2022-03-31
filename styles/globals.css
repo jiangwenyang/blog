@@ -7,6 +7,9 @@
   body {
     @apply min-h-screen text-gray-900;
   }
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
   #__next {
     @apply flex flex-col min-h-screen;
   }
