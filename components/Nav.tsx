@@ -47,6 +47,7 @@ const Nav: React.FC = () => {
             style={{
               transitionDelay: `${500 + index * 100}ms`,
             }}
+            onClick={handleClick}
           >
             <NavLink href={item.href}>{item.title}</NavLink>
           </li>
