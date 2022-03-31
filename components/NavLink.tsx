@@ -1,12 +1,19 @@
+import classNames from "classnames";
 import Link from "next/link";
 
 interface Props {
   href: string;
+  className?: string;
 }
 
-const NavLink: React.FC<Props> = ({ href, children }) => (
+const NavLink: React.FC<Props> = ({ href, children, className }) => (
   <Link href={href}>
-    <a className="px-4 py-2 font-semibold text-gray-800  inline-block p-1 rounded-lg hover:bg-gray-200 transition-all">
+    <a
+      className={classNames(
+        "px-4 py-2 font-semibold text-gray-800  hover:bg-gray-200 inline-block p-1 rounded-lg ",
+        className
+      )}
+    >
       {children}
     </a>
   </Link>

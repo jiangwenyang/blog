@@ -1,0 +1,30 @@
+.nav-links {
+  @apply fixed top-0 left-0 w-full h-screen flex flex-col justify-center items-center opacity-0 bg-gray-100 px-8 z-10  
+      sm:static sm:w-auto sm:h-auto sm:flex sm:flex-row sm:bg-transparent sm:items-center sm:justify-between sm:opacity-100 sm:px-0;
+
+  clip-path: circle(200px at top right);
+
+  @media screen(sm) {
+    clip-path: none;
+  }
+
+  transition: opacity 0.8s 0.5s, clip-path 1s 0.5s;
+
+  &.is-open {
+    @apply opacity-100;
+    clip-path: circle(100% at center);
+    .nav-link {
+      @apply opacity-100 translate-x-0;
+    }
+  }
+}
+
+.nav-link {
+  @apply w-full text-center opacity-0 translate-x-full sm:opacity-100 sm:w-auto sm:translate-x-0;
+  transition: opacity 0.4s ease-in-out 1s,
+    transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s;
+
+  a {
+    @apply w-full p-4 transition-all sm:w-auto sm:py-2;
+  }
+}
