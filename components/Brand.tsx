@@ -1,4 +1,6 @@
 import Link from "next/link";
+import classNames from "classnames";
+
 import Logo from "./Logo";
 import Title from "./Title";
 
@@ -11,7 +13,7 @@ const Brand: React.FC<Props> = ({ hideTitle = false }) => (
     <Link href="/">
       <a className="flex items-center">
         <Logo />
-        <Title className={hideTitle ? "hidden" : "block"} />
+        {!hideTitle && <Title className={classNames("hidden sm:block")} />}
       </a>
     </Link>
   </div>

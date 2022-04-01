@@ -13,6 +13,7 @@ const MenuButton: React.FC<Props> = ({ isOpen, onClick, className }) => {
       onClick={onClick}
       className={classNames(
         styles["menu-button"],
+        "dark:bg-gray-300",
         {
           [styles["is-open"]]: isOpen,
         },

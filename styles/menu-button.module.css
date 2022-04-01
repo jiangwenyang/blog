@@ -1,19 +1,19 @@
 .menu-button {
-  @apply block sm:hidden relative z-20 cursor-pointer w-5 h-[2px] rounded-sm bg-gray-500;
+  @apply block sm:hidden relative z-20 cursor-pointer w-6 h-[3px] rounded-sm bg-gray-500;
   animation: closeMid 0.8s backwards reverse;
 
   &::before,
   &:after {
     content: "";
-    @apply absolute top-0 left-0 block w-full h-[2px] bg-inherit rounded-sm;
+    @apply absolute top-0 left-0 block w-full h-[3px] bg-inherit rounded-sm;
   }
   &::before {
     animation: closeTop 0.8s backwards reverse;
-    transform: translateY(-6px);
+    transform: translateY(-8px);
   }
   &::after {
     animation: closeBottom 0.8s backwards reverse;
-    transform: translateY(6px);
+    transform: translateY(8px);
   }
   &.is-open {
     animation: openMid 0.8s forwards;
@@ -28,7 +28,7 @@
 
 @keyframes openTop {
   0% {
-    transform: translateY(-6px) rotate(0deg);
+    transform: translateY(-8px) rotate(0deg);
   }
   50% {
     transform: translateY(0px) rotate(0deg);
@@ -39,7 +39,7 @@
 }
 @keyframes closeTop {
   0% {
-    transform: translateY(-6px) rotate(0deg);
+    transform: translateY(-8px) rotate(0deg);
   }
   50% {
     transform: translateY(0px) rotate(0deg);
@@ -69,7 +69,7 @@
 
 @keyframes openBottom {
   0% {
-    transform: translateY(6px) rotate(0deg);
+    transform: translateY(8px) rotate(0deg);
   }
   50% {
     transform: translateY(0px) rotate(0deg);
@@ -81,7 +81,7 @@
 
 @keyframes closeBottom {
   0% {
-    transform: translateY(6px) rotate(0deg);
+    transform: translateY(8px) rotate(0deg);
   }
   50% {
     transform: translateY(0px) rotate(0deg);

@@ -8,7 +8,7 @@ const ThemeSwitch: React.FC = () => {
 
   return (
     <button
-      className="w-8 h-8 px-1 z-20"
+      className="w-9 h-9 px-1 z-20"
       onClick={() => setTheme(isLight ? "dark" : "light")}
     >
       {isLight ? (

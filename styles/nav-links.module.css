@@ -15,6 +15,9 @@
     clip-path: circle(100% at center);
     .nav-link {
       @apply opacity-100 translate-x-0;
+      a {
+        @apply text-gray-200;
+      }
     }
   }
 }

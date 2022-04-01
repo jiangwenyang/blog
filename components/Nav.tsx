@@ -49,7 +49,14 @@ const Nav: React.FC = () => {
             }}
             onClick={handleClick}
           >
-            <NavLink href={item.href}>{item.title}</NavLink>
+            <NavLink
+              href={item.href}
+              className={classNames({
+                "hover:bg-gray-700": isOpen,
+              })}
+            >
+              {item.title}
+            </NavLink>
           </li>
         ))}
       </ul>
