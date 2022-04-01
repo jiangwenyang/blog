@@ -1,5 +1,5 @@
 .nav-links {
-  @apply fixed top-0 left-0 w-full h-screen flex flex-col justify-center items-center opacity-0 bg-gray-100 px-8 z-10  
+  @apply fixed top-0 left-0 w-full h-screen flex flex-col justify-center items-center opacity-0 bg-black  px-8 z-10  
       sm:static sm:w-auto sm:h-auto sm:flex sm:flex-row sm:bg-transparent sm:items-center sm:justify-between sm:opacity-100 sm:px-0;
 
   clip-path: circle(200px at top right);

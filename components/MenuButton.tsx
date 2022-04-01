@@ -4,15 +4,20 @@ import styles from "styles/menu-button.module.css";
 type Props = {
   isOpen: boolean;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
+  className?: string;
 };
 
-const MenuButton: React.FC<Props> = ({ isOpen, onClick }) => {
+const MenuButton: React.FC<Props> = ({ isOpen, onClick, className }) => {
   return (
     <button
       onClick={onClick}
-      className={classNames(styles["menu-button"], {
-        [styles["is-open"]]: isOpen,
-      })}
+      className={classNames(
+        styles["menu-button"],
+        {
+          [styles["is-open"]]: isOpen,
+        },
+        className
+      )}
     />
   );
 };

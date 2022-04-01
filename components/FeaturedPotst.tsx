@@ -18,13 +18,13 @@ const FeaturedPost: React.FC<Props> = ({ post, className }) => {
           className
         )}
       >
-        <div className="flex flex-col justify-between h-full p-2 bg-white rounded-lg">
-          <h4 className="text-lg md:text-lg font-medium mb-6 sm:mb-10 w-full text-gray-900 tracking-tight">
+        <div className="flex flex-col justify-between h-full p-2 bg-white dark:bg-gray-900 rounded-lg">
+          <h4 className="text-lg md:text-lg font-medium mb-6 sm:mb-10 w-full text-gray-900 dark:text-gray-100 tracking-tight">
             {post.title}
           </h4>
           <DateFormatter
             dateString={post.date!}
-            className="text-gray-500 text-sm"
+            className="text-gray-800 dark:text-gray-200 text-sm"
           />
         </div>
       </a>

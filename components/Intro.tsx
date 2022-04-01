@@ -10,7 +10,7 @@ const Intro: React.FC = () => {
         alt="jiangwenyang"
         className="rounded-full"
       />
-      <article className="prose max-w-none mt-4">
+      <article className="prose dark:prose-invert max-w-none mt-4">
         <p>
           我叫蒋文杨，1995年出生于重庆。5年的前端开发，阅读和电影爱好者，业余做饭人和专职铲屎官。
         </p>

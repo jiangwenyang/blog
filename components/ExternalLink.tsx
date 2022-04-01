@@ -9,7 +9,7 @@ const ExternalLink: React.FC<Props> = ({ href, className, children }) => {
   return (
     <a
       className={classNames(
-        "text-gray-500 hover:text-gray-600 transition flex flex-col items-center",
+        "text-gray-900 dark:text-gray-100 hover:text-gray-600 transition flex flex-col items-center",
         className
       )}
       target="_blank"

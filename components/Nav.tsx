@@ -33,8 +33,8 @@ const Nav: React.FC = () => {
   };
 
   return (
-    <nav>
-      <MenuButton isOpen={isOpen} onClick={handleClick}></MenuButton>
+    <nav className="z-10">
+      <MenuButton isOpen={isOpen} onClick={handleClick} className="ml-2" />
       <ul
         className={classNames(styles["nav-links"], {
           [styles["is-open"]]: isOpen,

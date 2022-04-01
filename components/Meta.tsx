@@ -9,7 +9,7 @@ const Meta: React.FC<MetaProps> = ({ title, content, icon }) => {
     <div className="flex items-center ">
       <div className="mr-1 w-6">{icon}</div>
       <div className="mr-2">{title}:</div>
-      <div className="text-slate-500">{content}</div>
+      <div className="text-slate-500 dark:text-slate-300">{content}</div>
     </div>
   );
 };

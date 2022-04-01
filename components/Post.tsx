@@ -9,7 +9,7 @@ type Props = {
 };
 
 const Post: React.FC<Props> = ({ post }) => (
-  <article className="prose prose-slate">
+  <article className="prose dark:prose-invert">
     <h1>{post.title}</h1>
     <PostMeta words={post.words!} minutes={post.minutes!} date={post.date!} />
     {post.coverImage && <PostCover coverImage={post.coverImage} />}
