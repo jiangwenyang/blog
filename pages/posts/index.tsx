@@ -1,16 +1,16 @@
-import type { GetStaticProps } from "next";
-import type { Post } from "typings/post";
-import type { NextPageWithLayout } from "typings/app";
+import type { GetStaticProps } from 'next';
+import type { Post } from 'typings/post';
+import type { NextPageWithLayout } from 'typings/app';
 
-import React from "react";
-import Head from "next/head";
+import React from 'react';
+import Head from 'next/head';
 
-import PostLayout from "components/PostLayout";
-import HeadTitle from "components/HeadTitle";
-import Posts from "components/Posts";
+import PostLayout from 'components/PostLayout';
+import HeadTitle from 'components/HeadTitle';
+import Posts from 'components/Posts';
 
-import { getAllPosts } from "utils/posts";
-import generateRssFeed from "utils/feed";
+import { getAllPosts } from 'utils/posts';
+import generateRssFeed from 'utils/feed';
 
 type Props = {
   allPosts: Post[];
@@ -34,8 +34,8 @@ PostsPage.getLayout = function getLayout(page: React.ReactElement) {
   return <PostLayout>{page}</PostLayout>;
 };
 
-export const getStaticProps: GetStaticProps = (context) => {
-  const fileds = ["title", "date", "slug", "coverImage", "excerpt"];
+export const getStaticProps: GetStaticProps = () => {
+  const fileds = ['title', 'date', 'slug', 'coverImage', 'excerpt'];
 
   const allPosts = getAllPosts(fileds);
 

@@ -1,16 +1,16 @@
-import type { GetStaticProps } from "next";
-import type { Post } from "typings/post";
-import type { NextPageWithLayout } from "typings/app";
+import type { GetStaticProps } from 'next';
+import type { Post } from 'typings/post';
+import type { NextPageWithLayout } from 'typings/app';
 
-import React from "react";
-import Head from "next/head";
+import React from 'react';
+import Head from 'next/head';
 
-import Layout from "components/Layout";
-import Intro from "components/Intro";
-import FeaturedPosts from "components/FeaturedPosts";
-import ReadMore from "components/ReadMore";
+import Layout from 'components/Layout';
+import Intro from 'components/Intro';
+import FeaturedPosts from 'components/FeaturedPosts';
+import ReadMore from 'components/ReadMore';
 
-import { getFeaturedPosts } from "utils/posts";
+import { getFeaturedPosts } from 'utils/posts';
 
 type Props = {
   featuredPosts: Post[];
@@ -37,8 +37,8 @@ HomePage.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout>{page}</Layout>;
 };
 
-export const getStaticProps: GetStaticProps = (context) => {
-  const featuredFileds = ["title", "date", "slug", "coverImage", "excerpt"];
+export const getStaticProps: GetStaticProps = () => {
+  const featuredFileds = ['title', 'date', 'slug', 'coverImage', 'excerpt'];
 
   const featuredPosts = getFeaturedPosts(featuredFileds);
 

@@ -1,23 +1,23 @@
-import type { GetStaticPaths, GetStaticProps } from "next";
-import type { ParsedUrlQuery } from "querystring";
-import type { Post as PostType } from "typings/post";
-import type { NextPageWithLayout } from "typings/app";
+import type { GetStaticPaths, GetStaticProps } from 'next';
+import type { ParsedUrlQuery } from 'querystring';
+import type { Post as PostType } from 'typings/post';
+import type { NextPageWithLayout } from 'typings/app';
 
-import { useRouter } from "next/router";
-import ErrorPage from "next/error";
-import Head from "next/head";
-import { useEffect } from "react";
+import { useRouter } from 'next/router';
+import ErrorPage from 'next/error';
+import Head from 'next/head';
+import { useEffect } from 'react';
 
-import PostLayout from "components/PostLayout";
-import Post from "components/Post";
-import Backtop from "components/Backtop";
+import PostLayout from 'components/PostLayout';
+import Post from 'components/Post';
+import Backtop from 'components/Backtop';
 
-import { getPostBySlug, getAllPosts } from "utils/posts";
-import initGitalk from "utils/gitTalk";
-import markdownToHtml from "utils/markdownToHtml";
+import { getPostBySlug, getAllPosts } from 'utils/posts';
+import initGitalk from 'utils/gitTalk';
+import markdownToHtml from 'utils/markdownToHtml';
 
-import "prism-themes/themes/prism-atom-dark.min.css";
-import "gitalk/dist/gitalk.css";
+import 'prism-themes/themes/prism-atom-dark.min.css';
+import 'gitalk/dist/gitalk.css';
 
 interface Props {
   post: PostType;
@@ -27,7 +27,7 @@ const PostPage: NextPageWithLayout<Props> = ({ post }) => {
   const router = useRouter();
 
   useEffect(() => {
-    initGitalk("gitalk-container", post.slug!);
+    initGitalk('gitalk-container', post.slug || '');
   });
 
   if (!router.isFallback && !post?.slug) {
@@ -59,17 +59,17 @@ interface Params extends ParsedUrlQuery {
 export const getStaticProps: GetStaticProps<Props, Params> = async ({
   params,
 }) => {
-  const post = getPostBySlug(params!.slug, [
-    "title",
-    "date",
-    "slug",
-    "content",
-    "coverImage",
-    "minutes",
-    "words",
+  const post = getPostBySlug(params.slug, [
+    'title',
+    'date',
+    'slug',
+    'content',
+    'coverImage',
+    'minutes',
+    'words',
   ]);
 
-  const content = await markdownToHtml(post.content || "");
+  const content = await markdownToHtml(post.content || '');
 
   return {
     props: {
@@ -82,7 +82,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
 };
 
 export const getStaticPaths: GetStaticPaths = () => {
-  const posts = getAllPosts(["slug"]);
+  const posts = getAllPosts(['slug']);
 
   return {
     paths: posts.map((post) => {
