@@ -51,9 +51,9 @@ const Nav: React.FC = () => {
           >
             <NavLink
               href={item.href}
-              className={classNames({
-                "hover:bg-gray-700": isOpen,
-              })}
+              className={classNames(
+                isOpen ? "hover:bg-gray-700" : "hover:bg-gray-200"
+              )}
             >
               {item.title}
             </NavLink>
