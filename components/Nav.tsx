@@ -32,6 +32,13 @@ const Nav: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleClickLink = () => {
+    if (!isOpen) {
+      return;
+    }
+    setIsOpen(false);
+  };
+
   return (
     <nav className="z-10">
       <MenuButton isOpen={isOpen} onClick={handleClick} className="ml-2" />
@@ -47,7 +54,7 @@ const Nav: React.FC = () => {
             style={{
               transitionDelay: `${500 + index * 100}ms`,
             }}
-            onClick={handleClick}
+            onClick={handleClickLink}
           >
             <NavLink
               href={item.href}
