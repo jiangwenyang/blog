@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import DateFormatter from './DateFormatter';
+import Link from "next/link";
+import DateFormatter from "./DateFormatter";
 
 interface Props {
   title: string;
@@ -17,7 +17,7 @@ const PostPreview: React.FC<Props> = ({ title, date, slug, excerpt }) => (
             {title}
           </h4>
           <DateFormatter
-            dateString={date}
+            dateString={date!}
             formatString="yyyy年MM月dd日"
             className="md:w-36 text-gray-500 dark:text-gray-400 text-base"
           />

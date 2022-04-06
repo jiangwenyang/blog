@@ -1,8 +1,8 @@
-import type { Post } from 'typings/post';
+import type { Post } from "typings/post";
 
-import classNames from 'classnames';
-import Link from 'next/link';
-import DateFormatter from './DateFormatter';
+import classNames from "classnames";
+import Link from "next/link";
+import DateFormatter from "./DateFormatter";
 
 type Props = {
   post: Post;
@@ -14,7 +14,7 @@ const FeaturedPost: React.FC<Props> = ({ post, className }) => {
     <Link href={`/posts/${post.slug}`}>
       <a
         className={classNames(
-          'p-1 bg-rose-400 rounded-lg transform hover:scale-105 transition-transform bg-gradient-to-r  from-rose-300 to-indigo-400 shadow-sm',
+          "p-1 bg-rose-400 rounded-lg transform hover:scale-105 transition-transform bg-gradient-to-r  from-rose-300 to-indigo-400 shadow-sm",
           className
         )}
       >
@@ -23,7 +23,7 @@ const FeaturedPost: React.FC<Props> = ({ post, className }) => {
             {post.title}
           </h4>
           <DateFormatter
-            dateString={post.date}
+            dateString={post.date!}
             className="text-gray-800 dark:text-gray-200 text-sm"
           />
         </div>
