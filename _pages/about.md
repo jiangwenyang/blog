@@ -3,11 +3,13 @@ title: about
 date: 2022-04-08
 ---
 
-我叫蒋文杨，1995 年出生于重庆。2017 年毕业于重庆邮电大学，计算机科学与技术专业，毕业后一直从事前端开发工作。
-我热爱编程,折腾新技术新工具。同时也喜欢一切有创造性的东西，不固守老旧勇于尝试。
-我热爱生活，喜欢做饭，是一只 10 斤胖的英短银渐层折耳猫的铲屎官。
+> Cats like to eat fish, but they are afraid of claws in the water.
 
-> Cats like to eat fish, but they are afraid of claws in the water.G
+我叫蒋文杨，1995 年出生于重庆。2017 年毕业于重庆邮电大学，计算机科学与技术专业，毕业后一直从事前端开发工作。
+
+热爱编程，喜欢一切有创造性的东西，热衷折腾新技术新工具。
+
+喜欢做饭，是一只 10 斤胖的英短银渐层折耳猫的铲屎官。
 
 ### 专业技能
 
@@ -43,3 +45,9 @@ date: 2022-04-08
 - 基于 Storybook 搭建 UI 组件平台，将 UI 组件开发从业务中抽离。
 - 独立搭建前端测试框架、编写测试用例、Jenkins 构建集成（基于 Mocha + Chai + Karma + istanbul）。
 - 前端代码规范以及自动化（基于 husky + tslint + lint-staged）。
+
+### 联系方式
+
+- [Github](https://github.com/jiangwenyang)
+- [Twitter](https://twitter.com/jiang_wenyang)
+- [Email](mailto:u19950930@gmail.com) - u19950930@gmail.com
