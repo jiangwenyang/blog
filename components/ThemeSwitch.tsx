@@ -1,10 +1,16 @@
+import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { LightModeRound, DarkModeRound } from "@ricons/material";
 
 const ThemeSwitch: React.FC = () => {
+  const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
-
   const isLight = theme === "light";
+
+  // When mounted on client, now we can show the UI
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null;
 
   return (
     <button
