@@ -26,7 +26,7 @@ date: 2022-04-08
 
 - 封装地图核心组件(Marker、Popop、Layer)，解决地图应用开发问题。
 - 设备一张图、大屏的可视化展示。
-- 基于 Monorepo 架构将样式、工具函数、组件封装成组件库 web-lib，并基于 Vuepress 部署文档和 Demo 。
+- 基于 Monorepo 架构将样式、工具函数、组件封装成组件库 [web-lib](http://36.110.103.178:29080/web-lib/)，并基于 Vuepress 部署文档和 Demo 。
 - 独立设计并开发用户系统实现基础数据维护，以及菜单、功能权限的动态配置。
 - 基于 Hygen 开发 VSCode 插件 [Swagger To API](https://marketplace.visualstudio.com/items?itemName=jiangwenyang.swagger-to-api) 实现快速定制生成 API 接口代码。
 - 将项目从 Vue CLI 迁移到 Vite，提升开发体验，并输出迁移[文档](/posts/一个真实的vue-cli项目迁移到vite)。
