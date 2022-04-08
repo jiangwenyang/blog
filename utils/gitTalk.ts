@@ -1,7 +1,7 @@
 import Gitalk from "gitalk";
 import md5 from "md5";
 
-const initGitalk = (container: string, id: string) => {
+const initGitalk = (container: string) => {
   const gitalkOptions = {
     clientID: process.env.NEXT_PUBLIC_GIT_TALK_CLIENT_ID!,
     clientSecret: process.env.NEXT_PUBLIC_GIT_TALK_CLIENT_SECRET!,

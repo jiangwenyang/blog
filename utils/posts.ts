@@ -96,7 +96,7 @@ export function getFeaturedPosts(fields: string[] = [], limit = 4) {
 
   const allPost = getAllPosts(realFields);
 
-  let allFeaturedPosts = allPost.filter((post) => post.featured);
+  const allFeaturedPosts = allPost.filter((post) => post.featured);
 
   const realFeaturedPosts = allFeaturedPosts.length
     ? allFeaturedPosts
