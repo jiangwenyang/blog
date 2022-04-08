@@ -8,7 +8,7 @@ type Props = {
 };
 
 const Post: React.FC<Props> = ({ post }) => (
-  <article className="prose dark:prose-invert">
+  <article className="prose dark:prose-invert normal-link">
     {post.coverImage && <PostCover coverImage={post.coverImage} />}
     <PostContent content={post.content!} />
   </article>

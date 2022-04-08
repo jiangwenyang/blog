@@ -13,7 +13,7 @@
   #__next {
     @apply flex flex-col min-h-screen;
   }
-  .prose {
+  .prose:not(.normal-link) {
     & a {
       @apply inline-block relative no-underline;
       &::after {
