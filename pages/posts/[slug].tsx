@@ -27,7 +27,7 @@ const PostPage: NextPageWithLayout<Props> = ({ post }) => {
   const router = useRouter();
 
   useEffect(() => {
-    initGitalk("gitalk-container", post.slug || "");
+    initGitalk("gitalk-container");
   });
 
   if (!router.isFallback && !post?.slug) {

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 
 const Intro: React.FC = () => {
@@ -12,7 +13,8 @@ const Intro: React.FC = () => {
       />
       <article className="prose dark:prose-invert max-w-none mt-4">
         <p>
-          我叫蒋文杨，1995年出生于重庆。5年的前端开发，阅读和电影爱好者，业余做饭人和专职铲屎官。
+          我叫<Link href="/about">蒋文杨</Link>
+          ，1995年出生于重庆。5年前端开发工程师，阅读和电影爱好者，业余做饭人和专职铲屎官。
         </p>
         <p>
           写这个博客的初衷是记录我学习和生活的点滴，如果能在此之外帮助到你，我将不胜荣幸。

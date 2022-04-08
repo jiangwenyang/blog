@@ -8,15 +8,18 @@ import readingTime from "reading-time";
 import formatISO from "date-fns/formatISO";
 import isFunction from "lodash/isFunction";
 
-const postsDirectory = join(process.cwd(), "_posts");
+const getDirectoryPath = (path: string) => join(process.cwd(), path);
+
+const postsDirectory = getDirectoryPath("_posts");
+const pagesDirectory = getDirectoryPath("_pages");
 
 const CoverDirectoryName = "covers";
 
 const getCoverPath = (coverSrc: CoverImage["src"]) =>
   `/${CoverDirectoryName}/${coverSrc}`;
 
-export function getPostSlugs() {
-  return fs.readdirSync(postsDirectory).filter(isNotJunk);
+export function getSlugs(basePath: string = postsDirectory) {
+  return fs.readdirSync(basePath).filter(isNotJunk);
 }
 
 const tranformCoverImage = (
@@ -39,9 +42,13 @@ const tranformCoverImage = (
   };
 };
 
-export function getPostBySlug(slug: string, fields: string[] = []): Post {
+export function getPostBySlug(
+  slug: string,
+  fields: string[] = [],
+  basePath: string = postsDirectory
+): Post {
   const realSlug = slug.replace(/\.md$/, "");
-  const fullPath = join(postsDirectory, `${realSlug}.md`);
+  const fullPath = join(basePath, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
   const { minutes, words } = readingTime(content);
@@ -78,10 +85,13 @@ export function getPostBySlug(slug: string, fields: string[] = []): Post {
   return post;
 }
 
-export function getAllPosts(fields: string[] = []) {
-  const slugs = getPostSlugs();
+export function getAllPosts(
+  fields: string[] = [],
+  basePath: string = postsDirectory
+) {
+  const slugs = getSlugs(basePath);
   const posts = slugs
-    .map((slug) => getPostBySlug(slug, fields))
+    .map((slug) => getPostBySlug(slug, fields, basePath))
     .sort((post1, post2) => {
       if (!(post1.date && post2.date)) {
         return 1;
@@ -103,4 +113,12 @@ export function getFeaturedPosts(fields: string[] = [], limit = 4) {
     : allPost;
 
   return realFeaturedPosts.slice(0, limit);
+}
+
+export function getPageBySlug(slug: string, fields: string[] = []) {
+  return getPostBySlug(slug, fields, pagesDirectory);
+}
+
+export function getAllPages(fields: string[] = []) {
+  return getAllPosts(fields, pagesDirectory);
 }
