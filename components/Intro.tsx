@@ -25,9 +25,21 @@ const Intro: React.FC = () => {
         </p>
         <p>
           你也可以通过Follow我的
-          <a href="https://github.com/jiangwenyang">Github</a>
+          <a
+            href="https://github.com/jiangwenyang"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Github
+          </a>
           或者
-          <a href="https://twitter.com/jiang_wenyang">Twitter</a>
+          <a
+            href="https://twitter.com/jiang_wenyang"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Twitter
+          </a>
           ,我会不定期分享一些有趣的东西。
         </p>
       </article>
