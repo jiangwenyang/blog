@@ -1,8 +1,8 @@
 import parseISO from "date-fns/parseISO";
 import format from "date-fns/format";
-import { zhCN } from "date-fns/locale";
+import zhCN from "date-fns/locale/zh-CN";
 
-import { CalendarLtr20Regular } from "@ricons/fluent";
+import CalendarLtr20Regular from "@ricons/fluent/CalendarLtr20Regular";
 import classNames from "classnames";
 
 type Props = {

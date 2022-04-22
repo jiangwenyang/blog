@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import { LightModeRound, DarkModeRound } from "@ricons/material";
+import LightModeRound from "@ricons/material/LightModeRound";
+import DarkModeRound from "@ricons/material/DarkModeRound";
 
 const ThemeSwitch: React.FC = () => {
   const [mounted, setMounted] = useState(false);

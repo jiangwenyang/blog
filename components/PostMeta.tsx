@@ -1,8 +1,6 @@
-import {
-  BookClock24Regular,
-  TextWordCount20Filled,
-  CalendarLtr20Regular,
-} from "@ricons/fluent";
+import BookClock24Regular from "@ricons/fluent/BookClock24Regular";
+import TextWordCount20Filled from "@ricons/fluent/TextWordCount20Filled";
+import CalendarLtr20Regular from "@ricons/fluent/CalendarLtr20Regular";
 
 import DateFormatter from "./DateFormatter";
 import Meta from "./Meta";
