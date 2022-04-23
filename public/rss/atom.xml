@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jiangwenyang.com</id>
     <title>Jiang Wenyang's Blog</title>
-    <updated>2022-04-22T09:26:49.976Z</updated>
+    <updated>2022-04-22T09:32:48.689Z</updated>
     <generator>Feed for Node.js</generator>
     <author>
         <name>Jiang Wenyang</name>
@@ -399,8 +399,8 @@ export default defineConfig(() => <span class="token punctuation">{</span>
 </code></pre></div>
 <p>可参考以下 ISSUE:</p>
 <ul>
-<li>https://github.com/vitejs/vite/issues/3283</li>
-<li>https://github.com/nuxt/vite/issues/117</li>
+<li><a href="https://github.com/vitejs/vite/issues/3283">https://github.com/vitejs/vite/issues/3283</a></li>
+<li><a href="https://github.com/nuxt/vite/issues/117">https://github.com/nuxt/vite/issues/117</a></li>
 </ul>
 <p>目前我们的解决方式就是不引入，然后在用到的地方手动进行引入规避这个问题，暂时没有特别好的解决方案。</p>
 <h3>动态导入 png 等图片资源</h3>
@@ -598,20 +598,103 @@ export default defineConfig(() => <span class="token punctuation">{</span>
 </li>
 </ol>
 <h4>git 支持的钩子及简单介绍</h4>
-<p>| 钩子类型           | 钩子名称           | 触发时机                                                                                           | 钩子参数                  | 可中止 |
-| ------------------ | ------------------ | -------------------------------------------------------------------------------------------------- | ------------------------- | ------ |
-| 提交工作流钩子     | pre-commit         | 键入提交信息前，即生成本次 commit 对象前。是代码检查、测试运行的好时机。                           | \                         | 是     |
-| 提交工作流钩子     | prepare-commit-msg | 启动提交信息编辑器之前，默认信息被创建之后运行。可以在这里修改默认提交信息。                       | filepath commitType SHA-1 | 是     |
-| 提交工作流钩子     | commit-msg         | 输入提交信息后，执行提交前发生。可以在这里检查提交信息是否规范，也可以修改提交信息。               | filepath                  | 是     |
-| 提交工作流钩子     | post-commit        | 整个提交完成后。一般用于发生通知，例如邮件通知提交等（但是建议在服务器端 post-receive 钩子中做）。 | \                         | 否     |
-| 电子邮件工作流钩子 | applypatch-msg     | 生成补丁提交信息后，应用补丁前。可用来检查补丁提交信息是否规范。                                   | mergeFilename             | 是     |
-| 电子邮件工作流钩子 | pre-applypatch     | 运行于应用补丁后，产生提交对象之前。因此和 pre-commit 一样是代码检查、测试运行的好时机。           | \                         | 是     |
-| 电子邮件工作流钩子 | post-applypatch    | 整个提交完成后。同 post-commit 一样是通知的好时机。                                                | \                         | 否     |
-| 其它客户端钩子     | pre-rebase         | 运行于变基前。                                                                                     | \                         | 是     |
-| 其它客户端钩子     | post-rewrite       | 被会替换提交记录的命令所触发。如<code>git commit --amend</code>                                               | commandName               | 否     |
-| 其它客户端钩子     | post-checkout      | 在 git checkout 成功运行后。                                                                       | commandName               | 否     |
-| 其它客户端钩子     | post-merge         | 在 git merge 成功运行后。                                                                          | commandName               | 否     |
-| 其它客户端钩子     | pre-push           | 更新了远程引用但是未推送本地提交前。                                                               | originBranchName HEAD     | 是     |</p>
+<table>
+<thead>
+<tr>
+<th>钩子类型</th>
+<th>钩子名称</th>
+<th>触发时机</th>
+<th>钩子参数</th>
+<th>可中止</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>提交工作流钩子</td>
+<td>pre-commit</td>
+<td>键入提交信息前，即生成本次 commit 对象前。是代码检查、测试运行的好时机。</td>
+<td>\</td>
+<td>是</td>
+</tr>
+<tr>
+<td>提交工作流钩子</td>
+<td>prepare-commit-msg</td>
+<td>启动提交信息编辑器之前，默认信息被创建之后运行。可以在这里修改默认提交信息。</td>
+<td>filepath commitType SHA-1</td>
+<td>是</td>
+</tr>
+<tr>
+<td>提交工作流钩子</td>
+<td>commit-msg</td>
+<td>输入提交信息后，执行提交前发生。可以在这里检查提交信息是否规范，也可以修改提交信息。</td>
+<td>filepath</td>
+<td>是</td>
+</tr>
+<tr>
+<td>提交工作流钩子</td>
+<td>post-commit</td>
+<td>整个提交完成后。一般用于发生通知，例如邮件通知提交等（但是建议在服务器端 post-receive 钩子中做）。</td>
+<td>\</td>
+<td>否</td>
+</tr>
+<tr>
+<td>电子邮件工作流钩子</td>
+<td>applypatch-msg</td>
+<td>生成补丁提交信息后，应用补丁前。可用来检查补丁提交信息是否规范。</td>
+<td>mergeFilename</td>
+<td>是</td>
+</tr>
+<tr>
+<td>电子邮件工作流钩子</td>
+<td>pre-applypatch</td>
+<td>运行于应用补丁后，产生提交对象之前。因此和 pre-commit 一样是代码检查、测试运行的好时机。</td>
+<td>\</td>
+<td>是</td>
+</tr>
+<tr>
+<td>电子邮件工作流钩子</td>
+<td>post-applypatch</td>
+<td>整个提交完成后。同 post-commit 一样是通知的好时机。</td>
+<td>\</td>
+<td>否</td>
+</tr>
+<tr>
+<td>其它客户端钩子</td>
+<td>pre-rebase</td>
+<td>运行于变基前。</td>
+<td>\</td>
+<td>是</td>
+</tr>
+<tr>
+<td>其它客户端钩子</td>
+<td>post-rewrite</td>
+<td>被会替换提交记录的命令所触发。如<code>git commit --amend</code></td>
+<td>commandName</td>
+<td>否</td>
+</tr>
+<tr>
+<td>其它客户端钩子</td>
+<td>post-checkout</td>
+<td>在 git checkout 成功运行后。</td>
+<td>commandName</td>
+<td>否</td>
+</tr>
+<tr>
+<td>其它客户端钩子</td>
+<td>post-merge</td>
+<td>在 git merge 成功运行后。</td>
+<td>commandName</td>
+<td>否</td>
+</tr>
+<tr>
+<td>其它客户端钩子</td>
+<td>pre-push</td>
+<td>更新了远程引用但是未推送本地提交前。</td>
+<td>originBranchName HEAD</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
 <h2>完整地图</h2>
 <p>下面是迁移完成的目录结构以及完整的 <code>vite.config.js</code> 文件</p>
 <div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">├── .browserslistrc
@@ -1277,28 +1360,101 @@ module<span class="token punctuation">.</span><span class="token property-access
 <h3>white-space</h3>
 <p><code>white-space</code> 看名字就知道主要是用来处理空白符的，但是也涉及到换行的问题。</p>
 <p><code>white-space</code> 的有下列的值，对应其中的空白符和换行符处理情况：</p>
-<p>| 属性              | 空白符                 | 换行符             | 超出是否自动换行 |
-| ----------------- | ---------------------- | ------------------ | ---------------- |
-| normal ( 默认值 ) | 多个连续空格合并为一个 | 视为空白符一起处理 | 是               |
-| pre               | 保留                   | 保留               | 否               |
-| pre-wrap          | 保留                   | 保留               | 是               |
-| pre-line          | 多个连续空格合并为一个 | 保留               | 是               |
-| no-wrap           | 多个连续空格合并为一个 | 视为空白符一起处理 | 否               |</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>空白符</th>
+<th>换行符</th>
+<th>超出是否自动换行</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>normal ( 默认值 )</td>
+<td>多个连续空格合并为一个</td>
+<td>视为空白符一起处理</td>
+<td>是</td>
+</tr>
+<tr>
+<td>pre</td>
+<td>保留</td>
+<td>保留</td>
+<td>否</td>
+</tr>
+<tr>
+<td>pre-wrap</td>
+<td>保留</td>
+<td>保留</td>
+<td>是</td>
+</tr>
+<tr>
+<td>pre-line</td>
+<td>多个连续空格合并为一个</td>
+<td>保留</td>
+<td>是</td>
+</tr>
+<tr>
+<td>no-wrap</td>
+<td>多个连续空格合并为一个</td>
+<td>视为空白符一起处理</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
 <p><code>white-space</code> 主要定义空白符和换行符的处理，以及超出是否换行。而对于超出时如何换行则由下面两位进行定义。</p>
 <h3>word-break</h3>
 <p><code>word-break</code> 定义了换行时对单词如何进行处理。包括下面三个关键字值：</p>
-<p>| 值                | 描述                                                                                                                       | 单词过长是否会自动截断 |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| normal （默认值） | 默认换行规则                                                                                                               | 否                     |
-| break-all         | 允许任意非 CJK(Chinese/Japanese/Korean)文本间的单词断行。                                                                  | 是                     |
-| keep-all          | 不允许 CJK(Chinese/Japanese/Korean)文本中的单词换行，只能在半角空格或连字符处换行。非 CJK 文本的行为实际上和<code>normal</code>一致。 | 否                     |</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+<th>单词过长是否会自动截断</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>normal （默认值）</td>
+<td>默认换行规则</td>
+<td>否</td>
+</tr>
+<tr>
+<td>break-all</td>
+<td>允许任意非 CJK(Chinese/Japanese/Korean)文本间的单词断行。</td>
+<td>是</td>
+</tr>
+<tr>
+<td>keep-all</td>
+<td>不允许 CJK(Chinese/Japanese/Korean)文本中的单词换行，只能在半角空格或连字符处换行。非 CJK 文本的行为实际上和<code>normal</code>一致。</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
 <p><code>break-all</code> 的兼容性比较好，几乎所有浏览器都支持。<code>keep-all</code> 支持率比较查，并且实用性不强。</p>
 <h3>word-wrap</h3>
 <p><code>word-wrap</code> 和 <code>word-break</code> 很相似，但是其实仔细研究下你会发现他们区别挺大。<code>word-wrap</code> 支持下面两个关键字属性：</p>
-<p>| 值                | 描述                                                                                         | 单词过长是否会自动截断 |
-| ----------------- | -------------------------------------------------------------------------------------------- | ---------------------- |
-| normal （默认值） | 默认的换行规则                                                                               | 否                     |
-| break-word        | 表示如果行内没有多余的地方容纳该单词到结尾，则那些正常的不能被被分割的单词会被强制分割换行。 | 否                     |</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+<th>单词过长是否会自动截断</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>normal （默认值）</td>
+<td>默认的换行规则</td>
+<td>否</td>
+</tr>
+<tr>
+<td>break-word</td>
+<td>表示如果行内没有多余的地方容纳该单词到结尾，则那些正常的不能被被分割的单词会被强制分割换行。</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <p>**MDN 注：**word-wrap 属性原本属于微软的一个私有属性，在 CSS3 现在的文本规范草案中已经被重名为 overflow-wrap 。 word-wrap 现在被当作 overflow-wrap 的 “别名”。 稳定的谷歌 Chrome 和 Opera 浏览器版本支持这种新语法。</p>
 </blockquote>
@@ -1863,8 +2019,8 @@ it(&#x26;#39;method为GET&#x26;#39;, (done) =&#x26;gt; {
 </ul>
 <blockquote>
 <p>Enzyme 的浅渲染模式下的事件模拟并非是真的事件触发，实际上它是一种“障眼法”实现，例如 buttonWrapper.simulate('click')只是简单了调用传给 Button 组件的 onClick 参数的那个函数而已。</p>
-<p>具体描述：http://airbnb.io/enzyme/docs/future.html</p>
-<p>Enzyme 的很多坑：http://airbnb.io/enzyme/docs/guides/migration-from-2-to-3.html</p>
+<p>具体描述：<a href="http://airbnb.io/enzyme/docs/future.html">http://airbnb.io/enzyme/docs/future.html</a></p>
+<p>Enzyme 的很多坑：<a href="http://airbnb.io/enzyme/docs/guides/migration-from-2-to-3.html">http://airbnb.io/enzyme/docs/guides/migration-from-2-to-3.html</a></p>
 <p>如果在异步操作中调用 setState(),则测试时需要在下一个时钟周期中进行断言（类似的问题较多）：</p>
 <div class="remark-highlight"><pre class="language-unknown"><code class="language-unknown">/* 模拟点击 */
 wrapper.find(&#x26;#39;UIIcon&#x26;#39;).simulate(&#x26;#39;click&#x26;#39;)
@@ -2556,20 +2712,103 @@ module<span class="token punctuation">.</span><span class="token property-access
 </blockquote>
 <h3>客户端钩子</h3>
 <p>客户端钩子主要有提交工作流钩子、电子邮件工作流钩子和其它钩子。</p>
-<p>| 钩子类型           | 钩子名称           | 触发时机                                                                                           | 钩子参数                  | 可中止 |
-| ------------------ | ------------------ | -------------------------------------------------------------------------------------------------- | ------------------------- | ------ |
-| 提交工作流钩子     | pre-commit         | 键入提交信息前，即生成本次 commit 对象前。是代码检查、测试运行的好时机。                           | \                         | 是     |
-| 提交工作流钩子     | prepare-commit-msg | 启动提交信息编辑器之前，默认信息被创建之后运行。可以在这里修改默认提交信息。                       | filepath commitType SHA-1 | 是     |
-| 提交工作流钩子     | commit-msg         | 输入提交信息后，执行提交前发生。可以在这里检查提交信息是否规范，也可以修改提交信息。               | filepath                  | 是     |
-| 提交工作流钩子     | post-commit        | 整个提交完成后。一般用于发生通知，例如邮件通知提交等（但是建议在服务器端 post-receive 钩子中做）。 | \                         | 否     |
-| 电子邮件工作流钩子 | applypatch-msg     | 生成补丁提交信息后，应用补丁前。可用来检查补丁提交信息是否规范。                                   | mergeFilename             | 是     |
-| 电子邮件工作流钩子 | pre-applypatch     | 运行于应用补丁后，产生提交对象之前。因此和 pre-commit 一样是代码检查、测试运行的好时机。           | \                         | 是     |
-| 电子邮件工作流钩子 | post-applypatch    | 整个提交完成后。同 post-commit 一样是通知的好时机。                                                | \                         | 否     |
-| 其它客户端钩子     | pre-rebase         | 运行于变基前。                                                                                     | \                         | 是     |
-| 其它客户端钩子     | post-rewrite       | 被会替换提交记录的命令所触发。如<code>git commit --amend</code>                                               | commandName               | 否     |
-| 其它客户端钩子     | post-checkout      | 在 git checkout 成功运行后。                                                                       | commandName               | 否     |
-| 其它客户端钩子     | post-merge         | 在 git merge 成功运行后。                                                                          | commandName               | 否     |
-| 其它客户端钩子     | pre-push           | 更新了远程引用但是未推送本地提交前。                                                               | originBranchName HEAD     | 是     |</p>
+<table>
+<thead>
+<tr>
+<th>钩子类型</th>
+<th>钩子名称</th>
+<th>触发时机</th>
+<th>钩子参数</th>
+<th>可中止</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>提交工作流钩子</td>
+<td>pre-commit</td>
+<td>键入提交信息前，即生成本次 commit 对象前。是代码检查、测试运行的好时机。</td>
+<td>\</td>
+<td>是</td>
+</tr>
+<tr>
+<td>提交工作流钩子</td>
+<td>prepare-commit-msg</td>
+<td>启动提交信息编辑器之前，默认信息被创建之后运行。可以在这里修改默认提交信息。</td>
+<td>filepath commitType SHA-1</td>
+<td>是</td>
+</tr>
+<tr>
+<td>提交工作流钩子</td>
+<td>commit-msg</td>
+<td>输入提交信息后，执行提交前发生。可以在这里检查提交信息是否规范，也可以修改提交信息。</td>
+<td>filepath</td>
+<td>是</td>
+</tr>
+<tr>
+<td>提交工作流钩子</td>
+<td>post-commit</td>
+<td>整个提交完成后。一般用于发生通知，例如邮件通知提交等（但是建议在服务器端 post-receive 钩子中做）。</td>
+<td>\</td>
+<td>否</td>
+</tr>
+<tr>
+<td>电子邮件工作流钩子</td>
+<td>applypatch-msg</td>
+<td>生成补丁提交信息后，应用补丁前。可用来检查补丁提交信息是否规范。</td>
+<td>mergeFilename</td>
+<td>是</td>
+</tr>
+<tr>
+<td>电子邮件工作流钩子</td>
+<td>pre-applypatch</td>
+<td>运行于应用补丁后，产生提交对象之前。因此和 pre-commit 一样是代码检查、测试运行的好时机。</td>
+<td>\</td>
+<td>是</td>
+</tr>
+<tr>
+<td>电子邮件工作流钩子</td>
+<td>post-applypatch</td>
+<td>整个提交完成后。同 post-commit 一样是通知的好时机。</td>
+<td>\</td>
+<td>否</td>
+</tr>
+<tr>
+<td>其它客户端钩子</td>
+<td>pre-rebase</td>
+<td>运行于变基前。</td>
+<td>\</td>
+<td>是</td>
+</tr>
+<tr>
+<td>其它客户端钩子</td>
+<td>post-rewrite</td>
+<td>被会替换提交记录的命令所触发。如<code>git commit --amend</code></td>
+<td>commandName</td>
+<td>否</td>
+</tr>
+<tr>
+<td>其它客户端钩子</td>
+<td>post-checkout</td>
+<td>在 git checkout 成功运行后。</td>
+<td>commandName</td>
+<td>否</td>
+</tr>
+<tr>
+<td>其它客户端钩子</td>
+<td>post-merge</td>
+<td>在 git merge 成功运行后。</td>
+<td>commandName</td>
+<td>否</td>
+</tr>
+<tr>
+<td>其它客户端钩子</td>
+<td>pre-push</td>
+<td>更新了远程引用但是未推送本地提交前。</td>
+<td>originBranchName HEAD</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
 <p>参考：</p>
 <ul>
 <li>可中止：钩子以非 0 结束码退出则中止 Git 操作，以 0 结束码退出则正常执行 Git 操作，后面的服务器端钩子同理。</li>
@@ -2588,11 +2827,40 @@ module<span class="token punctuation">.</span><span class="token property-access
 </blockquote>
 <h3>服务器端钩子</h3>
 <p>服务器端钩子主要在推送到达到服务器之前和之后触发。</p>
-<p>| 钩子类型     | 钩子名称     | 触发时机                                                                                            | 钩子参数                       | 可终止 |
-| ------------ | ------------ | --------------------------------------------------------------------------------------------------- | ------------------------------ | ------ |
-| 服务器端钩子 | pre-receive  | 客户端推送到达前，非 0 值退出则拒绝                                                                 | pushRef                        | 是     |
-| 服务器端钩子 | update       | 和 pre-receive，区别时如果提交包含多个分支，则会在每个分支都运行一次，而 pre-receive 只会运行一次。 | branchName lastSHA-1 thisSHA-1 | 是     |
-| 服务器端钩子 | post-receive | 推送完成后。常用于邮件通知，持续集成。                                                              | pushRef                        | 否     |</p>
+<table>
+<thead>
+<tr>
+<th>钩子类型</th>
+<th>钩子名称</th>
+<th>触发时机</th>
+<th>钩子参数</th>
+<th>可终止</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>服务器端钩子</td>
+<td>pre-receive</td>
+<td>客户端推送到达前，非 0 值退出则拒绝</td>
+<td>pushRef</td>
+<td>是</td>
+</tr>
+<tr>
+<td>服务器端钩子</td>
+<td>update</td>
+<td>和 pre-receive，区别时如果提交包含多个分支，则会在每个分支都运行一次，而 pre-receive 只会运行一次。</td>
+<td>branchName lastSHA-1 thisSHA-1</td>
+<td>是</td>
+</tr>
+<tr>
+<td>服务器端钩子</td>
+<td>post-receive</td>
+<td>推送完成后。常用于邮件通知，持续集成。</td>
+<td>pushRef</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
 <p>参数解释：</p>
 <ul>
 <li>pushRef：推送的引用。</li>
@@ -2922,7 +3190,7 @@ Enzyme.configure({ disableLifecycleMethods: true });</code></pre></div>
 const wrapper = shallow(&#x26;lt;Component /&#x26;gt;, { disableLifecycleMethods: true });</code></pre></div>
 <h3>安装</h3>
 <p>对应版本具体安装参考
-官方指南：http://airbnb.io/enzyme/docs/installation/
+官方指南：<a href="http://airbnb.io/enzyme/docs/installation/">http://airbnb.io/enzyme/docs/installation/</a>
 目前我们的项目使用 react@0.14.8 react-dom@0.14.8
 首先安装 test utilities addon</p>
 <div class="remark-highlight"><pre class="language-bash"><code class="language-bash"><span class="token function">yarn</span> <span class="token function">add</span> -D react-addons-test-utils@0.14
@@ -2932,7 +3200,7 @@ const wrapper = shallow(&#x26;lt;Component /&#x26;gt;, { disableLifecycleMethods
 </code></pre></div>
 <h3>API 参考：</h3>
 <blockquote>
-<p>具体参数和 Example 参考官方文档：http://airbnb.io/enzyme/docs/api/</p>
+<p>具体参数和 Example 参考官方文档：<a href="http://airbnb.io/enzyme/docs/api/">http://airbnb.io/enzyme/docs/api/</a></p>
 </blockquote>
 <h4>浅渲染 Shallow Rendering</h4>
 <p>shallow 方法只会渲染出组件的第一层 DOM 结构，其嵌套的子组件不会被渲染出来，因此渲染效率高，适合用来做单元测试。</p>
@@ -3391,7 +3659,7 @@ Should 不兼容 IE 浏览器，Should 在使用上有一些坑，例如断言�
 <li>@param { Error | ErrorConstructor } errorLike</li>
 <li>@param { String | RegExp } errMsgMatcher error message</li>
 <li>@param { String } msg <em>optional</em></li>
-<li>@see https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Error#Error_types
+<li>@see <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Error#Error_types">https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Error#Error_types</a>
 断言 target 函数抛出的错误</li>
 </ul>
 <p><strong>.respondTo(method[, msg])</strong></p>
@@ -3798,7 +4066,7 @@ expect(new Foo())</code></pre></div>
 <p>当使用<code>coverage</code>的时候，只有使用<code>coverage</code>预编译的代码会算入覆盖率中，上面的 demo 中只有<code>src</code>目录下的代码会被统计覆盖率，<code>test</code>目录下的测试文件则不会被统计。</p>
 <p><strong>陷阱：</strong></p>
 <blockquote>
-<p>ts.config.json 中如果"files"和"include"都没有被指定，编译器默认包含当前目录和子目录下所有的 TypeScript 文件（.ts, .d.ts 和 .tsx）。编译 d.ts 文件会报错，因此在 karma-conf.js 文件中使用 exclude 排除 d.ts 文件。-- https://www.tslang.cn/docs/handbook/tsconfig-json.html</p>
+<p>ts.config.json 中如果"files"和"include"都没有被指定，编译器默认包含当前目录和子目录下所有的 TypeScript 文件（.ts, .d.ts 和 .tsx）。编译 d.ts 文件会报错，因此在 karma-conf.js 文件中使用 exclude 排除 d.ts 文件。-- <a href="https://www.tslang.cn/docs/handbook/tsconfig-json.html">https://www.tslang.cn/docs/handbook/tsconfig-json.html</a></p>
 </blockquote>
 <h3>karma-webpack + istanbul-instrumenter-loader</h3>
 <p><a href="https://github.com/webpack-contrib/karma-webpack#karma-webpack">karma-webpack</a>
