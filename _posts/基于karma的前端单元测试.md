@@ -35,7 +35,7 @@ karma-typescript 支持的 transform：
 
 **安装：**
 
-```
+```bash
 yarn add -D karma-typescript
 ```
 
@@ -171,7 +171,7 @@ testsContext.keys().forEach(testsContext);
 
 然后在`karma.conf.js`中将`test.js`作为入口
 
-```
+```js
 module.exports = function(config) {
     config.set({
 
