@@ -46,22 +46,22 @@ const PostPage: NextPageWithLayout<Props> = ({ post }) => {
   return (
     <>
       <Head>
-        <meta property="og:type" content={meta.type} key="og:type" />
-        <meta property="og:title" content={meta.title} key="og:type" />
+        <meta property="og:type" content={meta.type} key="og_type" />
+        <meta property="og:title" content={meta.title} key="og_type" />
         <meta
           property="og:description"
           content={meta.description}
-          key="og:description"
+          key="og_description"
         />
-        <meta property="og:url" content={meta.url} key="og:url" />
-        <meta property="og:image" content={meta.image} key="og:image" />
-        <meta name="twitter:title" content={meta.title} key="twitter:title" />
+        <meta property="og:url" content={meta.url} key="og_url" />
+        <meta property="og:image" content={meta.image} key="og_image" />
+        <meta name="twitter:title" content={meta.title} key="twitter_title" />
         <meta
           name="twitter:description"
           content={meta.description}
-          key="twitter:description"
+          key="twitter_description"
         />
-        <meta name="twitter:image" content={meta.image} key="twitter:image" />
+        <meta name="twitter:image" content={meta.image} key="twitter_image" />
         <meta property="article:published_time" content={meta.date} />
         <title>
           {post.title} - {process.env.NEXT_PUBLIC_TITLE}
