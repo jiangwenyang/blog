@@ -226,8 +226,7 @@ expect({a: {b: ['x', 'y']}}).to.have.nested.property('a.b[1]');
 - @param { Error | ErrorConstructor } errorLike
 - @param { String | RegExp } errMsgMatcher error message
 - @param { String } msg _optional_
-- @see https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Error#Error_types
-  断言 target 函数抛出的错误
+- @see [断言 target 函数抛出的错误](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Error#Error_types)
 
 **.respondTo(method[, msg])**
 
