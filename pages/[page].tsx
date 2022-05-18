@@ -5,7 +5,7 @@ import type { GetStaticProps, GetStaticPaths } from "next";
 
 import PostLayout from "components/PostLayout";
 import Page from "components/Page";
-import { getPageBySlug, getAllPages } from "utils/posts";
+import { getPageBySlug, getAllPages, getAllPosts } from "utils/posts";
 import markdownToHtml from "utils/markdownToHtml";
 
 type Props = {
@@ -31,6 +31,8 @@ interface Params extends ParsedUrlQuery {
 export const getStaticProps: GetStaticProps<Props, Params> = async ({
   params,
 }) => {
+  const allPosts = getAllPosts(["slug", "title"]);
+
   const page = getPageBySlug(params!.page, [
     "title",
     "date",
@@ -47,6 +49,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
         ...page,
         content,
       },
+      allPosts,
     },
   };
 };

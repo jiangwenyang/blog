@@ -42,6 +42,7 @@
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^12.1.5",
+    "@ricons/fa": "^0.12.0",
     "@ricons/fluent": "^0.12.0",
     "@ricons/material": "^0.12.0",
     "@types/lodash": "^4.14.180",

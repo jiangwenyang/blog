@@ -1,11 +1,15 @@
 import React from "react";
 import Brand from "./Brand";
-import ThemeSwitch from "./ThemeSwitch";
+import KbarButton from "./KbarButton";
 
-const Header: React.FC = () => (
+interface Props {
+  hideTitle?: boolean;
+}
+
+const Header: React.FC<Props> = ({ hideTitle }) => (
   <header className="flex flex-row justify-between items-center pb-8">
-    <Brand></Brand>
-    <ThemeSwitch></ThemeSwitch>
+    <Brand hideTitle={hideTitle}></Brand>
+    <KbarButton />
   </header>
 );
 
