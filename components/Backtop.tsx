@@ -1,8 +1,8 @@
-import classNames from 'classnames';
-import { useEffect, useState } from 'react';
-import UseAnimations from 'react-useanimations';
-import throttle from 'lodash/throttle';
-import arrowUp from 'react-useanimations/lib/arrowUp';
+import classNames from "classnames";
+import { useEffect, useState } from "react";
+import UseAnimations from "react-useanimations";
+import throttle from "lodash/throttle";
+import arrowUp from "react-useanimations/lib/arrowUp";
 
 interface Props {
   target?: string;
@@ -38,7 +38,7 @@ const Backtop: React.FC<Props> = ({
     const container: Document | Element | null = document;
     let el: Element | null = document.documentElement;
 
-    if (typeof target === 'string') {
+    if (typeof target === "string") {
       const targetEl = document.querySelector(target);
       if (!targetEl) {
         return;
@@ -48,27 +48,27 @@ const Backtop: React.FC<Props> = ({
     setEl(el);
     setContainer(container);
 
-    container?.addEventListener('scroll', handleScroll);
+    container?.addEventListener("scroll", throllHanldeScroll);
   };
 
   const handleBacktop = () => {
     if (!el) return;
     el.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   };
 
   useEffect(() => {
     init();
-    return () => container?.removeEventListener('scroll', throllHanldeScroll);
+    return () => container?.removeEventListener("scroll", throllHanldeScroll);
   });
 
   return (
     <div
       className={classNames(
-        'fixed right-1 bottom-1 sm:right-10 sm:bottom-10',
-        visible ? 'block' : 'hidden'
+        "fixed right-1 bottom-1 sm:right-10 sm:bottom-10",
+        visible ? "block" : "hidden"
       )}
     >
       {children || (

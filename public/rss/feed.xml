@@ -4,7 +4,7 @@
         <title>Jiang Wenyang's Blog</title>
         <link>https://jiangwenyang.com</link>
         <description>Jiang Wenyang's Blog</description>
-        <lastBuildDate>Wed, 18 May 2022 06:58:07 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 18 May 2022 07:16:57 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>zh</language>
@@ -1962,29 +1962,30 @@ testsContext<span class="token punctuation">.</span><span class="token method fu
     </div>
     <p>或者封装一下 fakeXMLHttpRequest</p>
     <div class="remark-highlight">
-      <pre class="language-unknown"><code class="language-unknown">/**
+      <pre class="language-js"><code class="language-js"><span class="token doc-comment comment">/**
  * 使用fakeXMLHttpRequest
- * @param callback 回调函数，接受请求对象作为参数
- */
-export function useFakeXHR(callback) {
-    const fakeXHR = useFakeXMLHttpRequest();
-    const requests: Array&#x26;lt;any&#x26;gt; = []; // requests会将引用传递给callback，因此使用const，避免指针被改写。
+ * <span class="token keyword">@param</span> <span class="token parameter">callback</span> 回调函数，接受请求对象作为参数
+ */</span>
+<span class="token keyword module">export</span> <span class="token keyword">function</span> <span class="token function">useFakeXHR</span><span class="token punctuation">(</span><span class="token parameter">callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> fakeXHR <span class="token operator">=</span> <span class="token function">useFakeXMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> <span class="token literal-property property">requests</span><span class="token operator">:</span> <span class="token known-class-name class-name">Array</span><span class="token operator">&#x3C;</span>any<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// requests会将引用传递给callback，因此使用const，避免指针被改写。</span>
 
-    fakeXHR.onCreate = request =&#x26;gt; requests.push(request);
+  fakeXHR<span class="token punctuation">.</span><span class="token method-variable function-variable method function property-access">onCreate</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">request</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> requests<span class="token punctuation">.</span><span class="token method function property-access">push</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    callback(requests, fakeXHR.restore.bind(fakeXHR));
-}
+  <span class="token function">callback</span><span class="token punctuation">(</span>requests<span class="token punctuation">,</span> fakeXHR<span class="token punctuation">.</span><span class="token method function property-access">restore</span><span class="token punctuation">.</span><span class="token method function property-access">bind</span><span class="token punctuation">(</span>fakeXHR<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-it(&#x26;#39;method为GET&#x26;#39;, (done) =&#x26;gt; {
-    useFakeXHR((request, restore) =&#x26;gt; {
-        get(&#x26;#39;/uri&#x26;#39;).then(() =&#x26;gt; {
-            restore();
-            done();
-        });
-        expect(request[0].method).equal(&#x26;#39;GET&#x26;#39;);
-        request[0].respond();
-    })
-})</code></pre>
+<span class="token function">it</span><span class="token punctuation">(</span><span class="token string">"method为GET"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">done</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token function">useFakeXHR</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">request<span class="token punctuation">,</span> restore</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+    <span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/uri"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+      <span class="token function">restore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span>request<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token property-access">method</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">equal</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    request<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token method function property-access">respond</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
     </div>
     <p>useFakeXHR 封装了对 Sinon 的 useFakeXMLHttpRequest，实现对 XHR 请求的 fake</p>
     <blockquote>
@@ -2207,14 +2208,15 @@ it(&#x26;#39;method为GET&#x26;#39;, (done) =&#x26;gt; {
   <p>Enzyme 的很多坑：<a href="http://airbnb.io/enzyme/docs/guides/migration-from-2-to-3.html">http://airbnb.io/enzyme/docs/guides/migration-from-2-to-3.html</a></p>
   <p>如果在异步操作中调用 setState(),则测试时需要在下一个时钟周期中进行断言（类似的问题较多）：</p>
   <div class="remark-highlight">
-    <pre class="language-unknown"><code class="language-unknown">/* 模拟点击 */
-wrapper.find(&#x26;#39;UIIcon&#x26;#39;).simulate(&#x26;#39;click&#x26;#39;)
-expect(wrapper.state(&#x26;#39;loadStatus&#x26;#39;)).to.equal(1) // 点击立即改变加载状态为正在加载
-/* 在promise.then 中设置setState,因此需要在下一个时钟进行断言 */
-setTimeout(() =&#x26;gt; {
-    expect(wrapper.state(&#x26;#39;loadStatus&#x26;#39;)).to.equal(2)
-    done()
-}, 0)</code></pre>
+    <pre class="language-js"><code class="language-js"><span class="token comment">/* 模拟点击 */</span>
+wrapper<span class="token punctuation">.</span><span class="token method function property-access">find</span><span class="token punctuation">(</span><span class="token string">"UIIcon"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">simulate</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">expect</span><span class="token punctuation">(</span>wrapper<span class="token punctuation">.</span><span class="token method function property-access">state</span><span class="token punctuation">(</span><span class="token string">"loadStatus"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token property-access">to</span><span class="token punctuation">.</span><span class="token method function property-access">equal</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 点击立即改变加载状态为正在加载</span>
+<span class="token comment">/* 在promise.then 中设置setState,因此需要在下一个时钟进行断言 */</span>
+<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span>wrapper<span class="token punctuation">.</span><span class="token method function property-access">state</span><span class="token punctuation">(</span><span class="token string">"loadStatus"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token property-access">to</span><span class="token punctuation">.</span><span class="token method function property-access">equal</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
   </div>
 </blockquote>
 <h4 id="集成测试integration-testing">集成测试（Integration Testing）</h4>
@@ -2381,9 +2383,6 @@ setTimeout(() =&#x26;gt; {
     <p>应该更多的依赖操作，而不是依赖断言。例如如果某个操作依赖元素 A 存在，你不需要"判断元素 A 在页面中是否存在"，而应该去"直接获取元素 A，并操作"，因为如果元素 A 不存在，那么肯定将获取不到，断言后的操作将没有意义，因此可以直接使用操作取代断言等待功能。</p>
   </li>
 </ul>
-<blockquote>
-  <p>参考端到端测试文档</p>
-</blockquote>
 ]]></content:encoded>
             <author>u19950930@gmail.com (Jiang Wenyang)</author>
         </item>
@@ -3307,21 +3306,21 @@ process<span class="token punctuation">.</span><span class="token function">exit
 </code></pre>
 </div>
 <h2 id="比较">比较</h2>
-<p><strong>方式 2</strong>和<strong>方式 3</strong>都是在调用的时候再绑定 this。</p>
+<p><strong>方式 1</strong> 在类构造函数中绑定 this，调用的时候不需要再绑定</p>
 <ul>
-  <li>**优点：**写法比较简单，当组件中没有 state 的时候就不需要添加类构造函数来绑定 this</li>
-  <li>**缺点：**每一次调用的时候都会生成一个新的方法实例，因此对性能有影响，并且当这个函数作为属性值传入低阶组件的时候，这些组件可能会进行额外的重新渲染，因为每一次都是新的方法实例作为的新的属性传递。</li>
+  <li><strong>优点：</strong> 只会生成一个方法实例，并且绑定一次之后如果多次用到这个方法也不需要再绑定。</li>
+  <li><strong>缺点：</strong> 即使不用到 state，也需要添加类构造函数来绑定 this，代码量多一点。。。</li>
 </ul>
-<p><strong>方式 1</strong>在类构造函数中绑定 this，调用的时候不需要再绑定</p>
+<p><strong>方式 2</strong> 和 <strong>方式 3</strong> 都是在调用的时候再绑定 this。</p>
 <ul>
-  <li>**优点：**只会生成一个方法实例，并且绑定一次之后如果多次用到这个方法也不需要再绑定。</li>
-  <li>**缺点：**即使不用到 state，也需要添加类构造函数来绑定 this，代码量多一点。。。</li>
+  <li><strong>优点：</strong> 写法比较简单，当组件中没有 state 的时候就不需要添加类构造函数来绑定 this</li>
+  <li><strong>缺点：</strong> 每一次调用的时候都会生成一个新的方法实例，因此对性能有影响，并且当这个函数作为属性值传入低阶组件的时候，这些组件可能会进行额外的重新渲染，因为每一次都是新的方法实例作为的新的属性传递。</li>
 </ul>
-<p>
-  **方式 4：**利用属性初始化语法，将方法初始化为箭头函数，因此在创建函数的时候就绑定了 this。
-  <strong>优点：<strong>创建方法就绑定 this，不需要在类构造函数中绑定，调用的时候不需要再作绑定。结合了</strong>方式 1</strong>、<strong>方式 2</strong>、<strong>方式 3</strong>的优点
-  **缺点：**目前仍然是实验性语法，需要用 babel 转译
-</p>
+<p><strong>方式 4：</strong> 利用属性初始化语法，将方法初始化为箭头函数，因此在创建函数的时候就绑定了 this。</p>
+<ul>
+  <li><strong>优点：</strong> 创建方法就绑定 this，不需要在类构造函数中绑定，调用的时候不需要再作绑定。结合了<strong>方式 1</strong>、<strong>方式 2</strong>、<strong>方式 3</strong> 的优点</li>
+  <li><strong>缺点：</strong> 目前仍然是实验性语法，需要用 babel 转译</li>
+</ul>
 <h2 id="总结">总结</h2>
 <p>方式 1 是官方推荐的绑定方式，也是性能最好的方式。方式 2 和方式 3 会有性能影响并且当方法作为属性传递给子组件的时候会引起重渲问题。方式 4 目前属于实验性语法，但是是最好的绑定方式，需要结合 bable 转译</p>
 ]]></content:encoded>
@@ -3538,7 +3537,8 @@ process<span class="token punctuation">.</span><span class="token function">exit
 <p>因此在不涉及到图像资源等非 css 外部资源引用时，使用 karma-typescript 进行测试是比较好的，因此可以考虑使用 karma-typescript 进行 API 的测试。</p>
 <p><strong>安装：</strong></p>
 <div class="remark-highlight">
-  <pre class="language-unknown"><code class="language-unknown">yarn add -D karma-typescript</code></pre>
+  <pre class="language-bash"><code class="language-bash"><span class="token function">yarn</span> <span class="token function">add</span> -D karma-typescript
+</code></pre>
 </div>
 <p><strong>karma-conf.js 配置</strong></p>
 <div class="remark-highlight">
@@ -3670,26 +3670,27 @@ testsContext<span class="token punctuation">.</span><span class="token method fu
 </div>
 <p>然后在<code>karma.conf.js</code>中将<code>test.js</code>作为入口</p>
 <div class="remark-highlight">
-  <pre class="language-unknown"><code class="language-unknown">module.exports = function(config) {
-    config.set({
+  <pre class="language-js"><code class="language-js">module<span class="token punctuation">.</span><span class="token method-variable function-variable method function property-access">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">config</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    config<span class="token punctuation">.</span><span class="token method function property-access">set</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
 
-        frameworks: [&#x26;quot;mocha&#x26;quot;, &#x26;quot;karma-typescript&#x26;quot;],
+        <span class="token literal-property property">frameworks</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"mocha"</span><span class="token punctuation">,</span> <span class="token string">"karma-typescript"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
 
-        files: [
-            &#x26;quot;test.js&#x26;quot;
-        ],
+        <span class="token literal-property property">files</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"test.js"</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
 
-        preprocessors: {
-            &#x26;quot;test.js&#x26;quot;: [&#x26;quot;webpack&#x26;quot;], // 使用webpack进行编译
-        },
-        browsers: [&#x26;quot;Chrome&#x26;quot;]，
-        webpack:{
-            module：{}
-            resolve：{}
-            // 所有可用的webpack配置项
-        }
-    });
-};</code></pre>
+        <span class="token literal-property property">preprocessors</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token string-property property">"test.js"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"webpack"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 使用webpack进行编译</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">browsers</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"Chrome"</span><span class="token punctuation">]</span>，
+        <span class="token literal-property property">webpack</span><span class="token operator">:</span><span class="token punctuation">{</span>
+            module：<span class="token punctuation">{</span><span class="token punctuation">}</span>
+            resolve：<span class="token punctuation">{</span><span class="token punctuation">}</span>
+            <span class="token comment">// 所有可用的webpack配置项</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
 </div>
 <p>将多个依赖合并到一个入口，因此通过这种方式生成单个的打包文件。</p>
 ]]></content:encoded>
