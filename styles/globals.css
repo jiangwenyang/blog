@@ -10,19 +10,26 @@
   button {
     -webkit-tap-highlight-color: transparent;
   }
-  #__next {
-    @apply flex flex-col min-h-screen;
-  }
-  .prose:not(.normal-link),
-  .prose:not(#toc + ul) {
-    & a {
-      @apply inline-block relative no-underline;
-      &::after {
-        content: "";
-        bottom: 2px;
-        left: 4px;
-        @apply absolute bg-rose-500 bg-opacity-40 w-full h-2;
+  .prose {
+    a {
+      @apply inline-block no-underline hover:underline;
+      &[target="_blank"]::after {
+        content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTExIDdINmEyIDIgMCAwIDAtMiAydjlhMiAyIDAgMCAwIDIgMmg5YTIgMiAwIDAgMCAyLTJ2LTUiPjwvcGF0aD48cGF0aCBkPSJNMTAgMTRMMjAgNCI+PC9wYXRoPjxwYXRoIGQ9Ik0xNSA0aDV2NSI+PC9wYXRoPjwvZz48L3N2Zz4=");
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        margin-left: 0.2em;
+        vertical-align: -0.125em;
       }
+    }
+  }
+  a.highlight-link {
+    @apply inline-block relative no-underline hover:no-underline;
+    &::after {
+      content: "";
+      bottom: 2px;
+      left: 4px;
+      @apply absolute bg-rose-500 bg-opacity-40 w-full h-2;
     }
   }
 }

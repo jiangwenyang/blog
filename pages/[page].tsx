@@ -13,11 +13,7 @@ type Props = {
 };
 
 const About: NextPageWithLayout<Props> = ({ page }) => {
-  return (
-    <article>
-      <Page post={page} />
-    </article>
-  );
+  return <Page post={page} />;
 };
 
 About.getLayout = function getLayout(page: React.ReactElement) {

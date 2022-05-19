@@ -31,7 +31,7 @@ date: 2022-04-08
 - 基于 Hygen 开发 VSCode 插件 [Swagger To API](https://marketplace.visualstudio.com/items?itemName=jiangwenyang.swagger-to-api) 实现快速定制生成 API 接口代码。
 - 将项目从 Vue CLI 迁移到 Vite，提升开发体验，并输出迁移[文档](/posts/一个真实的vue-cli项目迁移到vite)。
 
-#### [重庆允升科技有限公司](https://yunsom.com/) （2019 年 02 月 - 2019 年 12 月）
+#### [重庆允升科技有限公司](https://yunsom.com/?_blank) （2019 年 02 月 - 2019 年 12 月）
 
 主要负责公司工业互联网平台开发迭代，主要技术栈为 React + React Router + Less。
 

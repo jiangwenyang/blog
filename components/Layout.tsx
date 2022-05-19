@@ -2,7 +2,6 @@ import Head from "next/head";
 
 import Header from "./Header";
 import Footer from "./Footer";
-import Container from "./Container";
 
 const Layout: React.FC = ({ children }) => {
   const meta = {
@@ -18,7 +17,7 @@ const Layout: React.FC = ({ children }) => {
     },
   };
   return (
-    <div className="p-8 md:px-8 lg:container lg:mx-auto">
+    <div className="flex flex-col min-h-screen p-8 md:px-8 lg:container lg:mx-auto">
       <Head>
         <meta name="robots" content="follow, index" />
         <meta name="apple-mobile-web-app-status-bar-style" content="white" />
@@ -57,9 +56,7 @@ const Layout: React.FC = ({ children }) => {
       </Head>
 
       <Header />
-      <main className="flex-1">
-        <Container>{children}</Container>
-      </main>
+      <main className="flex-1">{children}</main>
       <Footer />
     </div>
   );

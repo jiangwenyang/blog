@@ -6,6 +6,7 @@ import rehypeFormat from "rehype-format";
 import prism from "remark-prism";
 import remarkRehype from "remark-rehype";
 import rehypeSlug from "rehype-slug";
+import rehypeExternalLinks from "rehype-external-links";
 import rehypeStringify from "rehype-stringify";
 
 export default async function markdownToHtml(markdown: string) {
@@ -32,6 +33,7 @@ export default async function markdownToHtml(markdown: string) {
     .use(remarkRehype) // 转换remark到rehype处理
     .use(rehypeFormat) // 格式化html
     .use(rehypeSlug) // 标题添加id配合TOC
+    .use(rehypeExternalLinks, { target: "_blank" })
     .use(rehypeStringify) // 输出html
     .process(markdown);
 

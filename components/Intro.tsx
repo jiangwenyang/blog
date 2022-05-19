@@ -13,7 +13,10 @@ const Intro: React.FC = () => {
       />
       <article className="prose dark:prose-invert max-w-none mt-4">
         <p>
-          我叫<Link href="/about">蒋文杨</Link>
+          我叫
+          <Link href="/about" passHref>
+            <a className="highlight-link">蒋文杨</a>
+          </Link>
           ，1995年出生于重庆。5年前端开发工程师，阅读和电影爱好者，业余做饭人和专职铲屎官。
         </p>
         <p>
