@@ -1,5 +1,7 @@
 import Head from "next/head";
 
+import Backtop from "components/Backtop";
+
 import Header from "./Header";
 import Footer from "./Footer";
 
@@ -56,7 +58,10 @@ const Layout: React.FC = ({ children }) => {
       </Head>
 
       <Header />
-      <main className="flex-1">{children}</main>
+      <main className="flex-1">
+        {children}
+        <Backtop />
+      </main>
       <Footer />
     </div>
   );

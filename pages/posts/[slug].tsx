@@ -39,7 +39,8 @@ const PostPage: NextPageWithLayout<Props> = ({ post }) => {
     title: `${post.title} - Jiangwenyang’s Blog`,
     description: post.excerpt || "Jiang Wenyang's blog, wirte something fun",
     url: `https://jiangwenyang.com/posts/${post.slug}`,
-    image: `https://jiangwenyang.com${post.coverImage?.src}`,
+    image:
+      post.coverImage?.src && `https://jiangwenyang.com${post.coverImage?.src}`,
     date: post.date,
   };
 
@@ -54,14 +55,18 @@ const PostPage: NextPageWithLayout<Props> = ({ post }) => {
           key="og_description"
         />
         <meta property="og:url" content={meta.url} key="og_url" />
-        <meta property="og:image" content={meta.image} key="og_image" />
+        {meta.image && (
+          <meta property="og:image" content={meta.image} key="og_image" />
+        )}
         <meta name="twitter:title" content={meta.title} key="twitter_title" />
         <meta
           name="twitter:description"
           content={meta.description}
           key="twitter_description"
         />
-        <meta name="twitter:image" content={meta.image} key="twitter_image" />
+        {meta.image && (
+          <meta name="twitter:image" content={meta.image} key="twitter_image" />
+        )}
         <meta property="article:published_time" content={meta.date} />
         <title>
           {post.title} - {process.env.NEXT_PUBLIC_TITLE}
@@ -69,7 +74,6 @@ const PostPage: NextPageWithLayout<Props> = ({ post }) => {
       </Head>
       <Post post={post} />
       <div id="gitalk-container"></div>
-      <Backtop />
     </>
   );
 };
