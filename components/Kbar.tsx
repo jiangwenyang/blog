@@ -14,6 +14,7 @@ import Search12Regular from "@ricons/fluent/Search12Regular";
 import DarkTheme20Filled from "@ricons/fluent/DarkTheme20Filled";
 import Rss24Filled from "@ricons/fluent/Rss24Filled";
 import DocumentOnePage24Filled from "@ricons/fluent/DocumentOnePage24Filled";
+import EmojiSadSlight24Regular from "@ricons/fluent/EmojiSadSlight24Regular";
 
 import {
   KBarProvider,
@@ -127,6 +128,15 @@ const getActions = ({ posts, router, setTheme }: GetActionsOptions) => {
 
 const RenderResults: React.FunctionComponent = () => {
   const { results } = useMatches();
+
+  if (!results.length) {
+    return (
+      <div className="px-2 py-4 flex justify-center items-center text-gray-500 dark:text-gray-300">
+        <EmojiSadSlight24Regular className="w-6 h-6 mr-2" />
+        暂无匹配，请修改关键词试试
+      </div>
+    );
+  }
 
   return (
     <KBarResults
