@@ -1,6 +1,6 @@
 import React from "react";
 import Brand from "./Brand";
-import KbarButton from "./KbarButton";
+import KBarButton from "./KBarButton";
 
 interface Props {
   hideTitle?: boolean;
@@ -9,7 +9,7 @@ interface Props {
 const Header: React.FC<Props> = ({ hideTitle }) => (
   <header className="flex flex-row justify-between items-center pb-8">
     <Brand hideTitle={hideTitle}></Brand>
-    <KbarButton />
+    <KBarButton />
   </header>
 );
 
