@@ -78,7 +78,6 @@ const getActions = ({ posts, router, setTheme }: GetActionsOptions) => {
       id: "changeTheme",
       name: "切换主题...",
       icon: <DarkTheme20Filled />,
-      shortcut: ["t"],
       section: "preferences",
     },
     {
