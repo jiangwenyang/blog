@@ -51,7 +51,10 @@ const KbarBreadcrumbs: React.FC = () => {
     };
   });
 
-  const handleClick = (action: Action) => {
+  const handleClick = (action: Action, isLast: boolean) => {
+    if (isLast) {
+      return;
+    }
     query.setCurrentRootAction(action.id);
   };
 
@@ -62,15 +65,20 @@ const KbarBreadcrumbs: React.FC = () => {
 
   return (
     <ul className="flex items-center px-2 pt-3">
-      {[homeAction, ...actionWithAncestors].map((action, index, actions) => (
-        <KbarBreadcrumbItem
-          key={action.id}
-          action={action}
-          isRoot={index === 0}
-          isLast={index !== 0 && index === actions.length - 1}
-          onClick={() => handleClick(action)}
-        />
-      ))}
+      {[homeAction, ...actionWithAncestors].map((action, index, actions) => {
+        const isRoot = index === 0;
+        const isLast = index !== 0 && index === actions.length - 1;
+
+        return (
+          <KbarBreadcrumbItem
+            key={action.id}
+            action={action}
+            isRoot={isRoot}
+            isLast={isLast}
+            onClick={() => handleClick(action, isLast)}
+          />
+        );
+      })}
     </ul>
   );
 };
