@@ -2,7 +2,7 @@ import { ThemeProvider } from "next-themes";
 
 import type { AppPropsWithLayout } from "typings/app";
 import Layout from "components/Layout";
-import Kbar from "components/Kbar";
+import KBar from "components/KBar";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
@@ -10,9 +10,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <ThemeProvider attribute="class">
-      <Kbar posts={pageProps.allPosts}>
+      <KBar posts={pageProps.allPosts}>
         {getLayout(<Component {...pageProps} />)}
-      </Kbar>
+      </KBar>
     </ThemeProvider>
   );
 }
