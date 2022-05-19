@@ -23,7 +23,7 @@ import {
 } from "kbar";
 
 import KBarBreadcrums from "./KBarBreadcrums";
-import KBarResults from "./KbarRenderResults";
+import KBarResults from "./KBarRenderResults";
 
 type Theme = "light" | "dark";
 
