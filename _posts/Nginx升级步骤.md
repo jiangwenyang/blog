@@ -1,6 +1,6 @@
 ---
 title: Nginx升级步骤
-date: 2012-11-02
+date: 2022-11-02
 excerpt: Nginx升级步骤
 tags:
   - Nginx
