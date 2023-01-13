@@ -23,11 +23,13 @@ const UseAnimationsIcon: React.FC<Props> = ({
     size={size}
     render={(eventProps, animationProps) => (
       <div
-        className={classNames('flex flex-col items-center', className)}
+        className={classNames("flex flex-col items-center", className)}
         {...eventProps}
       >
         <div {...animationProps} />
-        {label}
+        <div className="font-mono font-semibold text-lg text-gray-500">
+          {label}
+        </div>
       </div>
     )}
     {...otherProps}

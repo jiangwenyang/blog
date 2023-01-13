@@ -14,6 +14,14 @@ const nextConfig = {
   eslint: {
     dirs: ["pages", "components", "lib", "utils", "typings"],
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "**.music.126.net",
+      },
+    ],
+  },
 };
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
