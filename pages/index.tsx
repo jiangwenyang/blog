@@ -11,7 +11,7 @@ import Intro from "components/Intro";
 import FeaturedPosts from "components/FeaturedPosts";
 import ReadMore from "components/ReadMore";
 
-import { getAllPosts, getFeaturedPosts } from "utils/posts";
+import { getFeaturedPosts } from "utils/posts";
 
 type Props = {
   featuredPosts: Post[];
@@ -43,10 +43,8 @@ export const getStaticProps: GetStaticProps = () => {
 
   const featuredPosts = getFeaturedPosts(featuredFileds);
 
-  const allPosts = getAllPosts(["slug", "title"]);
-
   return {
-    props: { featuredPosts, allPosts },
+    props: { featuredPosts },
   };
 };
 

@@ -4,7 +4,7 @@
         <title>Jiang Wenyang's Blog</title>
         <link>https://jiangwenyang.com</link>
         <description>Jiang Wenyang's Blog</description>
-        <lastBuildDate>Thu, 19 May 2022 07:54:02 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 16 Jan 2023 07:09:19 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>zh</language>
@@ -14,6 +14,140 @@
             <link>https://jiangwenyang.com</link>
         </image>
         <copyright>All rights reserved 2022, Jiang Wenyang</copyright>
+        <item>
+            <title><![CDATA[Nginx升级步骤]]></title>
+            <link>https://jiangwenyang.com/posts/Nginx升级步骤</link>
+            <guid>https://jiangwenyang.com/posts/Nginx升级步骤</guid>
+            <pubDate>Wed, 02 Nov 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Nginx升级步骤]]></description>
+            <content:encoded><![CDATA[
+<h2 id="nginx-升级步骤">Nginx 升级步骤</h2>
+<ol>
+  <li>
+    <p>查看现有 nginx 版本，以及配置</p>
+    <div class="remark-highlight">
+      <pre class="language-bash"><code class="language-bash">$ <span class="token builtin class-name">cd</span> /usr/local/nginx
+$ ./sbin/nginx <span class="token parameter variable">-V</span>
+</code></pre>
+    </div>
+    <p>
+      <img src="https://raw.githubusercontent.com/jiangwenyang/graphbed/master/uPic/image-20221102132935465.png" alt="image-20221102132935465">
+    </p>
+  </li>
+  <li>
+    <p>备份原有 nginx 二进制文件</p>
+    <div class="remark-highlight">
+      <pre class="language-bash"><code class="language-bash">$ <span class="token function">mv</span> ./sbin/nginx ./sbin/nginx.old
+</code></pre>
+    </div>
+    <p>
+      <img src="https://raw.githubusercontent.com/jiangwenyang/graphbed/master/uPic/image-20221102135237084.png" alt="image-20221102135237084">
+    </p>
+  </li>
+  <li>
+    <p>下载新版本 nginx 源码并解压</p>
+    <p>nginx 下载地址：<a href="http://nginx.org/en/download.html" target="_blank" rel="nofollow noopener noreferrer">http://nginx.org/en/download.html</a></p>
+    <p>使用 curl 或者 wget 下载</p>
+    <div class="remark-highlight">
+      <pre class="language-bash"><code class="language-bash"><span class="token comment"># curl下载</span>
+$ <span class="token function">curl</span> <span class="token parameter variable">-O</span> http://nginx.org/download/nginx-1.22.1.tar.gz
+<span class="token comment"># wget下载</span>
+$ <span class="token function">wget</span> http://nginx.org/download/nginx-1.22.1.tar.gz
+</code></pre>
+    </div>
+    <p>
+      <img src="https://raw.githubusercontent.com/jiangwenyang/graphbed/master/uPic/image-20221102133900437.png" alt="image-20221102133900437">
+    </p>
+    <p>解压</p>
+    <div class="remark-highlight">
+      <pre class="language-bash"><code class="language-bash">$ <span class="token function">tar</span> <span class="token parameter variable">-xzvf</span>
+</code></pre>
+    </div>
+    <p>
+      <img src="https://raw.githubusercontent.com/jiangwenyang/graphbed/master/uPic/image-20221102133957701.png" alt="image-20221102133957701">
+    </p>
+  </li>
+  <li>
+    <p>配置</p>
+    <p><strong>编译时只进行到 make，不能 make install，否则会将原来的配置文件覆盖。</strong></p>
+    <p>执行<code>./configure</code>进行配置，编译时如果步骤 1 执行 nginx -V 输出<code>configure arguments:</code> 后有编译参数，则需要在<code>./configure</code> 后追加。</p>
+    <p>如本例中我们将追加 <code>--with-http_ssl_module</code> 保留 https 模块。</p>
+    <blockquote>
+      <p>支持的配置参数及解释可以参考<a href="https://tengine.taobao.org/nginx_docs/cn/docs/install.html" target="_blank" rel="nofollow noopener noreferrer">https://tengine.taobao.org/nginx_docs/cn/docs/install.html</a></p>
+    </blockquote>
+    <div class="remark-highlight">
+      <pre class="language-bash"><code class="language-bash">$ <span class="token builtin class-name">cd</span> nginx-1.22.1
+$ ./configure <span class="token parameter variable">--prefix</span><span class="token operator">=</span>/usr/local/nginx --with-http_ssl_module
+</code></pre>
+    </div>
+    <p>
+      <img src="https://raw.githubusercontent.com/jiangwenyang/graphbed/master/uPic/image-20221102134602137.png" alt="image-20221102134602137">
+    </p>
+  </li>
+  <li>
+    <p>
+      编译
+      执行<code>make</code>进行编译
+    </p>
+  </li>
+</ol>
+<div class="remark-highlight">
+  <pre class="language-bash"><code class="language-bash">$ <span class="token function">make</span>
+</code></pre>
+</div>
+<p>编译完成后，当前目录的 objs 为生成的编译产物。</p>
+<ol start="6">
+  <li>
+    <p>复制新版本替换旧版本的 nginx 二进制文件</p>
+    <div class="remark-highlight">
+      <pre class="language-bash"><code class="language-bash">$ <span class="token function">cp</span> objs/nginx /usr/local/nginx/sbin/
+</code></pre>
+    </div>
+    <p>
+      <img src="https://raw.githubusercontent.com/jiangwenyang/graphbed/master/uPic/image-20221102135356064.png" alt="image-20221102135356064">
+    </p>
+  </li>
+  <li>
+    <p>检查新版本</p>
+    <div class="remark-highlight">
+      <pre class="language-bash"><code class="language-bash">$ ./nginx <span class="token parameter variable">-t</span>
+$ ./nginx <span class="token parameter variable">-V</span>
+</code></pre>
+    </div>
+    <p>
+      <img src="https://raw.githubusercontent.com/jiangwenyang/graphbed/master/uPic/image-20221102135439574.png" alt="image-20221102135439574">
+    </p>
+  </li>
+  <li>
+    <p>关闭旧的 nginx</p>
+    <div class="remark-highlight">
+      <pre class="language-bash"><code class="language-bash">$ ./nginx.old <span class="token parameter variable">-s</span> stop
+$ <span class="token function">ps</span> <span class="token parameter variable">-ef</span> <span class="token operator">|</span> <span class="token function">grep</span> nginx
+</code></pre>
+    </div>
+    <p>
+      <img src="https://raw.githubusercontent.com/jiangwenyang/graphbed/master/uPic/image-20221102135730633.png" alt="image-20221102135730633">
+    </p>
+  </li>
+  <li>
+    <p>启动新的 nginx</p>
+    <div class="remark-highlight">
+      <pre class="language-bash"><code class="language-bash">$ ./nginx
+$ <span class="token function">ps</span> <span class="token parameter variable">-ef</span> <span class="token operator">|</span> <span class="token function">grep</span> nginx
+</code></pre>
+    </div>
+    <p>
+      <img src="https://raw.githubusercontent.com/jiangwenyang/graphbed/master/uPic/image-20221102135827462.png" alt="image-20221102135827462">
+    </p>
+  </li>
+  <li>
+    <p>检查是否启动</p>
+    <p>查看服务是否正常，完成升级。</p>
+  </li>
+</ol>
+]]></content:encoded>
+            <author>u19950930@gmail.com (Jiang Wenyang)</author>
+        </item>
         <item>
             <title><![CDATA[一个真实的Vue CLI项目迁移到vite]]></title>
             <link>https://jiangwenyang.com/posts/一个真实的vue-cli项目迁移到vite</link>
@@ -215,7 +349,7 @@
 </code></pre>
 </div>
 <h4 id="环境变量不同">环境变量不同</h4>
-<p>Vue CLI 的环境变量和 Vite 的环境变量加载都是通过 <a href="https://github.com/motdotla/dotenv">dotenv</a> 来实现的，因此在文件命名约定上是一致的。但具有以下两点不同：</p>
+<p>Vue CLI 的环境变量和 Vite 的环境变量加载都是通过 <a href="https://github.com/motdotla/dotenv" target="_blank" rel="nofollow noopener noreferrer">dotenv</a> 来实现的，因此在文件命名约定上是一致的。但具有以下两点不同：</p>
 <ul>
   <li>
     <p>暴露方式</p>
@@ -242,7 +376,7 @@
 </ul>
 <p>由于以上的两点不同，迁移时我们就需要：</p>
 <ul>
-  <li>将原本以 <code>VUE_APP_</code> 开头的环境变量统一替换为以 <code>VITE_</code> 开头；或者可通过修改配置文件 <code>vite.config.js</code> 的 <a href="https://cn.vitejs.dev/config/index.html#envprefix">envPrefix</a> 进行配置，直接配置为 <code>VUE_APP_</code> 则不需要对原有环境变量名称进行修改。(配置文件的创建下面将会提到)</li>
+  <li>将原本以 <code>VUE_APP_</code> 开头的环境变量统一替换为以 <code>VITE_</code> 开头；或者可通过修改配置文件 <code>vite.config.js</code> 的 <a href="https://cn.vitejs.dev/config/index.html#envprefix" target="_blank" rel="nofollow noopener noreferrer">envPrefix</a> 进行配置，直接配置为 <code>VUE_APP_</code> 则不需要对原有环境变量名称进行修改。(配置文件的创建下面将会提到)</li>
   <li>将 <code>process.env</code> 统一替换为 <code>import.meta.env</code>。</li>
 </ul>
 <h4 id="不能忽略自定义导入类型扩展名如vue">不能忽略自定义导入类型扩展名（如<code>.vue</code>）</h4>
@@ -264,21 +398,21 @@
 <p>Vite 的安装比较简单，唯一需要注意的就是对于不同的 Vue 版本，需要用到不同的插件。</p>
 <p>安装 Vite</p>
 <div class="remark-highlight">
-  <pre class="language-bash"><code class="language-bash">$ <span class="token function">yarn</span> <span class="token function">add</span> -D
+  <pre class="language-bash"><code class="language-bash">$ <span class="token function">yarn</span> <span class="token function">add</span> <span class="token parameter variable">-D</span>
 </code></pre>
 </div>
 <p>安装对应版本的 Vue 插件</p>
 <blockquote>
   <p>Vite 为 Vue 提供第一优先级支持：</p>
   <ul>
-    <li>Vue 3 单文件组件支持：<a href="https://github.com/vitejs/vite/tree/main/packages/plugin-vue">@vitejs/plugin-vue</a></li>
-    <li>Vue 3 JSX 支持：<a href="https://github.com/vitejs/vite/tree/main/packages/plugin-vue-jsx">@vitejs/plugin-vue-jsx</a></li>
-    <li>Vue 2 支持：<a href="https://github.com/underfin/vite-plugin-vue2">underfin/vite-plugin-vue2</a></li>
+    <li>Vue 3 单文件组件支持：<a href="https://github.com/vitejs/vite/tree/main/packages/plugin-vue" target="_blank" rel="nofollow noopener noreferrer">@vitejs/plugin-vue</a></li>
+    <li>Vue 3 JSX 支持：<a href="https://github.com/vitejs/vite/tree/main/packages/plugin-vue-jsx" target="_blank" rel="nofollow noopener noreferrer">@vitejs/plugin-vue-jsx</a></li>
+    <li>Vue 2 支持：<a href="https://github.com/underfin/vite-plugin-vue2" target="_blank" rel="nofollow noopener noreferrer">underfin/vite-plugin-vue2</a></li>
   </ul>
 </blockquote>
 <p>由于我们使用 Vue2，因此安装 <code>vite-plugin-vue2</code></p>
 <div class="remark-highlight">
-  <pre class="language-bash"><code class="language-bash">$ <span class="token function">yarn</span> <span class="token function">add</span> -D vite-plugin-vue2
+  <pre class="language-bash"><code class="language-bash">$ <span class="token function">yarn</span> <span class="token function">add</span> <span class="token parameter variable">-D</span> vite-plugin-vue2
 </code></pre>
 </div>
 <p>在根目录创建配置文件 <code>vite.config.js</code></p>
@@ -421,7 +555,7 @@ export default defineConfig(() => <span class="token punctuation">{</span>
 </code></pre>
 </div>
 <h3 id="全局-css-变量">全局 CSS 变量</h3>
-<p>在我们原项目中在<code>vue.config.js</code> 中配置引入了 <a href="https://github.com/shakacode/sass-resources-loader">sass-resources-loader</a> 来实现。</p>
+<p>在我们原项目中在<code>vue.config.js</code> 中配置引入了 <a href="https://github.com/shakacode/sass-resources-loader" target="_blank" rel="nofollow noopener noreferrer">sass-resources-loader</a> 来实现。</p>
 <div class="remark-highlight">
   <pre class="language-js"><code class="language-js"><span class="token function">chainWebpack</span><span class="token punctuation">(</span><span class="token parameter">config</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 	<span class="token comment">// 引入全局的sass资源</span>
@@ -481,8 +615,8 @@ export default defineConfig(() => <span class="token punctuation">{</span>
 </div>
 <p>可参考以下 ISSUE:</p>
 <ul>
-  <li><a href="https://github.com/vitejs/vite/issues/3283">https://github.com/vitejs/vite/issues/3283</a></li>
-  <li><a href="https://github.com/nuxt/vite/issues/117">https://github.com/nuxt/vite/issues/117</a></li>
+  <li><a href="https://github.com/vitejs/vite/issues/3283" target="_blank" rel="nofollow noopener noreferrer">https://github.com/vitejs/vite/issues/3283</a></li>
+  <li><a href="https://github.com/nuxt/vite/issues/117" target="_blank" rel="nofollow noopener noreferrer">https://github.com/nuxt/vite/issues/117</a></li>
 </ul>
 <p>目前我们的解决方式就是不引入，然后在用到的地方手动进行引入规避这个问题，暂时没有特别好的解决方案。</p>
 <h3 id="动态导入-png-等图片资源">动态导入 png 等图片资源</h3>
@@ -523,7 +657,7 @@ export default defineConfig(() => <span class="token punctuation">{</span>
   </li>
 </ol>
 <h3 id="svg-雪碧图">svg 雪碧图</h3>
-<p>在原项目中我们使用了 webpack 的 <a href="https://github.com/JetBrains/svg-sprite-loader">svg-sprite-loader</a> 插件来实现 svg 雪碧图。</p>
+<p>在原项目中我们使用了 webpack 的 <a href="https://github.com/JetBrains/svg-sprite-loader" target="_blank" rel="nofollow noopener noreferrer">svg-sprite-loader</a> 插件来实现 svg 雪碧图。</p>
 <div class="remark-highlight">
   <pre class="language-js"><code class="language-js"><span class="token function">chainWebpack</span><span class="token punctuation">(</span><span class="token parameter">config</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment">// set svg-sprite-loader</span>
@@ -545,7 +679,7 @@ export default defineConfig(() => <span class="token punctuation">{</span>
 <span class="token punctuation">}</span>
 </code></pre>
 </div>
-<p>感谢社区，在 Vite 中我们可以使用插件**<a href="https://github.com/anncwb/vite-plugin-svg-icons"> vite-plugin-svg-icons </a>** 来进行替换以实现相同的功能。使用方式基本一样，具体使用可以查看相应文档。</p>
+<p>感谢社区，在 Vite 中我们可以使用插件**<a href="https://github.com/anncwb/vite-plugin-svg-icons" target="_blank" rel="nofollow noopener noreferrer"> vite-plugin-svg-icons </a>** 来进行替换以实现相同的功能。使用方式基本一样，具体使用可以查看相应文档。</p>
 <blockquote>
   <p>注意: svg-sprite-loader 需要手动引入 svg 文件，而 vite-plugin-svg-icons 会自动引入。</p>
 </blockquote>
@@ -622,7 +756,7 @@ export default defineConfig(() => <span class="token punctuation">{</span>
 </div>
 <p>在 Vite 中直接移除即可，不需要额外配置。</p>
 <h3 id="在-vite-配置文件中使用环境变量">在 Vite 配置文件中使用环境变量</h3>
-<p>如果想在 Vite 配置中使用环境变量，是不能使用 <code>import.meta.env</code> 来获取的，因为 Vite 是先解析配置文件再解析环境变量的。因此只能通过 <a href="https://github.com/motdotla/dotenv">dotenv</a> 来手动解析访问。</p>
+<p>如果想在 Vite 配置中使用环境变量，是不能使用 <code>import.meta.env</code> 来获取的，因为 Vite 是先解析配置文件再解析环境变量的。因此只能通过 <a href="https://github.com/motdotla/dotenv" target="_blank" rel="nofollow noopener noreferrer">dotenv</a> 来手动解析访问。</p>
 <div class="remark-highlight">
   <pre class="language-js"><code class="language-js"><span class="token keyword module">export</span> <span class="token keyword module">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> mode <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
   <span class="token comment">// 访问通用环境变量</span>
@@ -650,7 +784,7 @@ export default defineConfig(() => <span class="token punctuation">{</span>
   <li>
     <p>安装 <code>husky</code></p>
     <div class="remark-highlight">
-      <pre class="language-bash"><code class="language-bash">$ <span class="token function">yarn</span> <span class="token function">add</span> -D husky
+      <pre class="language-bash"><code class="language-bash">$ <span class="token function">yarn</span> <span class="token function">add</span> <span class="token parameter variable">-D</span> husky
 </code></pre>
     </div>
   </li>
@@ -676,7 +810,7 @@ export default defineConfig(() => <span class="token punctuation">{</span>
   <li>
     <p>安装 lint-staged</p>
     <div class="remark-highlight">
-      <pre class="language-bash"><code class="language-bash">$ <span class="token function">yarn</span> <span class="token function">add</span> -D lint-staged
+      <pre class="language-bash"><code class="language-bash">$ <span class="token function">yarn</span> <span class="token function">add</span> <span class="token parameter variable">-D</span> lint-staged
 </code></pre>
     </div>
   </li>
@@ -987,7 +1121,7 @@ export default defineConfig(() => <span class="token punctuation">{</span>
 <h2 id="起步">起步</h2>
 <h3 id="安装">安装</h3>
 <div class="remark-highlight">
-  <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> i -g typescript
+  <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> i <span class="token parameter variable">-g</span> typescript
 <span class="token comment"># yarn global add typescript</span>
 </code></pre>
 </div>
@@ -1307,7 +1441,7 @@ foo<span class="token punctuation">.</span><span class="token method-variable fu
 <h3 id="安装依赖">安装依赖：</h3>
 <div class="remark-highlight">
   <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> i  react react-dom
-<span class="token function">npm</span> i -D webpack-cli webpack @types/react @types/react-dom
+<span class="token function">npm</span> i <span class="token parameter variable">-D</span> webpack-cli webpack @types/react @types/react-dom
 </code></pre>
 </div>
 <p>在 Webpack 中解析 Typescript 需要使用 loader，目前主要有以下几种解决方案：</p>
@@ -1321,28 +1455,28 @@ foo<span class="token punctuation">.</span><span class="token method-variable fu
   <li>
     <p>安装 babel-core 和 babel-loader</p>
     <div class="remark-highlight">
-      <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> i -D @babel/core babel-loader@latest
+      <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> i <span class="token parameter variable">-D</span> @babel/core babel-loader@latest
 </code></pre>
     </div>
   </li>
   <li>
     <p>安装@babel/preset-env 编译 ES 最新的语法</p>
     <div class="remark-highlight">
-      <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> i -D @babel/preset-env
+      <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> i <span class="token parameter variable">-D</span> @babel/preset-env
 </code></pre>
     </div>
   </li>
   <li>
     <p>安装@babel/preset-react 用于编译 React</p>
     <div class="remark-highlight">
-      <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> i -D @babel/preset-react
+      <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> i <span class="token parameter variable">-D</span> @babel/preset-react
 </code></pre>
     </div>
   </li>
   <li>
     <p>安装 @babel/preset-typescript 用于编译 Typescript</p>
     <div class="remark-highlight">
-      <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> i -D @babel/preset-typescript
+      <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> i <span class="token parameter variable">-D</span> @babel/preset-typescript
 </code></pre>
     </div>
   </li>
@@ -1355,7 +1489,7 @@ foo<span class="token punctuation">.</span><span class="token method-variable fu
 </code></pre>
     </div>
     <div class="remark-highlight">
-      <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> i -D @babel/plugin-proposal-class-properties
+      <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> i <span class="token parameter variable">-D</span> @babel/plugin-proposal-class-properties
 </code></pre>
     </div>
   </li>
@@ -1641,7 +1775,7 @@ module<span class="token punctuation">.</span><span class="token property-access
   <p>糟糕，这一排站不下了，怎么办？</p>
   <p>把你掰成两半，一半放到这排的最后，一半放到下面一排的开头。（太血腥了！！！）</p>
 </blockquote>
-<p><a href="https://stackblitz.com/edit/word-wrap-and-word-break?file=index.html">DEMO</a></p>
+<p><a href="https://stackblitz.com/edit/word-wrap-and-word-break?file=index.html" target="_blank" rel="nofollow noopener noreferrer">DEMO</a></p>
 ]]></content:encoded>
             <author>u19950930@gmail.com (Jiang Wenyang)</author>
         </item>
@@ -1710,15 +1844,15 @@ module<span class="token punctuation">.</span><span class="token property-access
 <p>前端单元测试和后端单元测试最大的区别在于，前端单元测试无法避免的会存在兼容性问题，如调用浏览器兼容性 API，以及对 BOM（浏览器对象模型）API 的调用，因此前端单元测试需要运行在（伪）浏览器环境下。</p>
 <p>就测试运行环境分类，主要有以下几种测试方案：</p>
 <ul>
-  <li>基于<a href="https://github.com/jsdom/jsdom">JSDOM</a>
+  <li>基于<a href="https://github.com/jsdom/jsdom" target="_blank" rel="nofollow noopener noreferrer">JSDOM</a>
     <ul>
       <li><strong>优点</strong>：快，执行速度最快，因为不需要浏览器启动</li>
-      <li><strong>缺点</strong>：无法测试如 seesion 或 cookie 等相关操作，并且由于不是真实浏览器环境因此无法保证一些如 Dom 相关和 BOM 相关的操作的正确性，并且 JSDOM 未实现 localStorage，如果需要进行覆盖，只能使用第三方库如<a href="https://github.com/lmaccherone/node-localstorage">node-localStorage</a> （这个库本身对与执行环境的判断有一些问题）进行模拟。</li>
+      <li><strong>缺点</strong>：无法测试如 seesion 或 cookie 等相关操作，并且由于不是真实浏览器环境因此无法保证一些如 Dom 相关和 BOM 相关的操作的正确性，并且 JSDOM 未实现 localStorage，如果需要进行覆盖，只能使用第三方库如<a href="https://github.com/lmaccherone/node-localstorage" target="_blank" rel="nofollow noopener noreferrer">node-localStorage</a> （这个库本身对与执行环境的判断有一些问题）进行模拟。</li>
     </ul>
   </li>
 </ul>
 <ul>
-  <li>基于<a href="https://github.com/ariya/phantomjs">PhantomJs</a>等无头浏览器
+  <li>基于<a href="https://github.com/ariya/phantomjs" target="_blank" rel="nofollow noopener noreferrer">PhantomJs</a>等无头浏览器
     <ul>
       <li><strong>优点</strong>: 相对较快，并且具有真实的 DOM 环境</li>
       <li><strong>缺点</strong>: 同样不在真实浏览器中运行，难以调试，并且项目 issue 非常多，puppeteer 发布后作者宣布不再维护</li>
@@ -1736,41 +1870,41 @@ module<span class="token punctuation">.</span><span class="token property-access
 <ul>
   <li>测试平台
     <ul>
-      <li><a href="https://karma-runner.github.io/2.0/index.html">karma</a> -- Google Angular 团队开发的测试运行平台，配置简单灵活，能够很方便将测试在多个真实浏览器中运行。</li>
+      <li><a href="https://karma-runner.github.io/2.0/index.html" target="_blank" rel="nofollow noopener noreferrer">karma</a> -- Google Angular 团队开发的测试运行平台，配置简单灵活，能够很方便将测试在多个真实浏览器中运行。</li>
     </ul>
   </li>
 </ul>
 <ul>
   <li>测试框架
     <ul>
-      <li><a href="https://mochajs.org/">mocha</a> -- Tj 大神开发的很优秀的测试框架，有完善的生态系统，简单的测试组织方式，不对断言库和工具做任何限制，非常灵活。</li>
-      <li><a href="https://jasmine.github.io/">jasmine</a> -- 和 Mocha 语法非常相似，最大的差别是提供了自建的断言和 Spy 和 Stub</li>
-      <li><a href="https://facebook.github.io/jest/">jest</a> -- facebook 出品的大而全的测试框架，React 官方推荐的单元测试框架，配置简单运行速度快。（备注：无法和 Karma 进行集成）</li>
-      <li><a href="https://github.com/avajs/ava">AVA</a> -- 和上面的测试框架最大的区别在于多线程，运行速度更快。</li>
+      <li><a href="https://mochajs.org/" target="_blank" rel="nofollow noopener noreferrer">mocha</a> -- Tj 大神开发的很优秀的测试框架，有完善的生态系统，简单的测试组织方式，不对断言库和工具做任何限制，非常灵活。</li>
+      <li><a href="https://jasmine.github.io/" target="_blank" rel="nofollow noopener noreferrer">jasmine</a> -- 和 Mocha 语法非常相似，最大的差别是提供了自建的断言和 Spy 和 Stub</li>
+      <li><a href="https://facebook.github.io/jest/" target="_blank" rel="nofollow noopener noreferrer">jest</a> -- facebook 出品的大而全的测试框架，React 官方推荐的单元测试框架，配置简单运行速度快。（备注：无法和 Karma 进行集成）</li>
+      <li><a href="https://github.com/avajs/ava" target="_blank" rel="nofollow noopener noreferrer">AVA</a> -- 和上面的测试框架最大的区别在于多线程，运行速度更快。</li>
       <li>其他 -- 还有一些其他的前端测试框架，但是相似度比较高，无非是对断言和测试桩等工具的集成度不同，如果考虑稳定以及成熟度建议选择 Mocha，对测试运行速度有非常高的要求可以考虑 jest 和 AVA</li>
     </ul>
   </li>
   <li>测试辅助工具
     <ul>
-      <li>断言库 -- <a href="https://github.com/chaijs/chai">Chai</a> 如果单元测试不跑在真实的浏览器环境中，可以简单使用 node 的 assert，但是建议使用 Chai 作为断言库（提供了 TDD 和 BDD 风格多种断言方式，并且生态系统繁荣）。</li>
-      <li>测试桩（又称为测试替身） -- <a href="http://sinonjs.org/">Sinon</a>、<a href="https://github.com/testdouble/testdouble.js/">testDouble</a>等工具提供了如测试桩、拦截模拟请求、”时间旅行“等功能，主要用于解决"函数不纯"（比如测试回调是否被正确调用，XHR 是否正确发起请求，时间延迟后函数行为是否正确）的测试问题。</li>
+      <li>断言库 -- <a href="https://github.com/chaijs/chai" target="_blank" rel="nofollow noopener noreferrer">Chai</a> 如果单元测试不跑在真实的浏览器环境中，可以简单使用 node 的 assert，但是建议使用 Chai 作为断言库（提供了 TDD 和 BDD 风格多种断言方式，并且生态系统繁荣）。</li>
+      <li>测试桩（又称为测试替身） -- <a href="http://sinonjs.org/" target="_blank" rel="nofollow noopener noreferrer">Sinon</a>、<a href="https://github.com/testdouble/testdouble.js/" target="_blank" rel="nofollow noopener noreferrer">testDouble</a>等工具提供了如测试桩、拦截模拟请求、”时间旅行“等功能，主要用于解决"函数不纯"（比如测试回调是否被正确调用，XHR 是否正确发起请求，时间延迟后函数行为是否正确）的测试问题。</li>
     </ul>
   </li>
   <li>测试覆盖率工具
     <ul>
-      <li><a href="https://github.com/gotwarlost/istanbul">istanbul</a> istanbul 的基础实现，提供了命令行等工具，但是无法解决代码编译打点的问题</li>
-      <li><a href="https://github.com/webpack-contrib/istanbul-instrumenter-loader">istanbul-instrumenter-loader</a> istanbul 的 Webpack 插件，能解决代码编译打点和测试报告输出的问题</li>
+      <li><a href="https://github.com/gotwarlost/istanbul" target="_blank" rel="nofollow noopener noreferrer">istanbul</a> istanbul 的基础实现，提供了命令行等工具，但是无法解决代码编译打点的问题</li>
+      <li><a href="https://github.com/webpack-contrib/istanbul-instrumenter-loader" target="_blank" rel="nofollow noopener noreferrer">istanbul-instrumenter-loader</a> istanbul 的 Webpack 插件，能解决代码编译打点和测试报告输出的问题</li>
     </ul>
   </li>
 </ul>
 <blockquote>
   <p>其他参考</p>
   <ul>
-    <li><a href="https://github.com/domenic/chai-as-promised">chai-as-promise</a> 扩展 Chai 在 Promise 上的断言功能</li>
-    <li><a href="https://github.com/domenic/sinon-chai">sinon-chai</a> 扩展 Chai 搭配 Sinon 时的断言功能</li>
-    <li><a href="https://github.com/chaijs/chai-jquery">chai-jquery</a> 扩展 Chai 在 UI 测试中的断言</li>
-    <li><a href="https://istanbul.js.org/">istanbul 官网</a> 介绍了 istanbul 如何与多中测试框架集成以及对于 Typescript 等语言的支持</li>
-    <li><a href="http://www.ruanyifeng.com/blog/2015/06/istanbul.html">阮一峰-代码覆盖率工具 Istanbul 入门教程</a> 介绍了代码覆盖率相关的概念以及 Istanbul 搭配 Mocha 的简单使用</li>
+    <li><a href="https://github.com/domenic/chai-as-promised" target="_blank" rel="nofollow noopener noreferrer">chai-as-promise</a> 扩展 Chai 在 Promise 上的断言功能</li>
+    <li><a href="https://github.com/domenic/sinon-chai" target="_blank" rel="nofollow noopener noreferrer">sinon-chai</a> 扩展 Chai 搭配 Sinon 时的断言功能</li>
+    <li><a href="https://github.com/chaijs/chai-jquery" target="_blank" rel="nofollow noopener noreferrer">chai-jquery</a> 扩展 Chai 在 UI 测试中的断言</li>
+    <li><a href="https://istanbul.js.org/" target="_blank" rel="nofollow noopener noreferrer">istanbul 官网</a> 介绍了 istanbul 如何与多中测试框架集成以及对于 Typescript 等语言的支持</li>
+    <li><a href="http://www.ruanyifeng.com/blog/2015/06/istanbul.html" target="_blank" rel="nofollow noopener noreferrer">阮一峰-代码覆盖率工具 Istanbul 入门教程</a> 介绍了代码覆盖率相关的概念以及 Istanbul 搭配 Mocha 的简单使用</li>
   </ul>
 </blockquote>
 <h6 id="常见单元测试栗子">常见单元测试栗子</h6>
@@ -1842,7 +1976,7 @@ module<span class="token punctuation">.</span><span class="token property-access
 testsContext<span class="token punctuation">.</span><span class="token method function property-access">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">forEach</span><span class="token punctuation">(</span>testsContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
     </div>
-    <p>使用 webpack 提供的<a href="https://webpack.docschina.org/guides/dependency-management/">require.context()</a>将所有测试文件统一导入，然后 karma 将 setup.js 作为入口调用 webpack 进行编译，然后测试执行。</p>
+    <p>使用 webpack 提供的<a href="https://webpack.docschina.org/guides/dependency-management/" target="_blank" rel="nofollow noopener noreferrer">require.context()</a>将所有测试文件统一导入，然后 karma 将 setup.js 作为入口调用 webpack 进行编译，然后测试执行。</p>
   </li>
   <li>
     <p>mime 配置对于 ts/tsx 的支持</p>
@@ -1989,7 +2123,7 @@ testsContext<span class="token punctuation">.</span><span class="token method fu
     </div>
     <p>useFakeXHR 封装了对 Sinon 的 useFakeXMLHttpRequest，实现对 XHR 请求的 fake</p>
     <blockquote>
-      <p><a href="http://sinonjs.org/releases/v6.0.0/fake-xhr-and-server/">Fake XHR and server - Sinon.JS</a> 官方文档参考</p>
+      <p><a href="http://sinonjs.org/releases/v6.0.0/fake-xhr-and-server/" target="_blank" rel="nofollow noopener noreferrer">Fake XHR and server - Sinon.JS</a> 官方文档参考</p>
       <p>Fake XHR 和 Fake server 的区别：后者是对前者的更高层次的封装，并且 Fake server 的颗粒度更大</p>
     </blockquote>
   </li>
@@ -2121,7 +2255,7 @@ testsContext<span class="token punctuation">.</span><span class="token method fu
   <li>挂载 Dom 到页面中</li>
 </ol>
 <p>但是在测试中，我们不需要挂载组件到页面中，只需要有一个 Dom 环境即可，如果你不需要完整的渲染组件甚至可以没有 Dom 环境。</p>
-<p><strong><a href="http://airbnb.io/enzyme/">Enzyme</a></strong></p>
+<p><strong><a href="http://airbnb.io/enzyme/" target="_blank" rel="nofollow noopener noreferrer">Enzyme</a></strong></p>
 <p>Enzyme（酶，催化剂）是 Airbnb 公司提供的 React 测试工具，提供了 Shallow Rendering（浅渲染） | Full Rendering （全渲染）| Static Rendering （静态渲染）几种方式来渲染方式来测试 React 组件，一般常用浅渲染的方式进行测试。</p>
 <blockquote>
   <p>使用 Enzyme 进行测试前需要先初始化 React 适配器，具体配置请查看官方手册</p>
@@ -2199,13 +2333,13 @@ testsContext<span class="token punctuation">.</span><span class="token method fu
   </li>
   <li>
     <p>Static Rendering</p>
-    <p>类似于爬虫拿到的结果，拿到页面的 HTML 字符串，使用<a href="https://github.com/cheeriojs/cheerio">Cheerio</a>进行操作。</p>
+    <p>类似于爬虫拿到的结果，拿到页面的 HTML 字符串，使用<a href="https://github.com/cheeriojs/cheerio" target="_blank" rel="nofollow noopener noreferrer">Cheerio</a>进行操作。</p>
   </li>
 </ul>
 <blockquote>
   <p>Enzyme 的浅渲染模式下的事件模拟并非是真的事件触发，实际上它是一种“障眼法”实现，例如 buttonWrapper.simulate('click')只是简单了调用传给 Button 组件的 onClick 参数的那个函数而已。</p>
-  <p>具体描述：<a href="http://airbnb.io/enzyme/docs/future.html">http://airbnb.io/enzyme/docs/future.html</a></p>
-  <p>Enzyme 的很多坑：<a href="http://airbnb.io/enzyme/docs/guides/migration-from-2-to-3.html">http://airbnb.io/enzyme/docs/guides/migration-from-2-to-3.html</a></p>
+  <p>具体描述：<a href="http://airbnb.io/enzyme/docs/future.html" target="_blank" rel="nofollow noopener noreferrer">http://airbnb.io/enzyme/docs/future.html</a></p>
+  <p>Enzyme 的很多坑：<a href="http://airbnb.io/enzyme/docs/guides/migration-from-2-to-3.html" target="_blank" rel="nofollow noopener noreferrer">http://airbnb.io/enzyme/docs/guides/migration-from-2-to-3.html</a></p>
   <p>如果在异步操作中调用 setState(),则测试时需要在下一个时钟周期中进行断言（类似的问题较多）：</p>
   <div class="remark-highlight">
     <pre class="language-js"><code class="language-js"><span class="token comment">/* 模拟点击 */</span>
@@ -2357,8 +2491,8 @@ wrapper<span class="token punctuation">.</span><span class="token method functio
 <blockquote>
   <p>参考文档：</p>
   <ul>
-    <li><a href="http://sinonjs.org/releases/v6.0.0/stubs/">Stubs - Sinon.JS</a> Stub 的相关概念和使用</li>
-    <li><a href="http://sinonjs.org/releases/v6.0.0/sandbox/">Sandboxes - Sinon.JS</a> Sandbox（沙盒）的相关概念和使用</li>
+    <li><a href="http://sinonjs.org/releases/v6.0.0/stubs/" target="_blank" rel="nofollow noopener noreferrer">Stubs - Sinon.JS</a> Stub 的相关概念和使用</li>
+    <li><a href="http://sinonjs.org/releases/v6.0.0/sandbox/" target="_blank" rel="nofollow noopener noreferrer">Sandboxes - Sinon.JS</a> Sandbox（沙盒）的相关概念和使用</li>
   </ul>
 </blockquote>
 <h4 id="端到端测试e2e-testing">端到端测试（E2E Testing）</h4>
@@ -2405,7 +2539,7 @@ wrapper<span class="token punctuation">.</span><span class="token method functio
   在项目根目录下执行一下命令：
 </p>
 <div class="remark-highlight">
-  <pre class="language-bash"><code class="language-bash">$ <span class="token function">npm</span> i -g @storybook/cli
+  <pre class="language-bash"><code class="language-bash">$ <span class="token function">npm</span> i <span class="token parameter variable">-g</span> @storybook/cli
 $ getstorybook
 </code></pre>
 </div>
@@ -2416,7 +2550,7 @@ $ getstorybook
   <li>安装<code>@storybook/react</code></li>
 </ol>
 <div class="remark-highlight">
-  <pre class="language-bash"><code class="language-bash">$ <span class="token function">yarn</span> <span class="token function">add</span> -D @storybook/react
+  <pre class="language-bash"><code class="language-bash">$ <span class="token function">yarn</span> <span class="token function">add</span> <span class="token parameter variable">-D</span> @storybook/react
 </code></pre>
 </div>
 <ol start="2">
@@ -2424,7 +2558,7 @@ $ getstorybook
 </ol>
 <div class="remark-highlight">
   <pre class="language-bash"><code class="language-bash"><span class="token function">yarn</span> <span class="token function">add</span> react react-dom
-<span class="token function">yarn</span> <span class="token function">add</span> -D babel-core
+<span class="token function">yarn</span> <span class="token function">add</span> <span class="token parameter variable">-D</span> babel-core
 </code></pre>
 </div>
 <blockquote>
@@ -2466,7 +2600,7 @@ $ getstorybook
 <span class="token function">configure</span><span class="token punctuation">(</span>loadStories<span class="token punctuation">,</span> module<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </div>
-<p>上面的配置文件将会使用<code>stories/index.js</code>中的 stories，如果你有多个 stories，每次写 stories 的时候需要对应的进行 require，比较繁琐。如果使用 Webpack，可以使用 Webpack 的<a href="https://webpack.js.org/guides/dependency-management/">require.context</a>语法：</p>
+<p>上面的配置文件将会使用<code>stories/index.js</code>中的 stories，如果你有多个 stories，每次写 stories 的时候需要对应的进行 require，比较繁琐。如果使用 Webpack，可以使用 Webpack 的<a href="https://webpack.js.org/guides/dependency-management/" target="_blank" rel="nofollow noopener noreferrer">require.context</a>语法：</p>
 <div class="remark-highlight">
   <pre class="language-javascript"><code class="language-javascript"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> configure <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">"@storybook/react"</span><span class="token punctuation">;</span>
 
@@ -2930,12 +3064,12 @@ module<span class="token punctuation">.</span><span class="token property-access
 </div>
 <p>参考文档：</p>
 <ul>
-  <li><a href="https://storybook.js.org/basics/introduction/">Storybook 官方配置文档</a></li>
-  <li><a href="https://github.com/storybooks/storybook/tree/master/addons/actions">插件 Action 配置文档</a></li>
-  <li><a href="https://github.com/storybooks/storybook/tree/master/addons/knobs">插件 Knobs 配置文档</a></li>
-  <li><a href="https://github.com/storybooks/storybook/tree/master/addons/options">插件 Options 配置文档</a></li>
-  <li><a href="https://github.com/tuchk4/storybook-readme">插件 Readme 配置文档</a></li>
-  <li><a href="https://github.com/storybooks/addon-jsx">插件 JSX preview 配置文档</a></li>
+  <li><a href="https://storybook.js.org/basics/introduction/" target="_blank" rel="nofollow noopener noreferrer">Storybook 官方配置文档</a></li>
+  <li><a href="https://github.com/storybooks/storybook/tree/master/addons/actions" target="_blank" rel="nofollow noopener noreferrer">插件 Action 配置文档</a></li>
+  <li><a href="https://github.com/storybooks/storybook/tree/master/addons/knobs" target="_blank" rel="nofollow noopener noreferrer">插件 Knobs 配置文档</a></li>
+  <li><a href="https://github.com/storybooks/storybook/tree/master/addons/options" target="_blank" rel="nofollow noopener noreferrer">插件 Options 配置文档</a></li>
+  <li><a href="https://github.com/tuchk4/storybook-readme" target="_blank" rel="nofollow noopener noreferrer">插件 Readme 配置文档</a></li>
+  <li><a href="https://github.com/storybooks/addon-jsx" target="_blank" rel="nofollow noopener noreferrer">插件 JSX preview 配置文档</a></li>
 </ul>
 ]]></content:encoded>
             <author>u19950930@gmail.com (Jiang Wenyang)</author>
@@ -3115,7 +3249,7 @@ module<span class="token punctuation">.</span><span class="token property-access
   <li>thisSHA-1：用户本次推送的内容的 SHA-1 值</li>
 </ul>
 <h3 id="使用-husky">使用 husky</h3>
-<p><a href="https://github.com/typicode/husky">husky</a>是一个 npm 包，让你可以更加简单的管理 hooks。</p>
+<p><a href="https://github.com/typicode/husky" target="_blank" rel="nofollow noopener noreferrer">husky</a>是一个 npm 包，让你可以更加简单的管理 hooks。</p>
 <h4 id="husky-安装">husky 安装</h4>
 <p>> v0.14: <code>yarn add -D husky@next</code></p>
 <p>&#x3C;=0.14: <code>yarn add -D husky</code></p>
@@ -3522,22 +3656,22 @@ process<span class="token punctuation">.</span><span class="token function">exit
   <li>测试覆盖率：istanbul-instrumenter-loader</li>
 </ul>
 <p>因为开发语言使用的是 typescript，因此需要编译之后才能在浏览器上跑，但是编译后加入大量的 polyfill 导致覆盖率不准确的问题比较麻烦。</p>
-<h3 id="不用karma-typescript">不用<a href="https://github.com/monounity/karma-typescript">karma-typescript</a>？</h3>
+<h3 id="不用karma-typescript">不用<a href="https://github.com/monounity/karma-typescript" target="_blank" rel="nofollow noopener noreferrer">karma-typescript</a>？</h3>
 <p>
   利用 karma-typescript 直接运行 typescript 编写的单元测试而不用进行额外的编译，并且集成了 karma-coverage 和 Istanbul 进行代码覆盖率统计。
   缺点是每个测试文件和源文件都需要通过 srcipt 标签引入并串行执行，用例太多时浏览器性能有影响。并且不支持图像资源、字体资源等的引入。
 </p>
 <p>karma-typescript 支持的 transform：</p>
 <ul>
-  <li><a href="https://github.com/monounity/karma-typescript-angular2-transform">karma-typescript-angular2-transform</a></li>
-  <li><a href="https://github.com/monounity/karma-typescript-cssmodules-transform">karma-typescript-cssmodules-transform</a></li>
-  <li><a href="https://github.com/monounity/karma-typescript-es6-transform">karma-typescript-es6-transform</a></li>
-  <li><a href="https://github.com/monounity/karma-typescript-postcss-transform">karma-typescript-postcss-transform</a></li>
+  <li><a href="https://github.com/monounity/karma-typescript-angular2-transform" target="_blank" rel="nofollow noopener noreferrer">karma-typescript-angular2-transform</a></li>
+  <li><a href="https://github.com/monounity/karma-typescript-cssmodules-transform" target="_blank" rel="nofollow noopener noreferrer">karma-typescript-cssmodules-transform</a></li>
+  <li><a href="https://github.com/monounity/karma-typescript-es6-transform" target="_blank" rel="nofollow noopener noreferrer">karma-typescript-es6-transform</a></li>
+  <li><a href="https://github.com/monounity/karma-typescript-postcss-transform" target="_blank" rel="nofollow noopener noreferrer">karma-typescript-postcss-transform</a></li>
 </ul>
 <p>因此在不涉及到图像资源等非 css 外部资源引用时，使用 karma-typescript 进行测试是比较好的，因此可以考虑使用 karma-typescript 进行 API 的测试。</p>
 <p><strong>安装：</strong></p>
 <div class="remark-highlight">
-  <pre class="language-bash"><code class="language-bash"><span class="token function">yarn</span> <span class="token function">add</span> -D karma-typescript
+  <pre class="language-bash"><code class="language-bash"><span class="token function">yarn</span> <span class="token function">add</span> <span class="token parameter variable">-D</span> karma-typescript
 </code></pre>
 </div>
 <p><strong>karma-conf.js 配置</strong></p>
@@ -3559,7 +3693,7 @@ process<span class="token punctuation">.</span><span class="token function">exit
 </div>
 <p>
   这是 karma-typescript 的官方配置 demo，但是这样配置会将测试用例的覆盖率也算进来。
-  官方的<a href="https://github.com/monounity/karma-typescript/blob/master/cookbook.md">cookbook</a>项目上给出了测试代码分离的 demo
+  官方的<a href="https://github.com/monounity/karma-typescript/blob/master/cookbook.md" target="_blank" rel="nofollow noopener noreferrer">cookbook</a>项目上给出了测试代码分离的 demo
 </p>
 <div class="remark-highlight">
   <pre class="language-javascript"><code class="language-javascript">module<span class="token punctuation">.</span><span class="token method-variable function-variable method function property-access">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">config</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -3583,11 +3717,11 @@ process<span class="token punctuation">.</span><span class="token function">exit
 <p>当使用<code>coverage</code>的时候，只有使用<code>coverage</code>预编译的代码会算入覆盖率中，上面的 demo 中只有<code>src</code>目录下的代码会被统计覆盖率，<code>test</code>目录下的测试文件则不会被统计。</p>
 <p><strong>陷阱：</strong></p>
 <blockquote>
-  <p>ts.config.json 中如果"files"和"include"都没有被指定，编译器默认包含当前目录和子目录下所有的 TypeScript 文件（.ts, .d.ts 和 .tsx）。编译 d.ts 文件会报错，因此在 karma-conf.js 文件中使用 exclude 排除 d.ts 文件。-- <a href="https://www.tslang.cn/docs/handbook/tsconfig-json.html">https://www.tslang.cn/docs/handbook/tsconfig-json.html</a></p>
+  <p>ts.config.json 中如果"files"和"include"都没有被指定，编译器默认包含当前目录和子目录下所有的 TypeScript 文件（.ts, .d.ts 和 .tsx）。编译 d.ts 文件会报错，因此在 karma-conf.js 文件中使用 exclude 排除 d.ts 文件。-- <a href="https://www.tslang.cn/docs/handbook/tsconfig-json.html" target="_blank" rel="nofollow noopener noreferrer">https://www.tslang.cn/docs/handbook/tsconfig-json.html</a></p>
 </blockquote>
 <h3 id="karma-webpack--istanbul-instrumenter-loader">karma-webpack + istanbul-instrumenter-loader</h3>
 <p>
-  <a href="https://github.com/webpack-contrib/karma-webpack#karma-webpack">karma-webpack</a>
+  <a href="https://github.com/webpack-contrib/karma-webpack#karma-webpack" target="_blank" rel="nofollow noopener noreferrer">karma-webpack</a>
   通过 karma-webpack 能在 karma 中集成 webpack，如果在项目中已经使用 webpack，那么使用 karma-webpack 可能是个更好的选择，能给直接使用原有的 webpack 配置。
   <strong>安装：</strong>
 </p>
@@ -3621,7 +3755,7 @@ process<span class="token punctuation">.</span><span class="token function">exit
 </div>
 <p>将需要编译的代码使用 webpack 预编译即可，同时因为 webpack 会自动打包依赖，因此<code>files</code>中只需要引入 test 文件，对应的被测文件会按照依赖被自动打包。</p>
 <p>
-  <a href="https://github.com/webpack-contrib/istanbul-instrumenter-loader">istanbul-instrumenter-loader</a>
+  <a href="https://github.com/webpack-contrib/istanbul-instrumenter-loader" target="_blank" rel="nofollow noopener noreferrer">istanbul-instrumenter-loader</a>
   通过使用 webpack 插件 istanbul-instrumenter-loader 对代码进行打点，以实现代码覆盖率的统计。
 </p>
 <div class="remark-highlight">
@@ -3658,7 +3792,7 @@ process<span class="token punctuation">.</span><span class="token function">exit
 </div>
 <p>
   <strong>管理依赖</strong>
-  通过上面的方式打包的文件如果指定 output 能生成单个测试套件，但是如果测试套件很多的时候会生成多个大文件。解决这个问题可以通过 webpack 的<a href="https://doc.webpack-china.org/guides/dependency-management/#require-context"><code>require.context()</code></a> 解决，
+  通过上面的方式打包的文件如果指定 output 能生成单个测试套件，但是如果测试套件很多的时候会生成多个大文件。解决这个问题可以通过 webpack 的<a href="https://doc.webpack-china.org/guides/dependency-management/#require-context" target="_blank" rel="nofollow noopener noreferrer"><code>require.context()</code></a> 解决，
   require 能定义 require 的上下文，并且搜索目录，将满足正则的文件进行处理，返回一个包含两个方法 keys()和 resolve()以及一个属性 id 的方法。
 </p>
 <p><em>新建 test.js</em></p>
@@ -3725,13 +3859,13 @@ testsContext<span class="token punctuation">.</span><span class="token method fu
 </blockquote>
 <p>
   或者在系统盘下的 user/用户名/.ssh 文件夹下进行查看
-  <a href="https://help.github.com/articles/checking-for-existing-ssh-keys/">参考官方帮助</a>
+  <a href="https://help.github.com/articles/checking-for-existing-ssh-keys/" target="_blank" rel="nofollow noopener noreferrer">参考官方帮助</a>
 </p>
 <h3 id="二如果不存在生成-ssh">二、如果不存在，生成 ssh</h3>
 <p>
   打开 git bash 输入<code>ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</code>
   例如我的用户名是 jiangwenyang，所以输入：<code>ssh-keygen -t rsa -b 4096 -C "jiangwenyang"</code>
-  <a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/">参考官方帮助</a>
+  <a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/" target="_blank" rel="nofollow noopener noreferrer">参考官方帮助</a>
 </p>
 <h3 id="三将-ssh-私钥添加到-ssh-agent">三、将 ssh 私钥添加到 ssh-agent</h3>
 <ul>
@@ -3739,7 +3873,7 @@ testsContext<span class="token punctuation">.</span><span class="token method fu
   <li><code>eval "$(ssh-agent -s)"</code>打开 ssh-agent</li>
   <li><code>ssh-add ~/.ssh/id_rsa</code>添加 ssh key 到 ssh-agent</li>
 </ul>
-<p><a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/">参考官方帮助</a></p>
+<p><a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/" target="_blank" rel="nofollow noopener noreferrer">参考官方帮助</a></p>
 <h3 id="四添加-ssh-公钥到-github-账户">四、添加 ssh 公钥到 github 账户</h3>
 <ul>
   <li>
@@ -3754,7 +3888,7 @@ testsContext<span class="token punctuation">.</span><span class="token method fu
     </ul>
   </li>
 </ul>
-<p><a href="https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/">参考官方帮助</a></p>
+<p><a href="https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/" target="_blank" rel="nofollow noopener noreferrer">参考官方帮助</a></p>
 <h3 id="五大功告成重新打开-git-bash-进行-push-便不需要输入用户名密码了">五、大功告成，重新打开 git bash 进行 push 便不需要输入用户名密码了</h3>
 ]]></content:encoded>
             <author>u19950930@gmail.com (Jiang Wenyang)</author>

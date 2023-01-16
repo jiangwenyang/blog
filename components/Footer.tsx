@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import ExternalLink from "./ExternalLink";
 import Social from "./Social";
 import RecentMusic from "./RecentMusic";
 

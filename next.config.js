@@ -22,6 +22,12 @@ const nextConfig = {
       },
     ],
   },
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback.fs = false;
+    }
+    return config;
+  },
 };
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires

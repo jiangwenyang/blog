@@ -10,7 +10,6 @@ import { useEffect } from "react";
 
 import PostLayout from "components/PostLayout";
 import Post from "components/Post";
-import Backtop from "components/Backtop";
 
 import { getPostBySlug, getAllPosts } from "utils/posts";
 import initGitalk from "utils/gitTalk";
