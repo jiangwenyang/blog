@@ -7,17 +7,24 @@ type RecentData = {
   list: SongData[];
 };
 
+
+let neteaseCloudMusicCookie = "";
+
 const loginByPhone = async () => {
   const res = await login_cellphone({
     phone: process.env.NETEASE_CLOUD_MUSIC_PHONE!,
     password: process.env.NETEASE_CLOUD_MUSIC_PASSWORD!,
   });
-  return res.body.cookie;
+
+  return (neteaseCloudMusicCookie = res.body.cookie);
 };
 
 const getRecentMusic = async (limit = 5) => {
-  const cookie = await loginByPhone();
-  
+  let cookie = neteaseCloudMusicCookie;
+  if (!cookie) {
+    cookie = await loginByPhone();
+  }
+
   const res = await record_recent_song({
     cookie,
     limit,
