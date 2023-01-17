@@ -5,12 +5,11 @@ import type { NextPageWithLayout } from 'typings/app';
 import React from 'react';
 import Head from 'next/head';
 
-import PostLayout from 'components/PostLayout';
-import HeadTitle from 'components/HeadTitle';
-import Posts from 'components/Posts';
+import HeadTitle from "components/HeadTitle";
+import Posts from "components/Posts";
 
-import { getAllPosts } from 'utils/posts';
-import generateRssFeed from 'utils/feed';
+import { getAllPosts } from "utils/posts";
+import generateRssFeed from "utils/feed";
 
 type Props = {
   allPosts: Post[];
@@ -28,10 +27,6 @@ const PostsPage: NextPageWithLayout<Props> = ({ allPosts }) => {
       </div>
     </>
   );
-};
-
-PostsPage.getLayout = function getLayout(page: React.ReactElement) {
-  return <PostLayout>{page}</PostLayout>;
 };
 
 export const getStaticProps: GetStaticProps = () => {

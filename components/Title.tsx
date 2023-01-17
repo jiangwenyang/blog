@@ -1,5 +1,5 @@
 import classNames from "classnames";
-
+import SITE_CONFIG from "site.config";
 interface Props {
   className?: string;
 }
@@ -11,7 +11,7 @@ const Title: React.FC<Props> = ({ className }) => (
       className
     )}
   >
-    jiangwenyang&rsquo;s blog
+    {SITE_CONFIG.title}
   </h1>
 );
 

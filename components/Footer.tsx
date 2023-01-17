@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import Social from "./Social";
+import SITE_CONFIG from "site.config";
+import FooterNav from "./FooterNav";
 import RecentMusic from "./RecentMusic";
 
 const Footer: React.FC = () => {
@@ -15,7 +16,10 @@ const Footer: React.FC = () => {
       <hr className="w-full border-1 border-gray-200 my-5" />
       <div className="justify-between gap-2 mx-auto">
         <RecentMusic />
-        <Social />
+        <div className="w-full max-w-2xl grid grid-cols-1 gap-4 pb-16 sm:grid-cols-3 mt-2">
+          <FooterNav data={SITE_CONFIG.navs} />
+          <FooterNav data={SITE_CONFIG.socials} />
+        </div>
       </div>
     </footer>
   );

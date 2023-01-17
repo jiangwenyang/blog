@@ -8,7 +8,6 @@ import ErrorPage from "next/error";
 import Head from "next/head";
 import { useEffect } from "react";
 
-import PostLayout from "components/PostLayout";
 import Post from "components/Post";
 
 import { getPostBySlug, getAllPosts } from "utils/posts";
@@ -75,10 +74,6 @@ const PostPage: NextPageWithLayout<Props> = ({ post }) => {
       <div id="gitalk-container"></div>
     </>
   );
-};
-
-PostPage.getLayout = function getLayout(page: React.ReactElement) {
-  return <PostLayout>{page}</PostLayout>;
 };
 
 interface Params extends ParsedUrlQuery {

@@ -5,7 +5,6 @@ import type { GetStaticProps, GetStaticPaths } from "next";
 
 import Head from "next/head";
 
-import PostLayout from "components/PostLayout";
 import Page from "components/Page";
 
 import { getPageBySlug, getAllPages } from "utils/posts";
@@ -59,9 +58,6 @@ const DynamicPage: NextPageWithLayout<Props> = ({ page }) => {
   );
 };
 
-DynamicPage.getLayout = function getLayout(page: React.ReactElement) {
-  return <PostLayout>{page}</PostLayout>;
-};
 
 interface Params extends ParsedUrlQuery {
   page: string;

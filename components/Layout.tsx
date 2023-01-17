@@ -2,24 +2,15 @@ import Head from "next/head";
 
 import Backtop from "components/Backtop";
 
+import SITE_CONFIG from "site.config";
+
 import Header from "./Header";
 import Footer from "./Footer";
 
 const Layout: React.FC = ({ children }) => {
-  const meta = {
-    locale: "zh-Hans",
-    type: "website",
-    siteName: "Jiangwenyang’s Blog",
-    title: "Jiangwenyang’s Blog",
-    description: "Jiang Wenyang's blog, wirte something fun",
-    url: "https://jiangwenyang.com",
-    image: "https://jiangwenyang.com/logo.svg",
-    twitter: {
-      site: "@wateriscat",
-    },
-  };
+  const { meta } = SITE_CONFIG;
   return (
-    <div className="flex flex-col min-h-screen p-8 md:px-8 lg:container lg:mx-auto">
+    <div className="flex flex-col w-full min-h-screen p-8 md:px-8">
       <Head>
         <meta name="robots" content="follow, index" />
         <meta name="apple-mobile-web-app-status-bar-style" content="white" />
@@ -57,12 +48,14 @@ const Layout: React.FC = ({ children }) => {
         <meta name="twitter:image" content={meta.image} key="twitter_image" />
       </Head>
 
-      <Header />
-      <main className="flex-1">
-        {children}
-        <Backtop />
-      </main>
-      <Footer />
+      <div className="flex-1 max-w-2xl mx-auto">
+        <Header />
+        <main>
+          {children}
+          <Backtop />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 };
