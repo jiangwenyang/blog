@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
     <footer className="text-sm leading-6 text-center text-gray-500">
       <hr className="w-full border-1 border-gray-200 my-5" />
       <div className="justify-between gap-2 mx-auto">
-        <RecentMusic />
+        {/* <RecentMusic /> */}
         <div className="w-full max-w-2xl grid grid-cols-1 gap-4 pb-16 sm:grid-cols-3 mt-2">
           <FooterNav data={SITE_CONFIG.navs} />
           <FooterNav data={SITE_CONFIG.socials} />
