@@ -1,38 +1,12 @@
+// @ts-check
+const { withContentlayer } = require("next-contentlayer");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
-    modularizeImports: {
-      "@ricons/fluent": {
-        transform: "@ricons/fluent/lib/{{member}}",
-      },
-      "@ricons/material": {
-        transform: "@ricons/material/lib/{{member}}",
-      },
-    },
-  },
-  eslint: {
-    dirs: ["pages", "components", "lib", "utils", "typings"],
-  },
-  images: {
-    remotePatterns: [
-      {
-        protocol: "http",
-        hostname: "**.music.126.net",
-      },
-    ],
-  },
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.resolve.fallback.fs = false;
-    }
-    return config;
+    appDir: true,
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true",
-});
-
-module.exports = withBundleAnalyzer(nextConfig);
+module.exports = withContentlayer(nextConfig);
