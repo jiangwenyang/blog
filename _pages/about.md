@@ -9,7 +9,7 @@ date: 2022-04-08
 
 热爱编程，喜欢一切有创造性的东西，热衷折腾新技术新工具。
 
-喜欢做饭，是一只 10 斤胖的英短银渐层折耳猫的铲屎官。
+喜欢做饭，是一只11斤胖的英短银渐层和一只跑酷暹罗的铲屎官。
 
 ### 专业技能
 
@@ -20,7 +20,7 @@ date: 2022-04-08
 
 ### 工作经历
 
-#### [招商新智科技有限公司](https://www.cmnit.com/) （2019 年 12 月 - 至今）
+#### [招商新智科技有限公司](https://www.cmnit.com) （2019 年 12 月 - 至今）
 
 主要负责 GIS、大流量项目以及用户系统的项目搭建、核心功能开发以及任务分派，主要技术栈为 Vue + Element + Axios。
 
@@ -31,14 +31,18 @@ date: 2022-04-08
 - 基于 Hygen 开发 VSCode 插件 [Swagger To API](https://marketplace.visualstudio.com/items?itemName=jiangwenyang.swagger-to-api) 实现快速定制生成 API 接口代码。
 - 将项目从 Vue CLI 迁移到 Vite，提升开发体验，并输出迁移[文档](/posts/一个真实的vue-cli项目迁移到vite)。
 
-#### [重庆允升科技有限公司](https://yunsom.com/?_blank) （2019 年 02 月 - 2019 年 12 月）
+#### [重庆允升科技有限公司](https://yunsom.com) （2019 年 03 月 - 2019 年 12 月）
 
 主要负责公司工业互联网平台开发迭代，主要技术栈为 React + React Router + Less。
 
 - 利用配置文件+组件化+递归等方式设计并重构数据权限、信息项配置以及数据报表服务，大幅提升性能和代码可维护性。
 - 使用 React-DnD + React Hook 完成点检信息项可视化拖拽配置，提高用户体验以及加快了产品部署能力。
 
-#### [上海爱数科技有限公司](https://www.aishu.cn/)（2017 年 05 月 - 2018 年 11 月）
+#### [重庆猪八戒网络有限公司](https://chongqing.zbj.com) （2018 年 06 月 - 2019 年 3 月）
+
+主要负责猪八戒商家中心部分项目日常迭代，以及参与八戒工厂后台项目的开发和维护。
+
+#### [上海爱数科技有限公司](https://www.aishu.cn)（2017 年 05 月 - 2018 年 6 月）
 
 主要负责 Web 组件开发，前端测试（单元、集成、端到端），以及部门内前端代码标准制定和自动化改进。
 
@@ -50,4 +54,4 @@ date: 2022-04-08
 
 - [Github](https://github.com/jiangwenyang)
 - [Twitter](https://twitter.com/jiang_wenyang)
-- [Email](mailto:u19950930@gmail.com) - u19950930@gmail.com
+- [Email](mailto:wenyang.jay@gmail.com) - wenyang.jay@gmail.com
