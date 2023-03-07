@@ -24,7 +24,7 @@ const Intro: React.FC = () => {
         </p>
         <p>
           你可以免费阅读本博客的所有内容，如果对文章内容有任何问题，你可以在每篇文章后进行评论，也可以通过Email
-          (u19950930@gmail.com)随时联系我。
+          (wenyang.jay@gmail.com)随时联系我。
         </p>
         <p>
           你也可以通过Follow我的
@@ -37,7 +37,7 @@ const Intro: React.FC = () => {
           </a>
           或者
           <a
-            href="https://twitter.com/jiang_wenyang"
+            href="https://twitter.com/wateriscat"
             target="_blank"
             rel="noreferrer"
           >
