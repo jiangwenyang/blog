@@ -4,7 +4,7 @@
         <title>Jiang Wenyang's Blog</title>
         <link>https://jiangwenyang.com</link>
         <description>Jiang Wenyang's Blog</description>
-        <lastBuildDate>Tue, 17 Jan 2023 02:17:21 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 26 Nov 2024 04:52:55 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>zh</language>
@@ -14,6 +14,16 @@
             <link>https://jiangwenyang.com</link>
         </image>
         <copyright>All rights reserved 2022, Jiang Wenyang</copyright>
+        <item>
+            <title><![CDATA[follow 认证]]></title>
+            <link>https://jiangwenyang.com/posts/follow</link>
+            <guid>https://jiangwenyang.com/posts/follow</guid>
+            <pubDate>Tue, 26 Nov 2024 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[
+<p>This message is used to verify that this feed (feedId:84094052243110912) belongs to me (userId:84085925588924416). Join me in enjoying the next generation information browser <a href="https://follow.is" target="_blank" rel="nofollow noopener noreferrer">https://follow.is</a>.</p>
+]]></content:encoded>
+            <author>u19950930@gmail.com (Jiang Wenyang)</author>
+        </item>
         <item>
             <title><![CDATA[Nginx升级步骤]]></title>
             <link>https://jiangwenyang.com/posts/Nginx升级步骤</link>

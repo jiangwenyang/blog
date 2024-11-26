@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jiangwenyang.com</id>
     <title>Jiang Wenyang's Blog</title>
-    <updated>2023-01-17T02:17:21.864Z</updated>
+    <updated>2024-11-26T04:52:55.154Z</updated>
     <generator>Feed for Node.js</generator>
     <author>
         <name>Jiang Wenyang</name>
@@ -15,6 +15,25 @@
     <logo>https://jiangwenyang.com/logo.svg</logo>
     <icon>https://jiangwenyang.com/favicon.ico</icon>
     <rights>All rights reserved 2022, Jiang Wenyang</rights>
+    <entry>
+        <title type="html"><![CDATA[follow 认证]]></title>
+        <id>https://jiangwenyang.com/posts/follow</id>
+        <link href="https://jiangwenyang.com/posts/follow"/>
+        <updated>2024-11-26T00:00:00.000Z</updated>
+        <content type="html"><![CDATA[
+<p>This message is used to verify that this feed (feedId:84094052243110912) belongs to me (userId:84085925588924416). Join me in enjoying the next generation information browser <a href="https://follow.is" target="_blank" rel="nofollow noopener noreferrer">https://follow.is</a>.</p>
+]]></content>
+        <author>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </author>
+        <contributor>
+            <name>Jiang Wenyang</name>
+            <email>u19950930@gmail.com</email>
+            <uri>https://jiangwenyang.com</uri>
+        </contributor>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Nginx升级步骤]]></title>
         <id>https://jiangwenyang.com/posts/Nginx升级步骤</id>
