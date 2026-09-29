@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "NODE_OPTIONS=--max_old_space_size=8192 next build",
+    "dev": "NODE_OPTIONS='--require ./scripts/disable-experimental-navigator.cjs' next dev",
+    "build": "NODE_OPTIONS='--require ./scripts/disable-experimental-navigator.cjs --max_old_space_size=8192' next build",
     "build:analyze": "ANALYZE=true npm run build",
-    "start": "next start",
+    "start": "NODE_OPTIONS='--require ./scripts/disable-experimental-navigator.cjs' next start",
     "lint": "next lint",
     "prepare": "husky install"
   },
